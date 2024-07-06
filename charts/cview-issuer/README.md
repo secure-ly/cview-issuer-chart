@@ -25,7 +25,7 @@ C-View issuser plugin for cert-manager
 | controllerManager.environment.ENABLE_WEBHOOKS | string | `"false"` |  |
 | controllerManager.environment.KUBERNETES_CLUSTER_DOMAIN | string | `"cluster.local"` |  |
 | controllerManager.labels | object | `{"app":"cview-issuer"}` | labels for the controller deployment  |
-| controllerManager.manager.image.repository | string | `"dror1966/cview-issuer"` |  |
+| controllerManager.manager.image.repository | string | `"devsecurely/cview-issuer"` |  |
 | controllerManager.manager.image.tag | string | `"0.0.29"` |  |
 | controllerManager.manager.livenessProbe.httpGet.path | string | `"/healthz"` |  |
 | controllerManager.manager.livenessProbe.httpGet.port | int | `8081` |  |
