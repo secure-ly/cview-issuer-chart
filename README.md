@@ -16,7 +16,7 @@
 
 ## Add helm chart repository
 ```console
-helm repo add secure-ly https://secure-ly.github.io/cview-issuer-chart/)--force-update
+helm repo add secure-ly https://secure-ly.github.io/cview-issuer-chart/ --force-update
 ```
 ## Check actual version
 ```console
