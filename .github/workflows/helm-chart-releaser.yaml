@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - master
+      #- master
     paths:
       - 'charts/**.yaml'
       - 'charts/**.yml'
