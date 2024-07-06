@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  cview-issuer:
+  - apiVersion: v2
+    appVersion: 0.0.30
+    created: "2024-07-06T19:15:09.812818224Z"
+    description: C-View issuer plugin for cert-manager
+    digest: 12fc9c65891f6883ba4840fd125e264de05f32b0863047ca9fc40b644e2f08c1
+    name: cview-issuer
+    type: application
+    urls:
+    - https://github.com/secure-ly/cview-issuer-chart/releases/download/cview-issuer-0.0.30/cview-issuer-0.0.30.tgz
+    version: 0.0.30
+generated: "2024-07-06T19:15:09.812823344Z"
