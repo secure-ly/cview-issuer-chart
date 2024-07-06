@@ -1,0 +1,36 @@
+{{- if .Values.controllerManager.rbac.enabled  }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "chart.fullname" . }}-cert-manager-controller-approve:cview-certmanager-securely-com
+  labels:
+  {{- include "chart.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - cert-manager.io
+  resourceNames:
+  - cviewclusterissuers.secure-ly.com/*
+  - cviewissuers.secure-ly.com/*
+  resources:
+  - signers
+  verbs:
+  - approve
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "chart.fullname" . }}-cert-manager-controller-approve:cview-certmanager-securely-com
+  labels:
+  {{- include "chart.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "chart.fullname" . }}-cert-manager-controller-approve:cview-certmanager-securely-com
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.controllerManager.rbac.serviceAccountName }}
+  namespace: {{ .Release.Namespace }}
+- kind: ServiceAccount
+  name: {{ .Values.controllerManager.rbac.certManagerServiceAccountName }}
+  namespace: {{ .Values.controllerManager.rbac.certManagerNamespace }}
+{{- end  }}    

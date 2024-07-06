@@ -1,0 +1,103 @@
+crd:
+  install: true
+
+openshift:
+  enabled: false # to use permission for Route objects
+  anyuid: true # add permission for anyuid scc
+
+# C-View Issuer by secure-ly ltd 
+
+controllerManager:
+
+  # --labels for the controller deployment 
+  labels: 
+    app: cview-issuer
+  annotations:
+    app: cview-issuer
+
+  manager:
+    image:
+      repository: devsecurely/cview-issuer
+      tag: 0.0.30
+
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 8081
+        scheme: HTTP
+      timeoutSeconds: 10
+      periodSeconds: 10
+
+    readinessProbe:
+      httpGet:
+        path: /readyz
+        port: 8081 
+        scheme: HTTP
+      timeoutSeconds: 20
+      periodSeconds: 20
+      initialDelaySeconds: 10
+
+  rbac:
+    enabled: true
+    serviceAccountName: cview-issuer
+    certManagerNamespace: cert-manager
+    certManagerServiceAccountName: cert-manager 
+
+
+  replicaCount: 1
+  strategy:
+    type: Recreate
+
+
+  environment:
+    KUBERNETES_CLUSTER_DOMAIN: cluster.local
+    ENABLE_WEBHOOKS: "false"
+    ENABLE_DEBUG: "false"
+  arguments:
+    leader-elect: "true"
+    cluster-resource-namespace: cview-issuer # must be the same as chart namespace
+    zap-log-level: 1
+    enable-tracing: "false" # false if you want to turn off open tracing
+    tracing-endpoint: "jaeger-collector.jaeger-operator.svc.cluster.local:4318"
+    max-concurrent-reconciles: 1 
+
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    capabilities:
+      drop:
+      - ALL
+
+  podSecurityContext:
+    runAsUser: 1000
+
+  enabledWebHooks: false
+  enabledCaCerts: false
+  caCertsSecretName: ca-certificates
+
+metricsService:
+  enabled: true
+  ports:
+  - name: https
+    port: 8443
+    targetPort: https
+  type: ClusterIP
+
+webhookService:
+  ports:
+  - port: 443
+    targetPort: 9443
+  type: ClusterIP
+
+nodeSelector: 
+  kubernetes.io/os: linux
+
+

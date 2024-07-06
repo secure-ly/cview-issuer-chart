@@ -1,0 +1,178 @@
+
+{{- if .Values.crd.install  }}
+---
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.14.0
+  name: cviewclusterissuers.secure-ly.com
+spec:
+  group: secure-ly.com
+  names:
+    kind: CViewClusterIssuer
+    listKind: CViewClusterIssuerList
+    plural: cviewclusterissuers
+    singular: cviewclusterissuer
+  scope: Cluster
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .spec.templateName
+      name: TemplateName
+      type: string
+    - jsonPath: .spec.url
+      name: URL
+      type: string
+    - jsonPath: .spec.caId
+      name: CaId
+      type: integer
+    - jsonPath: .spec.connectionTimeout
+      name: ConnectionTimeout
+      priority: 1
+      type: string
+    - jsonPath: .spec.statusCheckInterval
+      name: StatusCheckInterval
+      priority: 1
+      type: string
+    - jsonPath: .spec.retryInterval
+      name: RetryInterval
+      priority: 1
+      type: string
+    - jsonPath: .spec.insecureSkipVerify
+      name: InsecureSkipVerify
+      priority: 1
+      type: boolean
+    - jsonPath: .metadata.creationTimestamp
+      name: Age
+      type: date
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: CViewClusterIssuer is the Schema for the cviewclusterissuers
+          API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: CViewIssuerSpec defines the desired state of CViewIssuer
+            properties:
+              authSecretName:
+                description: |-
+                  A reference to a Secret in the same namespace as the referent. If the
+                  referent is a ClusterIssuer, the reference instead refers to the resource
+                  with the given name in the configured 'cluster resource namespace', which
+                  is set as a flag on the controller component (and defaults to the
+                  namespace that the controller runs in).
+                type: string
+              caBundle:
+                description: |-
+                  CABundle is a PEM encoded TLS certifiate to use to verify connections to
+                  the CView server.
+                format: byte
+                type: string
+              caId:
+                description: Which CView CaId should this issuer use
+                format: int32
+                type: integer
+              connectionTimeout:
+                default: 30s
+                description: |-
+                  Timeout for connection (in time.ParseDuration() format)
+                  Default 30s .
+                type: string
+              insecureSkipVerify:
+                default: false
+                description: Ommitting CView ca cert verification
+                type: boolean
+              retryInterval:
+                default: 1h
+                description: |-
+                  How often to retry in case of communication errors (in time.ParseDuration() format)
+                  Default 1 hour.
+                type: string
+              statusCheckInterval:
+                default: 5h
+                description: |-
+                  How often to check for request status in the server (in time.ParseDuration() format)
+                  Default 6 hours.
+                type: string
+              templateName:
+                description: |-
+                  Which CView Template should this issuer use
+                  Defaults to the what is specified in main.go or as an cli option.
+                type: string
+              url:
+                description: URL is the base URL for the CView instance
+                type: string
+            required:
+            - authSecretName
+            - url
+            type: object
+          status:
+            description: CViewIssuerStatus defines the observed state of CViewIssuer
+            properties:
+              conditions:
+                description: |-
+                  INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+                  Important: Run "make" to regenerate code after modifying this file
+                items:
+                  description: CViewIssuerCondition contains condition information
+                    for an Issuer.
+                  properties:
+                    lastTransitionTime:
+                      description: |-
+                        LastTransitionTime is the timestamp corresponding to the last status
+                        change of this condition.
+                      format: date-time
+                      type: string
+                    message:
+                      description: |-
+                        Message is a human readable description of the details of the last
+                        transition, complementing reason.
+                      type: string
+                    reason:
+                      description: |-
+                        Reason is a brief machine readable explanation for the condition's last
+                        transition.
+                      type: string
+                    status:
+                      description: Status of the condition, one of ('True', 'False',
+                        'Unknown').
+                      enum:
+                      - "True"
+                      - "False"
+                      - Unknown
+                      type: string
+                    type:
+                      description: Type of the condition, known values are ('Ready').
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+
+
+{{- end  }}    

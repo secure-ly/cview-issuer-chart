@@ -1,0 +1,179 @@
+{{- if .Values.controllerManager.rbac.enabled  }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "chart.fullname" . }}-manager-role
+  labels:
+  {{- include "chart.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+
+- apiGroups:
+  - secure-ly.com
+  resources:
+  - cviewissuers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+
+- apiGroups:
+  - secure-ly.com
+  resources:
+  - cviewissuers/status
+  verbs:
+  - get
+  - patch
+  - update
+
+- apiGroups:
+  - secure-ly.com
+  resources:
+  - cviewrequests
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+
+- apiGroups:
+  - secure-ly.com
+  resources:
+  - cviewrequests/status
+  verbs:
+  - get
+  - patch
+  - update
+
+- apiGroups:
+  - secure-ly.com
+  resources:
+  - cviewclusterissuers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+
+- apiGroups:
+  - secure-ly.com
+  resources:
+  - cviewclusterissuers/status
+  verbs:
+  - get
+  - patch
+  - update
+  
+- apiGroups:
+  - cert-manager.io
+  resources:
+  - certificaterequests
+  verbs:
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cert-manager.io
+  resources:
+  - certificaterequests/finalizers
+  - certificaterequests/status
+  - certificates/finalizers
+  verbs:
+  - get
+  - patch
+  - update
+
+- apiGroups:
+  - cert-manager.io
+  resources:
+  - certificates
+  verbs:
+  - get
+  - list
+  - watch
+
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  verbs:
+  - get
+  - list
+  - watch
+
+{{- if .Values.openshift.enabled }}
+
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - get
+  - list
+  - watch
+{{- end }}
+
+
+- apiGroups:
+  - gateway.networking.k8s.io
+  resources:
+  - gateways
+  verbs:
+  - get
+  - list
+  - watch
+
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  verbs:
+  - create
+  - get
+  - list
+  - update
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "chart.fullname" . }}-manager-rolebinding
+  labels:
+  {{- include "chart.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "chart.fullname" . }}-manager-role
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.controllerManager.rbac.serviceAccountName }}
+  namespace: {{ .Release.Namespace }}
+
+{{- end  }}    
