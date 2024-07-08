@@ -107,6 +107,7 @@ Using route objects on openshift requires the installation of additional package
 helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
 ```
 
+
 ## Documentation
 
 
