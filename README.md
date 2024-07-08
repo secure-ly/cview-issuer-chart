@@ -10,8 +10,10 @@
     - [Install on Openshift](#install-on-openshift)
     - [Install with customization](#install-with-customization)
   - [Show helm chart status](#show-helm-chart-status)
+  - [Cert manager and route objects](#cert-manager-and-route-objects)
   - [Documentation](#documentation)
     - [Values](#values)
+
 
 
 ## Add helm chart repository
@@ -95,6 +97,15 @@ NAME            NAMESPACE       REVISION        UPDATED                         
 cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.29     0.0.29
 </pre><pre>
 
+
+
+## Cert manager and route objects
+
+Using route objects on openshift requires the installation of additional package for extending cert-manager behavior.
+
+```console
+helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
+```
 
 ## Documentation
 
