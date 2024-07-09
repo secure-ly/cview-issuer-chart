@@ -1,8 +1,8 @@
 [Github repository](https://github.com/secure-ly/cview-issuer-chart/)
 
-#Install cview-issuer via helm chart
+# Install cview-issuer via helm chart
 - [Add helm chart repository](#add-helm-chart-repository)
-- [Update to the latest version](#Update to the latest version)
+- [Update to the latest version](#Update-to-the-latest-version)
 - [Get list of all issuer version](#Get list of all issuer version)
     - [Install on kubernetes](#install-on-kubernetes)
     - [Install on Openshift](#install-on-openshift)
