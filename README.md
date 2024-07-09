@@ -1,11 +1,9 @@
 [Github repository](https://github.com/secure-ly/cview-issuer-chart/)
 
-# How to install cview-issuer via helm chart
-
-- [How to install cview-issuer via helm chart](#how-to-install-cview-issuer-via-helm-chart)
-  - [Add helm chart repository](#add-helm-chart-repository)
-  - [Check actual version](#check-actual-version)
-  - [Check all versions](#check-all-versions)
+#Install cview-issuer via helm chart
+- [Add helm chart repository](#add-helm-chart-repository)
+- [Update to the latest version](#Update to the latest version)
+- [Get list of all issuer version](#Get list of all issuer version)
     - [Install on kubernetes](#install-on-kubernetes)
     - [Install on Openshift](#install-on-openshift)
     - [Install with customization](#install-with-customization)
@@ -15,21 +13,20 @@
     - [Values](#values)
 
 
-
 ## Add helm chart repository
 ```console
 helm repo add secure-ly https://secure-ly.github.io/cview-issuer-chart/ --force-update
 ```
-## Check actual version
+## Update to the latest version 
 ```console
 helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.29          0.0.29          C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.30          0.0.30          C-View issuser plugin for cert-manager
 </pre>
 
-## Check all versions
+## Get list of all issuer version
 ```console
 helm search repo cview-issuer
 ```
