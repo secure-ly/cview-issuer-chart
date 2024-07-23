@@ -1,21 +1,19 @@
 [Github repository](https://github.com/secure-ly/cview-issuer-chart/)
+# Install cview-issuer via helm chart
 
 - [1. Prerequisites](#1-prerequisites)
-- [2. C-View Issuer installation using helm cart](#2)
-- [Add helm chart repository](#add-helm-chart-repository)
-- [Update to the latest version](#Update-to-the-latest-version)
-- [Get list of all issuer version](#Get-list-of-all-issuer-version)
-    - [Install on kubernetes](#install-on-kubernetes)
-    - [Install on Openshift](#install-on-openshift)
-    - [Install with customization](#install-with-customization)
+- [2. C-View Issuer installation using helm cart](#2-CView-Issuer-installation-using-helm-cart)
+    - [Add helm chart repository](#add-helm-chart-repository)
+    - [Update to the latest version](#Update-to-the-latest-version)
+    - [Get list of all issuer version](#Get-list-of-all-issuer-version)
+        - [Install on kubernetes](#install-on-kubernetes)
+        - [Install on Openshift](#install-on-openshift)
+        - [Install with customization](#install-with-customization)
   - [Show helm chart status](#show-helm-chart-status)
   - [Cert manager and route objects](#cert-manager-and-route-objects)
   - [Documentation](#documentation)
     - [Values](#values)
     
-# Install cview-issuer via helm chart
-
-
 ## 1. Prerequisites 
 
 The prerequisites for running CView Issuer are the following components installed.
@@ -26,11 +24,11 @@ The prerequisites for running CView Issuer are the following components installe
 
 ## 2. CView Issuer installation using helm cart 
 
-## Add helm chart repository
+### Add helm chart repository
 ```console
 helm repo add secure-ly https://secure-ly.github.io/cview-issuer-chart/ --force-update
 ```
-## Update to the latest version 
+### Update to the latest version 
 ```console
 helm repo update secure-ly
 ```
@@ -39,7 +37,7 @@ NAME                    CHART VERSION   APP VERSION     DESCRIPTION
 secure-ly/cview-issuer   0.0.32          0.0.32          C-View issuser plugin for cert-manager
 </pre>
 
-## Get list of all issuer version
+### Get list of all issuer version
 ```console
 helm search repo cview-issuer
 ```
