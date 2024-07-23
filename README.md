@@ -123,9 +123,9 @@ helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/
 ## Documentation
 
 
-![Version: 0.0.30](https://img.shields.io/badge/Version-0.0.30-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.30](https://img.shields.io/badge/AppVersion-0.0.30-informational?style=flat-square)
+![Version: 0.0.33](https://img.shields.io/badge/Version-0.0.33-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.33](https://img.shields.io/badge/AppVersion-0.0.33-informational?style=flat-square)
 
-C-View issuser plugin for cert-manager
+C-View issuer plugin for cert-manager
 
 ### Values
 
