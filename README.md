@@ -6,6 +6,7 @@
     - [Add repository](#Add-cview-issuer-helm-chart-repository)
     - [Update to the latest version](#Update-to-the-latest-version)
     - [List issuer versions](#Get-list-of-all-issuer-version)
+    - [Install commands](#Install-commands)
         - [Install on kubernetes](#install-on-kubernetes)
         - [Install on Openshift](#install-on-openshift)
         - [Install with customization](#install-with-customization)
@@ -58,7 +59,9 @@ secure-ly/cview-issuer	0.0.31       	0.0.31     	 C-View issuer plugin for cert-
 secure-ly/cview-issuer	0.0.32       	0.0.32     	 C-View issuer plugin for cert-manager 
 </pre>
 
-### Install on kubernetes 
+### Install commands:
+
+#### Install on kubernetes 
 
 ```console
 helm upgrade --install \
@@ -69,7 +72,7 @@ helm upgrade --install \
   --set crd.install=true
 ```
 
-### Install on Openshift 
+#### Install on Openshift 
 
 ```console
 helm upgrade --install \
@@ -82,7 +85,7 @@ helm upgrade --install \
 
 ```
 
-### Install with customization 
+#### Install with customization 
 
 ```console
 helm upgrade --install \
@@ -181,6 +184,3 @@ C-View issuser plugin for cert-manager
 | webhookService.ports[0].port | int | `443` |  |
 | webhookService.ports[0].targetPort | int | `9443` |  |
 | webhookService.type | string | `"ClusterIP"` |  |
-
-
-
