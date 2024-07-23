@@ -2,6 +2,8 @@
 
 # Install cview-issuer via helm chart
 
+- [1. Prerequisites](#1-prerequisites)]
+- [2. C-View Issuer installation using helm cart() ] 
 - [Add helm chart repository](#add-helm-chart-repository)
 - [Update to the latest version](#Update-to-the-latest-version)
 - [Get list of all issuer version](#Get-list-of-all-issuer-version)
@@ -13,6 +15,15 @@
   - [Documentation](#documentation)
     - [Values](#values)
 
+## 1. Prerequisites 
+
+The prerequisites for running CView Issuer are the following components installed.
+
+1. Running Kubernetes cluster with version >=1.27.x  
+2. Running Cert manager with version >=1.12.x
+3. Jaeger opentracing (Optional)
+
+## 2. C-View Issuer installation using helm cart 
 
 ## Add helm chart repository
 ```console
