@@ -3,7 +3,7 @@
 
 - [1. Prerequisites](#1-prerequisites)
 - [2. C-View Issuer installation using helm cart](#2-CView-Issuer-installation-using-helm-cart)
-    - [Add helm chart repository](#Add-cviewissuer-helm-chart-repository)
+    - [Add helm chart repository](#Add-cview-issuer-helm-chart-repository)
     - [Update to the latest version](#Update-to-the-latest-version)
     - [Get list of all issuer version](#Get-list-of-all-issuer-version)
         - [Install on kubernetes](#install-on-kubernetes)
@@ -24,7 +24,7 @@ C-View Issuer prerequisites are the following components installed.
 
 ## 2. CView Issuer installation using helm cart 
 
-### Add cviewissuer helm chart repository
+### Add cview-issuer helm chart repository
 ```console
 helm repo add secure-ly https://secure-ly.github.io/cview-issuer-chart/ --force-update
 ```
