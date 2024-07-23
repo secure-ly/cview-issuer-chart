@@ -6,7 +6,7 @@
     - [Add repository](#Add-cview-issuer-helm-chart-repository)
     - [Update to the latest version](#Update-to-the-latest-version)
     - [List issuer versions](#Get-list-of-all-issuer-version)
-    - [Install commands](#Install-commands)
+    - [Install platforms](#Install-commands)
         - [Install on kubernetes](#install-on-kubernetes)
         - [Install on Openshift](#install-on-openshift)
         - [Install with customization](#install-with-customization)
