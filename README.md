@@ -24,7 +24,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.30          0.0.30          C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.32          0.0.32          C-View issuser plugin for cert-manager
 </pre>
 
 ## Get list of all issuer version
@@ -48,7 +48,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.30 \
+  --version 0.0.32 \
   --set crd.install=true
 
 ```
@@ -60,7 +60,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.30  \
+  --version 0.0.32  \
   --set crd.install=true \
   --set openshift.enabled=true
 
@@ -73,9 +73,9 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.30 \
+  --version 0.0.32 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.30 \
+  --set controllerManager.manager.image.tag=0.0.33 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
   --set controllerManager.arguments.enable-tracing="false" \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
@@ -92,7 +92,7 @@ helm list -n cview-issuer
 ```
 <pre>
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
-cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.29     0.0.29
+cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.33     0.0.33
 </pre>
 
 
@@ -135,7 +135,7 @@ C-View issuser plugin for cert-manager
 | controllerManager.environment.KUBERNETES_CLUSTER_DOMAIN | string | `"cluster.local"` |  |
 | controllerManager.labels | object | `{"app":"cview-issuer"}` | labels for the controller deployment  |
 | controllerManager.manager.image.repository | string | `"devsecurely/cview-issuer"` |  |
-| controllerManager.manager.image.tag | string | `"0.0.30"` |  |
+| controllerManager.manager.image.tag | string | `"0.0.32"` |  |
 | controllerManager.manager.livenessProbe.httpGet.path | string | `"/healthz"` |  |
 | controllerManager.manager.livenessProbe.httpGet.port | int | `8081` |  |
 | controllerManager.manager.livenessProbe.httpGet.scheme | string | `"HTTP"` |  |
