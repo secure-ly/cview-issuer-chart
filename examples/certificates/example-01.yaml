@@ -1,0 +1,65 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: crm-certificate                # A uniqu value with in the namespace to identify the APP certificate   
+  namespace: cview-issuer              # The name of the namesspace to create the certificate object 
+
+# --------------------------------------------------------------------------------------
+# Use anotation to add a business logic information to the certificate ( used in CView) 
+# --------------------------------------------------------------------------------------
+  annotations:
+    cview-issuer/customField1: ""
+    cview-issuer/customField2: ""
+    cview-issuer/customField3: ""
+    cview-issuer/customField4: ""
+    cview-issuer/customField5: ""
+    cview-issuer/customField6: ""
+    cview-issuer/customField7: ""
+    cview-issuer/customField8: ""
+    cview-issuer/customField9: ""
+    cview-issuer/customField10: ""
+    cview-issuer/customEmailAddress: ""  # set custome email address for a personal expiraiton alert 
+    cview-issuer/certOwner: ""           # set the certificate owner as domain\\user 
+
+spec:
+  issuerRef:
+    group: secure-ly.com
+    kind: CViewIssuer
+    name: cviewissuer-template    # The name of the cview issuer 
+  revisionHistoryLimit: 4 		 	  # limit of certificate requests per certificate
+  secretName: cert-secret-name  	# The name of the certificate secret ( required ) 
+  
+  # Certificate comman name 
+  commonName: example.secure-ly.com
+  
+  # Subject alternative names 
+  dnsNames:
+  - example.secure-ly.com      # Required 
+  
+  # emailAddresses:            # optional 
+  #- example1@domain.com  
+
+  #ipAddresses:                # optional
+  #- 192.168.20.50
+
+  #subject:                  # Additioanl subject fileds ( optional) 
+  #  organizations:          # Organization name 
+  #    - Securely
+
+ # countries:                # County two characters 
+ #   - IL
+    
+ #localities:                # L= City name  
+ #   City name
+
+ #organizationalUnits:      
+ #  - Sales support 
+ 
+  #provinces:               # state name 
+  #  - Stat name 
+      
+  # The value is hours only 
+  renewBefore: 240d         # Renew certificate X hours before expired ( 10 days ) 
+
+
+
