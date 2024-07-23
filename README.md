@@ -3,9 +3,9 @@
 
 - [1. Prerequisites](#1-prerequisites)
 - [2. C-View Issuer installation using helm cart](#2-CView-Issuer-installation-using-helm-cart)
-    - [Add helm chart repository](#Add-cview-issuer-helm-chart-repository)
+    - [Add repository](#Add-cview-issuer-helm-chart-repository)
     - [Update to the latest version](#Update-to-the-latest-version)
-    - [Get list of all issuer version](#Get-list-of-all-issuer-version)
+    - [List issuer versions](#Get-list-of-all-issuer-version)
         - [Install on kubernetes](#install-on-kubernetes)
         - [Install on Openshift](#install-on-openshift)
         - [Install with customization](#install-with-customization)
