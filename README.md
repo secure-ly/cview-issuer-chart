@@ -3,7 +3,7 @@
 
 - [1. Prerequisites](#1-prerequisites)
 - [2. C-View Issuer installation using helm cart](#2-CView-Issuer-installation-using-helm-cart)
-    - [Add helm chart repository](#add-helm-chart-repository)
+    - [Add helm chart repository](#Add-cviewissuer-helm-chart-repository)
     - [Update to the latest version](#Update-to-the-latest-version)
     - [Get list of all issuer version](#Get-list-of-all-issuer-version)
         - [Install on kubernetes](#install-on-kubernetes)
@@ -16,18 +16,19 @@
     
 ## 1. Prerequisites 
 
-The prerequisites for running CView Issuer are the following components installed.
+C-View Issuer prerequisites are the following components installed.
 
-1. Running Kubernetes cluster with version >=1.27.x  
-2. Running Cert manager with version >=1.12.x
-3. Jaeger opentracing (Optional)
+- Kubernetes cluster with version >=1.27.x      
+- Cert manager with version >=1.12.x    
+- Jaeger opentracing (optional)
 
 ## 2. CView Issuer installation using helm cart 
 
-### Add helm chart repository
+### Add cviewissuer helm chart repository
 ```console
 helm repo add secure-ly https://secure-ly.github.io/cview-issuer-chart/ --force-update
 ```
+
 ### Update to the latest version 
 ```console
 helm repo update secure-ly
@@ -42,14 +43,20 @@ secure-ly/cview-issuer   0.0.32          0.0.32          C-View issuser plugin f
 helm search repo cview-issuer
 ```
 <pre>
-NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.30          0.0.30          C-View issuser plugin for cert-manager
-secure-ly/cview-issuer   0.0.29          0.0.29          C-View issuser plugin for cert-manager
+NAME                    CHART VERSION   APP VERSION  DESCRIPTION
+secure-ly/cview-issuer   0.0.30          0.0.30      C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.29          0.0.29      C-View issuser plugin for cert-manager
 </pre>
 
 ```console
 helm search repo cview-issuer --versions 
 ```
+<pre>
+NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
+secure-ly/cview-issuer	0.0.30       	0.0.30     	 C-View issuer plugin for cert-manager 
+secure-ly/cview-issuer	0.0.31       	0.0.31     	 C-View issuer plugin for cert-manager     
+secure-ly/cview-issuer	0.0.32       	0.0.32     	 C-View issuer plugin for cert-manager 
+</pre>
 
 ### Install on kubernetes 
 
@@ -60,7 +67,6 @@ helm upgrade --install \
   --create-namespace \
   --version 0.0.32 \
   --set crd.install=true
-
 ```
 
 ### Install on Openshift 
@@ -91,8 +97,6 @@ helm upgrade --install \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true
-
-
 ```
 
 ## Show helm chart status
@@ -105,16 +109,13 @@ NAME            NAMESPACE       REVISION        UPDATED                         
 cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.32     0.0.32
 </pre>
 
-
-
-## Cert manager and route objects
+## Openshift routes (for cert-manager)
 
 Using route objects on openshift requires the installation of additional package for extending cert-manager behavior.
 
 ```console
 helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
 ```
-
 
 ## Documentation
 
