@@ -1,9 +1,7 @@
 [Github repository](https://github.com/secure-ly/cview-issuer-chart/)
 
-# Install cview-issuer via helm chart
-
-- [1. Prerequisites](#1-prerequisites)]
-- [2. C-View Issuer installation using helm cart() ] 
+- [1. Prerequisites](#1-prerequisites)
+- [2. C-View Issuer installation using helm cart](#2)
 - [Add helm chart repository](#add-helm-chart-repository)
 - [Update to the latest version](#Update-to-the-latest-version)
 - [Get list of all issuer version](#Get-list-of-all-issuer-version)
@@ -14,6 +12,9 @@
   - [Cert manager and route objects](#cert-manager-and-route-objects)
   - [Documentation](#documentation)
     - [Values](#values)
+    
+# Install cview-issuer via helm chart
+
 
 ## 1. Prerequisites 
 
@@ -23,7 +24,7 @@ The prerequisites for running CView Issuer are the following components installe
 2. Running Cert manager with version >=1.12.x
 3. Jaeger opentracing (Optional)
 
-## 2. C-View Issuer installation using helm cart 
+## 2. CView Issuer installation using helm cart 
 
 ## Add helm chart repository
 ```console
