@@ -1,5 +1,8 @@
 [Github repository](https://github.com/secure-ly/cview-issuer-chart/)
-# Install cview-issuer via helm chart
+# cview-issuer for cert-manager 
+
+C-View issuer is an external certificate issuers for cert-manager engine 
+The cview-issuer based on interaction with the C-View CLM system 
 
 - [1. Prerequisites](#1-prerequisites)
 - [2. C-View Issuer installation via helm cart](#2-CView-Issuer-installation-helm-cart)
@@ -22,6 +25,7 @@ The following components are required befroe installaing C-View Issuer
 - Kubernetes cluster with version >=1.27.x      
 - Cert manager with version >=1.12.x    <b>(A dependency component)</b> 
 - Jaeger opentracing (optional)
+- C-View CLM >= 7.x.x (for more information contact support@secure-ly.com) 
 
 ## 2. CView Issuer installation helm cart 
 
