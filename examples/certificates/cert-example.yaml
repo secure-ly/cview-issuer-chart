@@ -4,9 +4,9 @@ metadata:
   name: cert-example                  # A uniqu value with in the namespace to identify the APP certificate   
   namespace: cview-issuer              # The name of the namesspace to create the certificate object 
 
-# --------------------------------------------------------------------------------------
-# Use anotation to add a business logic information to the certificate ( used in CView) 
-# --------------------------------------------------------------------------------------
+  # --------------------------------------------------------------------------------------
+  # Anotation a business logic information to be added to the certificate (used in CView) 
+  # --------------------------------------------------------------------------------------
   annotations:
     cview-issuer/customField1: ""     # custome filed 1 , based on C-View definition
     cview-issuer/customField2: ""     # custome filed 2 , based on C-View definition
