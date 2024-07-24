@@ -13,14 +13,15 @@ The cview-issuer works through the CVIEW certificate management platform to sign
         - [Install on kubernetes](#install-on-kubernetes)
         - [Install on Openshift](#install-on-openshift)
         - [Install with customization](#install-with-customization)
-  - [Show helm chart status](#show-helm-chart-status)
+        - [Show helm chart status](#show-helm-chart-status)
 - [3. C-View issuer Configuration](#3-c-view-issuer-configuration)
-    - [3.1. Create a secret objects](#31-create-a-secret-objects)     
-    - [3.2. Create issuer configuration](#32-create-issuer-configuration)
-    - [3.3. Prepare Certificate object](#33-prepare-certificate-object)
-    - [3.4. Prepare Ingress object (optinal)](#34-prepare-ingress-object)
-    - [3.5. What is C-ViewRequest object](#35-what-is-c-viewrequest-object)
-    - [3.6. Advanced configuration](#36-advanced-configuration)
+    - [Create a secret objects](#create-a-secret-objects)
+    - [Create an license activation key](#create-activation-objects)     
+    - [Create issuer configuration](#create-issuer-configuration)
+    - [Prepare Certificate object](#33-prepare-certificate-object)
+    - [Prepare Ingress object (optinal)](#34-prepare-ingress-object)
+    - [What is C-ViewRequest object](#35-what-is-c-viewrequest-object)
+    - [Advanced configuration](#36-advanced-configuration)
       
   - [Cert manager and route objects](#cert-manager-and-route-objects)
   - [Documentation](#documentation)
@@ -126,9 +127,7 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 ## 3. C-View Issuer Configuration
 
-### 3.1 Create a secret objects
-
-#### 3.1.1 C-View Issuer user credential 
+#### C-View Issuer user credential 
 
 Before creating user credential secret object it's required to have: 
   1. A domain user with access rights to C-View server ( memebr in a role type of Cert Owner ) 
@@ -152,6 +151,10 @@ Create the user credential using this command:
 ```console
 kubectl -n cview-issuer apply -f /installation/examples/Secrets/cview-issuer-user-credentials.yaml 
 ```
+#### create activation objects 
+CView issuer requirs and license key from the C-View platform <br /> 
+Contact C-View Administrator to get tje activatio key and encode it to base 64 string 
+Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
 
 ## Openshift routes (for cert-manager)
 
@@ -160,6 +163,8 @@ Using route objects on openshift requires the installation of additional package
 ```console
 helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
 ```
+
+
 
 ## Documentation
 
