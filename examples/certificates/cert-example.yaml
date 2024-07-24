@@ -18,48 +18,44 @@ metadata:
     cview-issuer/customField8: ""
     cview-issuer/customField9: ""
     cview-issuer/customField10: ""
-    cview-issuer/customEmailAddress: ""  # set custom email address for a personal expiration alert 
+    cview-issuer/customEmailAddress: ""  # set the custom email address for a personal expiration alert 
     cview-issuer/certOwner: ""           # set the certificate owner as domain\\user 
 
 spec:
   issuerRef:
     group: secure-ly.com
-    kind: CViewIssuer
+    kind: CViewIssuer             # The name of the specific CView issuer/cluster issuer for global names spaces  
     name: cviewissuer-template    # The name of the c-view issuer 
   revisionHistoryLimit: 4 		 	  # limit of certificate requests per certificate
+  renewBefore: 10d                # Renew certificate X days before certificate expires (default value is 10 days)
   secretName: cert-example       	# The name of the certificate secret (required and unique) 
   
-  # Certificate common name 
-  commonName: example.secure-ly.com
-  
-  # Subject alternative names 
-  dnsNames:
-  - example.secure-ly.com      # Required 
-  
-  # emailAddresses:            # optional 
-  #- example1@domain.com  
-
-  #ipAddresses:                # optional
-  #- 192.168.20.50
-
-  #subject:                  # Additioanl subject fields 
-  #  organizations:          # Organization name (optional)
+  # --------------------------------------------------------------------------------------
+  # Subject fileds annotation 
+  # --------------------------------------------------------------------------------------
+  commonName: example.secure-ly.com # Common name should be added. (required) 
+  organizations:                    # Organization name (optional)
   #    - Securely
 
- # countries:                # County (optional) two char length 
- #   - IL
-    
- #localities:                # City name(optional)
+  # countries:                      # Country (optional) two char length 
+  #   - IL
+  
+ #localities:                       # City name(optional)
  #   City name
 
- #organizationalUnits:      
+ #organizationalUnits:              # Organization unit (optional)
  #  - Sales support 
  
-  #provinces:               # state name (optional)
+  #provinces:                       # State (optional)
   #  - Stat name 
-      
-  # The value is hours only 
-  renewBefore: 240h        # Renew certificate X hours before expired ( default value is 240 hours [10 days]) 
-
-
-
+  
+  # --------------------------------------------------------------------------------------
+  # Subject alternative names 
+  # --------------------------------------------------------------------------------------
+  dnsNames:
+  - example.secure-ly.com          # DNS names (Required). Supports comma-separated values.#    
+  emailAddresses:                  # RFC822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com" 
+  - example1@domain.com  
+  ipAddresses:                     # IP Address (optional). Supports comma-separated values e.g ( "10.20.30.40,192.168.192.168")
+  - 192.168.20.50
+  
