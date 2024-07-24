@@ -42,7 +42,7 @@ spec:
     - cv.securely.apps-crc.testing            # Application host name ( added as DNS names ) 
     secretName: cert-sample-1                 # The name of the certificate secret (required and unique)
   rules:
-    - host: cv.securely.apps-crc.testing      # Application host name ( added as DNS names ) 
+    - host: cv.securely.apps-crc.testing      # Application host name (required). Aded as DNS name  
       http:
         paths:
           - pathType: Prefix
