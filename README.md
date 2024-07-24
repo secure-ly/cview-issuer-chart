@@ -17,10 +17,10 @@
     
 ## 1. Prerequisites 
 
-C-View Issuer prerequisites are the following components installed.
+The following components are required befroe installaing C-View Issuer 
 
 - Kubernetes cluster with version >=1.27.x      
-- Cert manager with version >=1.12.x    
+- Cert manager with version >=1.12.x   ( This componenent added as dependency to C-View issuer chart ) 
 - Jaeger opentracing (optional)
 
 ## 2. CView Issuer installation using helm cart 
