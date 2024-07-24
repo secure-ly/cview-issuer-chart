@@ -59,7 +59,7 @@ spec:
   #  - Stat name 
       
   # The value is hours only 
-  renewBefore: 240d         # Renew certificate X hours before expired ( default value is 240 hours [10 days]) 
+  renewBefore: 240h        # Renew certificate X hours before expired ( default value is 240 hours [10 days]) 
 
 
 
