@@ -2,7 +2,7 @@
 # Install cview-issuer via helm chart
 
 - [1. Prerequisites](#1-prerequisites)
-- [2. C-View Issuer installation using helm cart](#2-CView-Issuer-installation-using-helm-cart)
+- [2. C-View Issuer installation via helm cart](#2-CView-Issuer-installation-helm-cart)
     - [Add repository](#Add-cview-issuer-helm-chart-repository)
     - [Update to the latest version](#Update-to-the-latest-version)
     - [List issuer versions](#Get-list-of-all-issuer-version)
@@ -23,7 +23,7 @@ The following components are required befroe installaing C-View Issuer
 - Cert manager with version >=1.12.x    <b>(A dependency component)</b> 
 - Jaeger opentracing (optional)
 
-## 2. CView Issuer installation using helm cart 
+## 2. CView Issuer installation helm cart 
 
 ### Add cview-issuer helm chart repository
 ```console
