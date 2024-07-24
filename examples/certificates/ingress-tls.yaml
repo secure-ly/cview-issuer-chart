@@ -1,134 +1,48 @@
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: echo1
-  namespace: cview-issuer
-spec:
-  ports:
-  - port: 80
-    targetPort: 5678
-  selector:
-    app: echo1
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: echo1
-  namespace: cview-issuer
-spec:
-  selector:
-    matchLabels:
-      app: echo1
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: echo1
-    spec:
-      containers:
-      - name: echo1
-        image: hashicorp/http-echo
-        args:
-        - "-text=echo1"
-        ports:
-        - containerPort: 5678
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: echo2
-  namespace: cview-issuer
-spec:
-  ports:
-  - port: 80
-    targetPort: 5678
-  selector:
-    app: echo2
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: echo2
-  namespace: cview-issuer
-spec:
-  selector:
-    matchLabels:
-      app: echo2
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: echo2
-    spec:
-      containers:
-      - name: echo2
-        image: hashicorp/http-echo
-        args:
-        - "-text=echo2"
-        ports:
-        - containerPort: 5678
---- 
-# https://cert-manager.io/docs/usage/ingress/ annotations 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: echo-ingress
-  namespace: cview-issuer
+  name: cert-sample-1                                  # The name of the ingress certificate object   
+  namespace: cview-issuer                              # The name of the namespace where to cretae the ingress object 
   annotations:
+    cert-manager.io/issuer: "cviewissuer-1-year"       # The name of specific cview-issuer or cluster issuer 
+    cert-manager.io/issuer-kind: "CViewIssuer"         # required , do not modify 
+    cert-manager.io/issuer-group: "secure-ly.com"      # required , do not modify 
+    cert-manager.io/revision-history-limit: "5"        # number of certificate request history 
 
-    cert-manager.io/issuer: "cviewclusterissuer-template" #use specific name of issuer
-    cert-manager.io/issuer-kind: "CViewClusterIssuer" #or CViewClusterIssuer
-    cert-manager.io/issuer-group: "secure-ly.com"
+    # Subject fileds annotation 
+    cert-manager.io/common-name: "cv5.secure-ly.com"            # Common name should be added. (required)  
+    cert-manager.io/subject-organizations: "securely"           # Organization (optional)
+    cert-manager.io/subject-organizationalunits: "IT Services"  # Organization unit (optional)
+    cert-manager.io/subject-countries: "IL"                     # county as 2 char  (optional)
+    cert-manager.io/subject-provinces: "Center"                 # State (optional)
+    cert-manager.io/subject-localities: "Herzliya"              # City (optional)
 
-    #(optional) this annotation allows you to configure spec.commonName for the Certificate to be generated.
-    cert-manager.io/common-name: "echo1.example.com" # common name should be added. (REQUIRED) CVIEW will raise 412 error without it 
+    # Subject alternative names 
+    cert-manager.io/email-sans: "drorb@secure-ly.com"           # SAN, rfc822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
     
-    # (optional) this annotation allows you to configure spec.emailAddresses field for the Certificate to be generated. Supports comma-separated values e.g. "me@example.com,you@example.com"
-    cert-manager.io/email-sans: "me@example.com,you@example.com" 
+    # --------------------------------------------------------------------------------------
+    # Anotation a business logic information to be added to the certificate (used in CView) 
+    # --------------------------------------------------------------------------------------
+    cview-issuer/customField1: ""             # custome filed 1 , based on C-View definition
+    cview-issuer/customField2: ""
+    cview-issuer/customField3: ""
+    cview-issuer/customField4: ""
+    cview-issuer/customField5: ""
+    cview-issuer/customField6: ""
+    cview-issuer/customField7: ""
+    cview-issuer/customField8: ""
+    cview-issuer/customField9: ""
+    cview-issuer/customField10: ""
+    cview-issuer/customEmailAddress: ""       # set custom email address for a personal expiraiton alert 
+    cview-issuer/certOwner: "LAB\\dror"       # set the certificate owner as domain\\user
     
-    #(optional) this annotation allows you to configure spec.subject.organizations field for the Certificate to be generated. Supports comma-separated values e.g. "Company 1,Company 2"
-    cert-manager.io/subject-organizations: "Company 1,Company 2" 
-    
-    #(optional) this annotation allows you to configure spec.subject.organizationalUnits field for the Certificate to be generated. Supports comma-separated values e.g. "IT Services,Cloud Services"
-    cert-manager.io/subject-organizationalunits: "IT Services, IT Solutions" #ONLY ONE INSTANCE IN CVIEW
-
-    #(optional) this annotation allows you to configure spec.subject.countries field for the Certificate to be generated. Supports comma-separated values e.g. "Country 1,Country 2"
-    cert-manager.io/subject-countries: "PL,AU" # NOTE only two characters long 
-
-    #(optional) this annotation allows you to configure spec.subject.provinces field for the Certificate to be generated. Supports comma-separated values e.g. "Province 1,Province 2"
-    cert-manager.io/subject-provinces: "Province 1, Province2" 
-
-    # (optional) this annotation allows you to configure spec.subject.localities field for the Certificate to be generated. Supports comma-separated values e.g. "City 1,City 2"
-    cert-manager.io/subject-localities: "City 1, City 2" 
-
-    # (optional) this annotation allows you to configure spec.subject.postalCodes field for the Certificate to be generated. Supports comma-separated values e.g. "123ABC,456DEF"
-    #cert-manager.io/subject-postalcodes: "123ABC,456DEF"  #NOT USED IN CVIEW
-
-    # (optional) this annotation allows you to configure spec.subject.streetAddresses field for the Certificate to be generated. Supports comma-separated values e.g. "123 Example St,456 Other Blvd"
-    #cert-manager.io/subject-streetaddresses: "123 Example St,456 Other Blvd" #NOT USED IN CVIEW
-
-    cert-manager.io/revision-history-limit: "5"
-    cview-issuer/customField1: "Value100"
-    cview-issuer/customField2: "Value200"
-    cview-issuer/customField3: "Value300"
-    cview-issuer/customField4: "Value400"
-    cview-issuer/customField5: "Value500"
-    cview-issuer/customField6: "Value600"
-    cview-issuer/customField7: "Value700"
-    cview-issuer/customField8: "Value800"
-    cview-issuer/customField9: "Value900"
-    cview-issuer/customField10: "Value1000"
-    cview-issuer/customEmailAddress: "template@example.com"
-    cview-issuer/certOwner: "LAB\\Krzysztof"
 spec:
   tls:
   - hosts:
-    - echo1.example.com
-    - echo2.example.com
-    secretName: echo-tls-for-ingress
+    - cv.securely.apps-crc.testing            # Application host name ( added as DNS names ) 
+    secretName: cert-sample-1                 # The name of the certificate secret (required and unique)
   rules:
-    - host: echo1.example.com
+    - host: cv.securely.apps-crc.testing      # Application host name ( added as DNS names ) 
       http:
         paths:
           - pathType: Prefix
@@ -137,14 +51,4 @@ spec:
               service:
                 name: echo1
                 port:
-                  number: 80
-    - host: echo2.example.com
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: echo2
-                port:
-                  number: 80
+                  number: 80    
