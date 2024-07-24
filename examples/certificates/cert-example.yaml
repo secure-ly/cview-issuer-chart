@@ -1,15 +1,15 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: crm-certificate                # A uniqu value with in the namespace to identify the APP certificate   
+  name: cert-example                  # A uniqu value with in the namespace to identify the APP certificate   
   namespace: cview-issuer              # The name of the namesspace to create the certificate object 
 
 # --------------------------------------------------------------------------------------
 # Use anotation to add a business logic information to the certificate ( used in CView) 
 # --------------------------------------------------------------------------------------
   annotations:
-    cview-issuer/customField1: ""
-    cview-issuer/customField2: ""
+    cview-issuer/customField1: ""     # custome filed 1 , based on C-View definition
+    cview-issuer/customField2: ""     # custome filed 2 , based on C-View definition
     cview-issuer/customField3: ""
     cview-issuer/customField4: ""
     cview-issuer/customField5: ""
@@ -27,7 +27,7 @@ spec:
     kind: CViewIssuer
     name: cviewissuer-template    # The name of the cview issuer 
   revisionHistoryLimit: 4 		 	  # limit of certificate requests per certificate
-  secretName: cert-secret-name  	# The name of the certificate secret ( required ) 
+  secretName: cert-example       	# The name of the certificate secret (required and unique) 
   
   # Certificate comman name 
   commonName: example.secure-ly.com
@@ -42,24 +42,24 @@ spec:
   #ipAddresses:                # optional
   #- 192.168.20.50
 
-  #subject:                  # Additioanl subject fileds (optional) 
-  #  organizations:          # Organization name 
+  #subject:                  # Additioanl subject fileds 
+  #  organizations:          # Organization name (optional)
   #    - Securely
 
- # countries:                # County two characters 
+ # countries:                # County (optional) two char lenght 
  #   - IL
     
- #localities:                # L= City name  
+ #localities:                # City name(optional)
  #   City name
 
  #organizationalUnits:      
  #  - Sales support 
  
-  #provinces:               # state name 
+  #provinces:               # state name (optional)
   #  - Stat name 
       
   # The value is hours only 
-  renewBefore: 240d         # Renew certificate X hours before expired ( 10 days ) 
+  renewBefore: 240d         # Renew certificate X hours before expired ( default value is 240 hours [10 days]) 
 
 
 
