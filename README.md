@@ -17,13 +17,8 @@ The cview-issuer works through the CVIEW certificate management platform to sign
 - [3. C-View issuer Configuration](#3-c-view-issuer-configuration)
     - [Create a secret objects](#create-a-secret-objects)
     - [Create an license activation key](#create-activation-objects)     
-    - [Create issuer configuration](#create-issuer-configuration)
-    - [Prepare Certificate object](#33-prepare-certificate-object)
-    - [Prepare Ingress object (optinal)](#34-prepare-ingress-object)
-    - [What is C-ViewRequest object](#35-what-is-c-viewrequest-object)
-    - [Advanced configuration](#36-advanced-configuration)
-      
-  - [Cert manager and route objects](#cert-manager-and-route-objects)
+- [4. Extentions Configuration](#additioanl-configuration)
+    - [Cert manager and route objects](#cert-manager-and-route-objects)
   - [Documentation](#documentation)
     - [Values](#values)
     
@@ -127,36 +122,20 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 ## 3. C-View Issuer Configuration
 
-#### C-View Issuer user credential 
+### C-View Issuer Credential 
 
 Before creating user credential secret object it's required to have: 
   1. A domain user with access rights to C-View server ( memebr in a role type of Cert Owner ) 
   2. Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
   
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cview-issuer-user-credentials
-  namespace: cview-issuer       # namespace of cview-issuer operator
-type: Opaque
-data:
-  password: <user password>     # base64 string 
-  username: <domain\username>   # base64 string 
-  token: <base64 string>        # This parameter is not yet implemented 
-  
-```
-Create the user credential using this command: 
-
-```console
-kubectl -n cview-issuer apply -f /installation/examples/Secrets/cview-issuer-user-credentials.yaml 
-```
-#### create activation objects 
+### C-View Issuer Activation key
 CView issuer requirs and license key from the C-View platform <br /> 
 Contact C-View Administrator to get tje activatio key and encode it to base 64 string 
 Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
 
-## Openshift routes (for cert-manager)
+## 3. Additioanl Configuration
+
+### Openshift routes (for cert-manager)
 
 Using route objects on openshift requires the installation of additional package for extending cert-manager behavior.
 
