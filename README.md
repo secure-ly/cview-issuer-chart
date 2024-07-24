@@ -113,7 +113,6 @@ helm upgrade --install \
 ```
 
 
-
 #### Install with cert-manager dependency 
 
 ```console
@@ -129,9 +128,11 @@ helm upgrade --install \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true \
-  --set cert-manager.enabled=true \
+  --set cert-manager.enabled=false \    
   --set cert-manager.namespace=cert-manager 
 ```
+Notes: set **cert-manager.enabled** to true if you plan to install cview-issuer and cert-manager via helm chart 
+
 
 ## Show helm chart status
 
