@@ -132,7 +132,7 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 Before creating user credential secret object it's required to have: 
   1. A domain user with access rights to C-View server 
-  2. Update the **user name** and **password** parameters in the follwoing YAML file : "/installation/examples/Secrets/cview-issuer-user-credentials.yaml" ([cview-issuer-user-credentials](https://github.com/secure-ly/cview-issuer-chart/examples/secrets/cview-issuer-credentials.yaml))
+  2. Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
   
 ```yaml
 apiVersion: v1
