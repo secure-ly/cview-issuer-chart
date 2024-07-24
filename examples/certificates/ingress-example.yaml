@@ -8,6 +8,7 @@ metadata:
     cert-manager.io/issuer-kind: "CViewIssuer"       # required , do not modify 
     cert-manager.io/issuer-group: "secure-ly.com"    # required , do not modify 
     cert-manager.io/revision-history-limit: "5"      # number of certificate request history 
+    cert-manager.io/renew-before : "240h"            # Renew certificate X hours before expired ( default value is 240 hours [10 days])          
 
     # --------------------------------------------------------------------------------------
     # Subject fileds annotation 
