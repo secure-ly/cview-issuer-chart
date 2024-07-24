@@ -78,7 +78,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.32 \
+  --version 0.0.33 \
   --set crd.install=true
 ```
 
@@ -89,7 +89,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.32  \
+  --version 0.0.33  \
   --set crd.install=true \
   --set openshift.enabled=true
 
@@ -102,7 +102,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.32 \
+  --version 0.0.33 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
   --set controllerManager.manager.image.tag=0.0.33 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
