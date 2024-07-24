@@ -1,15 +1,15 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: cert-example                  # A uniqu value with in the namespace to identify the APP certificate   
-  namespace: cview-issuer              # The name of the namesspace to create the certificate object 
+  name: cert-example                  # A unique value within the namespace to identify the APP certificate   
+  namespace: cview-issuer             # The name of the namespace to create the certificate object 
 
   # --------------------------------------------------------------------------------------
-  # Anotation a business logic information to be added to the certificate (used in CView) 
+  # Anotation of business logic information to be added to the certificate (used in CView) 
   # --------------------------------------------------------------------------------------
   annotations:
-    cview-issuer/customField1: ""     # custome filed 1 , based on C-View definition
-    cview-issuer/customField2: ""     # custome filed 2 , based on C-View definition
+    cview-issuer/customField1: ""     # custome filed 1, based on C-View definition
+    cview-issuer/customField2: ""     # custome filed 2, based on C-View definition
     cview-issuer/customField3: ""
     cview-issuer/customField4: ""
     cview-issuer/customField5: ""
@@ -18,18 +18,18 @@ metadata:
     cview-issuer/customField8: ""
     cview-issuer/customField9: ""
     cview-issuer/customField10: ""
-    cview-issuer/customEmailAddress: ""  # set custome email address for a personal expiraiton alert 
+    cview-issuer/customEmailAddress: ""  # set custom email address for a personal expiration alert 
     cview-issuer/certOwner: ""           # set the certificate owner as domain\\user 
 
 spec:
   issuerRef:
     group: secure-ly.com
     kind: CViewIssuer
-    name: cviewissuer-template    # The name of the cview issuer 
+    name: cviewissuer-template    # The name of the c-view issuer 
   revisionHistoryLimit: 4 		 	  # limit of certificate requests per certificate
   secretName: cert-example       	# The name of the certificate secret (required and unique) 
   
-  # Certificate comman name 
+  # Certificate common name 
   commonName: example.secure-ly.com
   
   # Subject alternative names 
@@ -42,11 +42,11 @@ spec:
   #ipAddresses:                # optional
   #- 192.168.20.50
 
-  #subject:                  # Additioanl subject fileds 
+  #subject:                  # Additioanl subject fields 
   #  organizations:          # Organization name (optional)
   #    - Securely
 
- # countries:                # County (optional) two char lenght 
+ # countries:                # County (optional) two char length 
  #   - IL
     
  #localities:                # City name(optional)
