@@ -2,6 +2,7 @@ apiVersion: secure-ly.com/v1alpha1
 kind: CViewIssuer
 metadata:
   name: cviewissuer-1-year                       # Name of issuer ( usually represent a CA template name )  
+  namespace: cview-issuer                        # Name of the namespace to create the cview-issuer 
   annotations:
     "cview-issuer/pauseReconciliation": "false"  # Flage to enable/disable reconciliation loop ( default value is false ) 
 
