@@ -9,7 +9,9 @@ metadata:
     cert-manager.io/issuer-group: "secure-ly.com"    # required , do not modify 
     cert-manager.io/revision-history-limit: "5"      # number of certificate request history 
 
+    # --------------------------------------------------------------------------------------
     # Subject fileds annotation 
+    # --------------------------------------------------------------------------------------
     cert-manager.io/common-name: ""                  # Common name should be added. (required)  
     cert-manager.io/subject-organizations: ""        # Organization (optional)
     cert-manager.io/subject-organizationalunits: ""  # Organization unit (optional)
@@ -17,13 +19,17 @@ metadata:
     cert-manager.io/subject-provinces: ""            # State (optional)
     cert-manager.io/subject-localities: ""           # City (optional)
 
+    # --------------------------------------------------------------------------------------
     # Subject alternative names 
+    # --------------------------------------------------------------------------------------
     cert-manager.io/email-sans: ""                   # SAN, rfc822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
+    cert-manager.io/email-sans: ""                   # RFC822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
+    cert-manager.io/ip-sans: ""                      # IP Address (optional). Supports comma-separated values e.g ( "10.20.30.40,192.168.192.168")
     
     # --------------------------------------------------------------------------------------
     # Anotation a business logic information to be added to the certificate (used in CView) 
     # --------------------------------------------------------------------------------------
-    cview-issuer/customField1: ""             # custome filed 1 , based on C-View definition
+    cview-issuer/customField1: ""                   # custome filed 1 , based on C-View definition
     cview-issuer/customField2: ""
     cview-issuer/customField3: ""
     cview-issuer/customField4: ""
@@ -33,16 +39,16 @@ metadata:
     cview-issuer/customField8: ""
     cview-issuer/customField9: ""
     cview-issuer/customField10: ""
-    cview-issuer/customEmailAddress: ""       # set custom email address for a personal expiraiton alert 
-    cview-issuer/certOwner: "LAB\\dror"       # set the certificate owner as domain\\user
+    cview-issuer/customEmailAddress: ""            # set custom email address for a personal expiraiton alert 
+    cview-issuer/certOwner: ""                     # set the certificate owner as domain\\user
     
 spec:
   tls:
   - hosts:
-    - cv.securely.apps-crc.testing            # Application host name ( added as DNS names ) 
-    secretName: cert-sample-1                 # The name of the certificate secret (required and unique)
+    - cv.securely.apps-crc.testing                 # Application host name ( added as DNS names ) 
+    secretName: cert-sample-1                      # The name of the certificate secret (required and unique)
   rules:
-    - host: cv.securely.apps-crc.testing      # Application host name (required). Aded as DNS name  
+    - host: cv.securely.apps-crc.testing           # Application host name (required). Aded as DNS name  
       http:
         paths:
           - pathType: Prefix
