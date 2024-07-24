@@ -1,24 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cert-sample-1                                  # The name of the ingress certificate object   
-  namespace: cview-issuer                              # The name of the namespace where to cretae the ingress object 
+  name: cert-sample-1                                # The name of the ingress certificate object   
+  namespace: cview-issuer                            # The name of the namespace where to cretae the ingress object 
   annotations:
-    cert-manager.io/issuer: "cviewissuer-1-year"       # The name of specific cview-issuer or cluster issuer 
-    cert-manager.io/issuer-kind: "CViewIssuer"         # required , do not modify 
-    cert-manager.io/issuer-group: "secure-ly.com"      # required , do not modify 
-    cert-manager.io/revision-history-limit: "5"        # number of certificate request history 
+    cert-manager.io/issuer: "cviewissuer-1-year"     # The name of specific cview-issuer or cluster issuer 
+    cert-manager.io/issuer-kind: "CViewIssuer"       # required , do not modify 
+    cert-manager.io/issuer-group: "secure-ly.com"    # required , do not modify 
+    cert-manager.io/revision-history-limit: "5"      # number of certificate request history 
 
     # Subject fileds annotation 
-    cert-manager.io/common-name: "cv5.secure-ly.com"            # Common name should be added. (required)  
-    cert-manager.io/subject-organizations: "securely"           # Organization (optional)
-    cert-manager.io/subject-organizationalunits: "IT Services"  # Organization unit (optional)
-    cert-manager.io/subject-countries: "IL"                     # county as 2 char  (optional)
-    cert-manager.io/subject-provinces: "Center"                 # State (optional)
-    cert-manager.io/subject-localities: "Herzliya"              # City (optional)
+    cert-manager.io/common-name: ""                  # Common name should be added. (required)  
+    cert-manager.io/subject-organizations: ""        # Organization (optional)
+    cert-manager.io/subject-organizationalunits: ""  # Organization unit (optional)
+    cert-manager.io/subject-countries: ""            # county as 2 char  (optional)
+    cert-manager.io/subject-provinces: ""            # State (optional)
+    cert-manager.io/subject-localities: ""           # City (optional)
 
     # Subject alternative names 
-    cert-manager.io/email-sans: "drorb@secure-ly.com"           # SAN, rfc822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
+    cert-manager.io/email-sans: ""                   # SAN, rfc822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
     
     # --------------------------------------------------------------------------------------
     # Anotation a business logic information to be added to the certificate (used in CView) 
