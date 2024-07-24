@@ -4,21 +4,23 @@
 C-View issuer is an external certificate issuers for cert-manager engine <br />
 The cview-issuer works through the CVIEW certificate management platform to sign certificate request in the organization ADCS 
 
-- [1. Prerequisites](#1-prerequisites)
-- [2. C-View Issuer installation via helm cart](#2-CView-Issuer-installation-helm-cart)
-    - [Add repository](#Add-cview-issuer-helm-chart-repository)
-    - [Update to the latest version](#Update-to-the-latest-version)
-    - [List issuer versions](#Get-list-of-all-issuer-version)
-    - [Install platforms](#Install-commands)
-        - [Install on kubernetes](#install-on-kubernetes)
-        - [Install on Openshift](#install-on-openshift)
-        - [Install with customization](#install-with-customization)
-        - [Show helm chart status](#show-helm-chart-status)
-- [3. C-View issuer Configuration](#3-c-view-issuer-configuration)
-    - [Create a secret objects](#create-a-secret-objects)
-    - [Create an license activation key](#create-activation-objects)     
-- [4. Extentions Configuration](#additioanl-configuration)
-    - [Cert manager and route objects](#cert-manager-and-route-objects)
+- [cview-issuer for cert-manager](#cview-issuer-for-cert-manager)
+  - [1. Prerequisites](#1-prerequisites)
+  - [2. CView Issuer installation helm cart](#2-cview-issuer-installation-helm-cart)
+    - [Add cview-issuer helm chart repository](#add-cview-issuer-helm-chart-repository)
+    - [Update to the latest version](#update-to-the-latest-version)
+    - [Get list of all issuer version](#get-list-of-all-issuer-version)
+    - [Install commands:](#install-commands)
+      - [Install on kubernetes](#install-on-kubernetes)
+      - [Install on Openshift](#install-on-openshift)
+      - [Install with customization](#install-with-customization)
+      - [Install with cert-manager dependency](#install-with-cert-manager-dependency)
+  - [Show helm chart status](#show-helm-chart-status)
+  - [3. C-View Issuer Configuration](#3-c-view-issuer-configuration)
+    - [C-View Issuer Credential](#c-view-issuer-credential)
+    - [C-View Issuer Activation key](#c-view-issuer-activation-key)
+  - [3. Additioanl Configuration](#3-additioanl-configuration)
+    - [Openshift routes (for cert-manager)](#openshift-routes-for-cert-manager)
   - [Documentation](#documentation)
     - [Values](#values)
     
@@ -108,6 +110,27 @@ helm upgrade --install \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true
+```
+
+
+
+#### Install with cert-manager dependency 
+
+```console
+helm upgrade --install \
+  cview-issuer secure-ly/cview-issuer \
+  --namespace cview-issuer \
+  --create-namespace \
+  --version 0.0.33 \
+  --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
+  --set controllerManager.manager.image.tag=0.0.33 \
+  --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
+  --set controllerManager.arguments.enable-tracing="false" \
+  --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
+  --set openshift.enabled=true \
+  --set crd.install=true \
+  --set cert-manager.enabled=true \
+  --set cert-manager.namespace=cert-manager 
 ```
 
 ## Show helm chart status
