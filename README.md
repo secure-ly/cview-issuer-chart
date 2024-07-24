@@ -14,6 +14,14 @@ The cview-issuer works through the CVIEW certificate management platform to sign
         - [Install on Openshift](#install-on-openshift)
         - [Install with customization](#install-with-customization)
   - [Show helm chart status](#show-helm-chart-status)
+- [3. C-View issuer Configuration](#3-c-view-issuer-configuration)
+    - [3.1. Create a secret objects](#31-create-a-secret-objects)     
+    - [3.2. Create issuer configuration](#32-create-issuer-configuration)
+    - [3.3. Prepare Certificate object](#33-prepare-certificate-object)
+    - [3.4. Prepare Ingress object (optinal)](#34-prepare-ingress-object)
+    - [3.5. What is C-ViewRequest object](#35-what-is-c-viewrequest-object)
+    - [3.6. Advanced configuration](#36-advanced-configuration)
+      
   - [Cert manager and route objects](#cert-manager-and-route-objects)
   - [Documentation](#documentation)
     - [Values](#values)
@@ -115,6 +123,36 @@ helm list -n cview-issuer
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
 cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.32     0.0.32
 </pre>
+
+## 3. C-View Issuer Configuration
+
+### 3.1 Create a secret objects
+
+#### 3.1.1 C-View Issuer user credential 
+
+
+Before creating user credential secret object it's required to have: 
+  1. A domain user with access rights to C-View server 
+  2. Update the **user name** and **password** parameters in the follwoing YAML file : "/installation/examples/Secrets/cview-issuer-user-credentials.yaml" ([cview-issuer-user-credentials](/installation/examples/secrets/cview-issuer-user-credentials.yaml))
+  
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cview-issuer-user-credentials
+  namespace: cview-issuer       # namespace of cview-issuer operator
+type: Opaque
+data:
+  password: <user password>     # base64 string 
+  username: <domain\username>   # base64 string 
+  token: <base64 string>        # This parameter is not yet implemented 
+  
+```
+Create the user credential using this command: 
+
+```console
+kubectl -n cview-issuer apply -f /installation/examples/Secrets/cview-issuer-user-credentials.yaml 
+```
 
 ## Openshift routes (for cert-manager)
 
