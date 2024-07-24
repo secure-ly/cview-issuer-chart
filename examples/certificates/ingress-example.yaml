@@ -2,13 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: cert-sample-1                                # The name of the ingress certificate object   
-  namespace: cview-issuer                            # The name of the namespace where to cretae the ingress object 
+  namespace: cview-issuer                            # The name of the namespace where to create the ingress object 
   annotations:
     cert-manager.io/issuer: "cviewissuer-1-year"     # The name of specific cview-issuer or cluster issuer 
-    cert-manager.io/issuer-kind: "CViewIssuer"       # required , do not modify 
-    cert-manager.io/issuer-group: "secure-ly.com"    # required , do not modify 
+    cert-manager.io/issuer-kind: "CViewIssuer"       # required, do not modify 
+    cert-manager.io/issuer-group: "secure-ly.com"    # required, do not modify 
     cert-manager.io/revision-history-limit: "5"      # number of certificate request history 
-    cert-manager.io/renew-before : "240h"            # Renew certificate X hours before expired ( default value is 240 hours [10 days])          
+    cert-manager.io/renew-before : "10d"            # Renew certificate X days before certificate expires (default value is 10 days)          
 
     # --------------------------------------------------------------------------------------
     # Subject fileds annotation 
@@ -16,21 +16,21 @@ metadata:
     cert-manager.io/common-name: ""                  # Common name should be added. (required)  
     cert-manager.io/subject-organizations: ""        # Organization (optional)
     cert-manager.io/subject-organizationalunits: ""  # Organization unit (optional)
-    cert-manager.io/subject-countries: ""            # county as 2 char  (optional)
+    cert-manager.io/subject-countries: ""            # county as two char  (optional)
     cert-manager.io/subject-provinces: ""            # State (optional)
     cert-manager.io/subject-localities: ""           # City (optional)
 
     # --------------------------------------------------------------------------------------
     # Subject alternative names 
     # --------------------------------------------------------------------------------------
-    cert-manager.io/email-sans: ""                   # SAN, rfc822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
+    cert-manager.io/alt-names: ""                    # SAN, rfc822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
     cert-manager.io/email-sans: ""                   # RFC822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
     cert-manager.io/ip-sans: ""                      # IP Address (optional). Supports comma-separated values e.g ( "10.20.30.40,192.168.192.168")
     
     # --------------------------------------------------------------------------------------
     # Anotation a business logic information to be added to the certificate (used in CView) 
     # --------------------------------------------------------------------------------------
-    cview-issuer/customField1: ""                   # custome filed 1 , based on C-View definition
+    cview-issuer/customField1: ""                   # custome filed 1, based on C-View definition
     cview-issuer/customField2: ""
     cview-issuer/customField3: ""
     cview-issuer/customField4: ""
@@ -40,16 +40,16 @@ metadata:
     cview-issuer/customField8: ""
     cview-issuer/customField9: ""
     cview-issuer/customField10: ""
-    cview-issuer/customEmailAddress: ""            # set custom email address for a personal expiraiton alert 
+    cview-issuer/customEmailAddress: ""            # set the custom email address for a personal expiration alert 
     cview-issuer/certOwner: ""                     # set the certificate owner as domain\\user
     
 spec:
   tls:
   - hosts:
-    - cv.securely.apps-crc.testing                 # Application host name ( added as DNS names ) 
+    - cv.securely.apps-crc.testing                 # Application hostname (Added as DNS name) 
     secretName: cert-sample-1                      # The name of the certificate secret (required and unique)
   rules:
-    - host: cv.securely.apps-crc.testing           # Application host name (required). Aded as DNS name  
+    - host: cv.securely.apps-crc.testing           # Application hostname (required). 
       http:
         paths:
           - pathType: Prefix
