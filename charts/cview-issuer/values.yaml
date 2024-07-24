@@ -1,3 +1,8 @@
+
+cert-manager: 
+  enabled: false # to install cert-manager as a subchart 
+  namespace: cert-manager
+
 crd:
   install: true
 
@@ -18,7 +23,7 @@ controllerManager:
   manager:
     image:
       repository: devsecurely/cview-issuer
-      tag: 0.0.32
+      tag: 0.0.33
 
     resources:
       limits:
