@@ -137,14 +137,16 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 #### C-View Issuer Credential 
 
 The C-View issuer requirs an application user  to operate toword cView Platform. <br />
-This user should be a domain user with access rights to C-View Platform as a Cert Owner
+This user should be a domain user with access rights to C-View Platform as a Cert Owner.<br />
+
 - Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deyploy the YAML file to kubernetes / openshift 
   
 #### C-View Issuer activation key
 
 CView issuer requirs a license key from the C-View platform <br /> 
-Contact C-View Administrator to get the license key and encode it to base 64 string <br />
+Contact C-View Administrator to get the license key and encode it to base 64 string. <br />
+
 - Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
 - Deyploy the YAML file to kubernetes / openshift 
 
