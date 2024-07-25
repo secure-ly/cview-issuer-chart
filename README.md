@@ -2,10 +2,11 @@
 
 C-View issuer is an external certificate issuers for cert-manager engine <br />
 The cview-issuer works through the CVIEW certificate management platform to sign certificate request in the organization ADCS 
-- [1. Prerequisites](#1-prerequisites)
-- [2. C-View issuer installation helm cart](#2-cview-issuer-installation-helm-cart)
-- [3. C-View issuer installation platform](#3-target-platform-installation-commands)
-- [4. C-View issuer configuration](#4-c-view-issuer-configuration)
+
+[1. Prerequisites](#1-prerequisites) <br />
+[2. C-View issuer installation helm cart](#2-cview-issuer-installation-helm-cart)<br />
+[3. C-View issuer installation platform](#3-target-platform-installation-commands)<br />
+[4. C-View issuer configuration](#4-c-view-issuer-configuration)<br />
     
 ## 1. Prerequisites 
 The following components are required befroe installaing C-View Issuer 
