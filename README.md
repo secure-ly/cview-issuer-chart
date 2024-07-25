@@ -7,8 +7,7 @@ The cview-issuer works through the CVIEW certificate management platform to sign
 - [3. C-View issuer installation platform](#3-target-platform-installation-commands)
 - [4. C-View issuer configuration](#4-c-view-issuer-configuration)
     
-  - [3. Additioanl Configuration](#3-additioanl-configuration)
-    - [Openshift routes (for cert-manager)](#openshift-routes-for-cert-manager)
+  
   - [Documentation](#documentation)
     - [Values](#values)
     
@@ -143,11 +142,10 @@ Before creating user credential secret object it's required to have a domain use
 Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
   
 ### C-View Issuer activation key
+
 CView issuer requirs a license key from the C-View platform <br /> 
 Contact C-View Administrator to get the license key and encode it to base 64 string <br />
 Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
-
-## 3. Additioanl Configuration
 
 
 
