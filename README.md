@@ -148,11 +148,7 @@ Contact C-View Administrator to get the license key and encode it to base 64 str
 - Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
 - Deyploy the YAML file to kubernetes / openshift 
 
-
-
-
 ## Documentation
-
 
 ![Version: 0.0.33](https://img.shields.io/badge/Version-0.0.33-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.33](https://img.shields.io/badge/AppVersion-0.0.33-informational?style=flat-square)
 
