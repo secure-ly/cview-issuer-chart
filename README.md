@@ -3,11 +3,9 @@
 C-View issuer is an external certificate issuers for cert-manager engine <br />
 The cview-issuer works through the CVIEW certificate management platform to sign certificate request in the organization ADCS 
 - [1. Prerequisites](#1-prerequisites)
-- [2. CView Issuer installation helm cart](#2-cview-issuer-installation-helm-cart)
-- [3. CView Issuer installation platform](#3-target-platform-installation-commands) 
-    
-  - [Show helm chart status](#show-helm-chart-status)
-  - [3. C-View Issuer Configuration](#3-c-view-issuer-configuration)
+- [2. C-View issuer installation helm cart](#2-cview-issuer-installation-helm-cart)
+- [3. C-View issuer installation platform](#3-target-platform-installation-commands)
+- [4. C-View issuer configuration](#3-c-view-issuer-configuration)
     - [C-View Issuer Credential](#c-view-issuer-credential)
     - [C-View Issuer Activation key](#c-view-issuer-activation-key)
   - [3. Additioanl Configuration](#3-additioanl-configuration)
@@ -121,8 +119,14 @@ helm upgrade --install \
 Notes: set **cert-manager.enabled** to true if you plan to install cview-issuer and cert-manager via helm chart 
 </pre>
 
+#### Adding support for Openshift routes by cert-manager 
+Using route objects on openshift requires the installation of additional package for extending cert-manager behavior.
 
-## Show helm chart status
+```console
+helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
+```
+
+## Display helm chart status
 
 ```console
 helm list -n cview-issuer
@@ -147,13 +151,6 @@ Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-
 
 ## 3. Additioanl Configuration
 
-### Openshift routes (for cert-manager)
-
-Using route objects on openshift requires the installation of additional package for extending cert-manager behavior.
-
-```console
-helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
-```
 
 
 
