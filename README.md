@@ -146,7 +146,7 @@ This user should be a domain user with access rights to C-View Platform as a Cer
   
 #### C-View Issuer activation key
 
-CView issuer requirs a license key from the C-View platform <br /> 
+C-View issuer requires a license key from the C-View platform <br /> 
 Contact C-View Administrator to get the license key and encode it to base 64 string. <br />
 
 - Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
