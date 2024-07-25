@@ -3,12 +3,9 @@
 C-View issuer is an external certificate issuers for cert-manager engine <br />
 The cview-issuer works through the CVIEW certificate management platform to sign certificate request in the organization ADCS 
 - [1. Prerequisites](#1-prerequisites)
-- [2. CView Issuer installation helm cart](#2-cview-issuer-installation-helm-cart)   
-    - [Install commands:](#install-commands)
-      - [Install on kubernetes](#install-on-kubernetes)
-      - [Install on Openshift](#install-on-openshift)
-      - [Install with customization](#install-with-customization)
-      - [Install with cert-manager dependency](#install-with-cert-manager-dependency)
+- [2. CView Issuer installation helm cart](#2-cview-issuer-installation-helm-cart)
+- [3. CView Issuer installation platform](#3-target-platform-installation-commands) 
+    
   - [Show helm chart status](#show-helm-chart-status)
   - [3. C-View Issuer Configuration](#3-c-view-issuer-configuration)
     - [C-View Issuer Credential](#c-view-issuer-credential)
@@ -62,9 +59,9 @@ secure-ly/cview-issuer	0.0.31       	0.0.31     	 C-View issuer plugin for cert-
 secure-ly/cview-issuer	0.0.32       	0.0.32     	 C-View issuer plugin for cert-manager 
 </pre>
 
-### Install commands:
+## 3. Target platform Installation commands
 
-#### Install on kubernetes 
+### Install on kubernetes 
 
 ```console
 helm upgrade --install \
@@ -74,8 +71,7 @@ helm upgrade --install \
   --version 0.0.33 \
   --set crd.install=true
 ```
-
-#### Install on Openshift 
+### Install on Openshift 
 
 ```console
 helm upgrade --install \
@@ -85,10 +81,8 @@ helm upgrade --install \
   --version 0.0.33  \
   --set crd.install=true \
   --set openshift.enabled=true
-
 ```
-
-#### Install with customization 
+### Customize Installation on Openshift 
 
 ```console
 helm upgrade --install \
@@ -105,8 +99,7 @@ helm upgrade --install \
   --set crd.install=true
 ```
 
-
-#### Install with cert-manager dependency 
+### Customize Installation on Openshift plus cert-manager as dependency component 
 
 ```console
 helm upgrade --install \
@@ -124,7 +117,9 @@ helm upgrade --install \
   --set cert-manager.enabled=false \    
   --set cert-manager.namespace=cert-manager 
 ```
+<pre>
 Notes: set **cert-manager.enabled** to true if you plan to install cview-issuer and cert-manager via helm chart 
+</pre>
 
 
 ## Show helm chart status
