@@ -29,7 +29,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.32          0.0.32          C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.33          0.0.33          C-View issuser plugin for cert-manager
 </pre>
 
 ### Get list of all issuer version
@@ -38,8 +38,8 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer   0.0.30          0.0.30      C-View issuser plugin for cert-manager
-secure-ly/cview-issuer   0.0.29          0.0.29      C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.33          0.0.33      C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.32          0.0.32      C-View issuser plugin for cert-manager
 </pre>
 
 ```console
@@ -47,9 +47,9 @@ helm search repo cview-issuer --versions
 ```
 <pre>
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
-secure-ly/cview-issuer	0.0.30       	0.0.30     	 C-View issuer plugin for cert-manager 
-secure-ly/cview-issuer	0.0.31       	0.0.31     	 C-View issuer plugin for cert-manager     
-secure-ly/cview-issuer	0.0.32       	0.0.32     	 C-View issuer plugin for cert-manager 
+secure-ly/cview-issuer	0.0.31       	0.0.31     	 C-View issuer plugin for cert-manager 
+secure-ly/cview-issuer	0.0.32       	0.0.32     	 C-View issuer plugin for cert-manager     
+secure-ly/cview-issuer	0.0.33       	0.0.33     	 C-View issuer plugin for cert-manager 
 </pre>
 
 ## 3. Target platform Installation commands
@@ -129,7 +129,7 @@ helm list -n cview-issuer
 ```
 <pre>
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
-cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.32     0.0.32
+cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.33     0.0.33
 </pre>
 
 ## 4. C-View Issuer Configuration
@@ -138,7 +138,7 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 #### C-View Issuer Credential 
 
-The C-View issuer requirs an application user  to operate toword cView Platform. <br />
+The C-View issuer requirs an application user to operate toward cView Platform. <br />
 This user should be a domain user with access rights to C-View Platform as a Cert Owner.<br />
 
 - Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
@@ -147,17 +147,17 @@ This user should be a domain user with access rights to C-View Platform as a Cer
 #### C-View Issuer activation key
 
 C-View issuer requires a license key from the C-View platform <br /> 
-Contact C-View Administrator to get the license key and encode it to base 64 string. <br />
+Contact C-View Administrator to get the license key and encode it to base64 string. <br />
 
 - Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
-- Deyploy the YAML file to kubernetes / openshift
+- Deploy the YAML file to kubernetes / openshift
 
 ### C-View Issuer objects
 The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
 There are two types of c-view issuers, and you can create multiple issuers for different purposes.  
         
 #### C-View Cluster Issuer 
-Working in a global namespace requires a c-view cluster issuer object. Sample YAML file: ([CViewClusterIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewClusterIssuer.yaml))
+Working in global scope requires a c-view cluster issuer object. Sample YAML file: ([CViewClusterIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewClusterIssuer.yaml))
 
 #### Dedicated C-View Issuer 
 Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([CViewIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewIssuer.yaml))
@@ -169,10 +169,10 @@ C-View Issuer support the follwoing certificates types:
 #### Standard certificate/secret 
 Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
 
-#### Openshift rout Secret 
-Use this YAML example to create a certificate for openshift rout: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
+#### Openshift Route Secret 
+Use this YAML example to create a certificate for openshift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
 
-#### ingress Secret 
+#### Ingress Secret 
 Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) 
 
 #### Documentation
