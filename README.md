@@ -7,10 +7,6 @@ The cview-issuer works through the CVIEW certificate management platform to sign
 - [3. C-View issuer installation platform](#3-target-platform-installation-commands)
 - [4. C-View issuer configuration](#4-c-view-issuer-configuration)
     
-  
-  - [Documentation](#documentation)
-    - [Values](#values)
-    
 ## 1. Prerequisites 
 The following components are required befroe installaing C-View Issuer 
 
