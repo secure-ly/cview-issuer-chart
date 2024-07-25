@@ -110,7 +110,8 @@ helm upgrade --install \
   --set cert-manager.namespace=cert-manager 
 ```
 <pre>
-Notes: set **cert-manager.enabled** to true if you plan to install cview-issuer and cert-manager via helm chart 
+Notes: <br/> 
+set **cert-manager.enabled** to true if you plan to install cview-issuer and cert-manager via helm chart 
 </pre>
 
 #### Adding support for Openshift routes by cert-manager 
@@ -120,7 +121,7 @@ Using route objects on openshift requires the installation of additional package
 helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
 ```
 
-## Display helm chart status
+### Display helm chart status
 
 ```console
 helm list -n cview-issuer
