@@ -153,18 +153,18 @@ Contact C-View Administrator to get the license key and encode it to base 64 str
 - Deyploy the YAML file to kubernetes / openshift
 
 ### C-View Issuer objects
-
-    aaaa
         
-#### Cluster C-View Issuer 
-bbbbbb
+#### C-View Cluster Issuer 
+When you need to work with a global name spaces use the c-view cluster issuer 
+A sample of YAML file: ([CViewClusterIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewClusterIssuer.yaml))
 
 #### Dedicated C-View Issuer 
-
-bbbbbbbb
+When wokinh with dedicated name space you can work with c-view issuer 
+A sample of YAML file: ([CViewIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewIssuer.yaml))
 
 #### Documentation
 
 ![Version: 0.0.33](https://img.shields.io/badge/Version-0.0.33-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.33](https://img.shields.io/badge/AppVersion-0.0.33-informational?style=flat-square)
 
+[C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
 
