@@ -3,10 +3,7 @@
 C-View issuer is an external certificate issuers for cert-manager engine <br />
 The cview-issuer works through the CVIEW certificate management platform to sign certificate request in the organization ADCS 
 - [1. Prerequisites](#1-prerequisites)
-- [2. CView Issuer installation helm cart](#2-cview-issuer-installation-helm-cart)
-    - [Add cview-issuer helm chart repository](#add-cview-issuer-helm-chart-repository)
-    - [Update to the latest version](#update-to-the-latest-version)
-    - [Get list of all issuer version](#get-list-of-all-issuer-version)
+- [2. CView Issuer installation helm cart](#2-cview-issuer-installation-helm-cart)   
     - [Install commands:](#install-commands)
       - [Install on kubernetes](#install-on-kubernetes)
       - [Install on Openshift](#install-on-openshift)
@@ -27,7 +24,7 @@ The following components are required befroe installaing C-View Issuer
 - Kubernetes cluster with version >=1.27.x      
 - Cert manager with version >=1.12.x 
 - Jaeger opentracing (optional)
-- C-View CLM >= 7.x.x (for more information contact ([Contac securely LTD](https://www.secure-ly.com/contact-us-securely) 
+- C-View CLM >= 7.x.x (For more information contact [Securely LTD](https://www.secure-ly.com/contact-us-securely)) 
 
 ## 2. CView Issuer installation helm cart 
 
