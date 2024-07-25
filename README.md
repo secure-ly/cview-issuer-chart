@@ -157,24 +157,23 @@ The configuration of the C-View issuer object allows the set of all relevant par
 There are two types of c-view issuers, and you can create multiple issuers for different purposes.  
         
 #### C-View Cluster Issuer 
-Working in a global namespace requires a c-view cluster issuer object.<br /> 
-A sample of YAML file: ([CViewClusterIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewClusterIssuer.yaml))
+Working in a global namespace requires a c-view cluster issuer object. Sample YAML file: ([CViewClusterIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewClusterIssuer.yaml))
 
 #### Dedicated C-View Issuer 
-Working in a dedicated namespace requires a c-view issuer object. <br />
-A sample of YAML file: ([CViewIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewIssuer.yaml))
+Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([CViewIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewIssuer.yaml))
 
 ### C-View certificates objects
 
+C-View Issuer support the follwoing certificates types: 
+
 #### Standard certificate/secret 
-A sample of YAML file: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
+Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
 
 #### Openshift rout Secret 
-A sample of YAML file: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
+Use this YAML example to create a certificate for openshift rout: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
 
 #### ingress Secret 
-A sample of YAML file: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) 
-
+Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) 
 
 #### Documentation
 
