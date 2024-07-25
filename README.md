@@ -5,9 +5,8 @@ The cview-issuer works through the CVIEW certificate management platform to sign
 - [1. Prerequisites](#1-prerequisites)
 - [2. C-View issuer installation helm cart](#2-cview-issuer-installation-helm-cart)
 - [3. C-View issuer installation platform](#3-target-platform-installation-commands)
-- [4. C-View issuer configuration](#3-c-view-issuer-configuration)
-    - [C-View Issuer Credential](#c-view-issuer-credential)
-    - [C-View Issuer Activation key](#c-view-issuer-activation-key)
+- [4. C-View issuer configuration](#4-c-view-issuer-configuration)
+    
   - [3. Additioanl Configuration](#3-additioanl-configuration)
     - [Openshift routes (for cert-manager)](#openshift-routes-for-cert-manager)
   - [Documentation](#documentation)
@@ -136,17 +135,16 @@ NAME            NAMESPACE       REVISION        UPDATED                         
 cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.32     0.0.32
 </pre>
 
-## 3. C-View Issuer Configuration
+## 4. C-View Issuer Configuration
 
 ### C-View Issuer Credential 
 
-Before creating user credential secret object it's required to have: 
-  1. A domain user with access rights to C-View server ( memebr in a role type of Cert Owner ) 
-  2. Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
+Before creating user credential secret object it's required to have a domain user with access rights to C-View server (memebr in a role type of Cert Owner) 
+Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
   
-### C-View Issuer Activation key
-CView issuer requirs and license key from the C-View platform <br /> 
-Contact C-View Administrator to get tje activatio key and encode it to base 64 string 
+### C-View Issuer activation key
+CView issuer requirs a license key from the C-View platform <br /> 
+Contact C-View Administrator to get the license key and encode it to base 64 string <br />
 Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
 
 ## 3. Additioanl Configuration
