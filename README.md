@@ -134,7 +134,7 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 ## 4. C-View Issuer Configuration
 
-### C-View Issuer Secrets 
+### C-View Secrets 
 
 #### C-View Issuer Credential 
 
@@ -153,14 +153,28 @@ Contact C-View Administrator to get the license key and encode it to base 64 str
 - Deyploy the YAML file to kubernetes / openshift
 
 ### C-View Issuer objects
+The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
+There are two types of c-view issuers, and you can create multiple issuers for different purposes.  
         
 #### C-View Cluster Issuer 
-When you need to work with a global name spaces use the c-view cluster issuer 
+Working in a global namespace requires a c-view cluster issuer object.<br /> 
 A sample of YAML file: ([CViewClusterIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewClusterIssuer.yaml))
 
 #### Dedicated C-View Issuer 
-When wokinh with dedicated name space you can work with c-view issuer 
+Working in a dedicated namespace requires a c-view issuer object. <br />
 A sample of YAML file: ([CViewIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewIssuer.yaml))
+
+### C-View certificates objects
+
+#### Standard certificate/secret 
+A sample of YAML file: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
+
+#### Openshift rout Secret 
+A sample of YAML file: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
+
+#### ingress Secret 
+A sample of YAML file: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) 
+
 
 #### Documentation
 
