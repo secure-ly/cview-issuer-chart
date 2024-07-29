@@ -92,7 +92,7 @@ helm upgrade --install \
   --set crd.install=true
 ```
 
-### Customize Installation on Openshift plus cert-manager as dependency component 
+### Customize Installation on Openshift with cert-manager dependency
 
 ```console
 helm upgrade --install \
@@ -107,8 +107,11 @@ helm upgrade --install \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true \
-  --set cert-manager.enabled=false \    
-  --set cert-manager.namespace=cert-manager 
+  --set cert-manager.enabled=true \
+  --set cert-manager.namespace=cert-manager  \
+  --set cert-manager.crds.enabled=true \
+  --set controllerManager.rbac.certManagerNamespace=cert-manager \
+  --set controllerManager.rbac.certManagerServiceAccountName=cview-issuer-cert-manager 
 ```
 
 NOTE: <br/> 
