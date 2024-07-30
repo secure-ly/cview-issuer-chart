@@ -86,7 +86,7 @@ helm upgrade --install \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
   --set controllerManager.manager.image.tag=0.0.33 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
-  --set controllerManager.arguments.enable-tracing="false" \
+  --set controllerManager.arguments.enable-tracing=false \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true
@@ -103,7 +103,7 @@ helm upgrade --install \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
   --set controllerManager.manager.image.tag=0.0.33 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
-  --set controllerManager.arguments.enable-tracing="false" \
+  --set controllerManager.arguments.enable-tracing=fals" \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true \
