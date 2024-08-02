@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    cview-issuer/certificate-finalizer: cview-issuer/certificate-finalizer # the name of dedicated finalizer
+    cview-issuer/pauseReconciliation: "false" # if true issuer stops working
+  labels:
+    cview-version: 0.0.33
+  name: cview-issuer-configmap-override # hardcoded the name of configmap
+  namespace: cview-issuer # the namespace of cview-issuer
+data:
+  # autorevoking   
+  certAutoRevoke: "false"  # if true gry to revoke certificates with Invalid dates and certRevokeStatuses list
+  certRevokeStatuses: Revoked,Expired 
+
+  # Cview status checking 
+  certCheckRemoteStatus: "true"   # check certificate statuses of Cview
+  certCheckStatuses: Issued # which certificate Cview statuses should be checked
+
+  certFinalizerName: cview-issuer/certificate-finalizer # finalizer name
+  certOwnerAnnotation: cview-issuer/certOwner 
+  certRevokeDeletedRequests: "true" # revoke certificate before deleting CViewRequest object
+ 
+  customFieldsAnnotation: cview-issuer/custom-fields # TODO
+
+  failedRequestCodes: 401 # codes from Cview to make certificate in Failed state
+  failedRevokeCodes: 401
+  failedStatusCodes: 401
+  pauseReconciliationAnnotation: cview-issuer/pauseReconciliation # annotation key to stop reconciling 
