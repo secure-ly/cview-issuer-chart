@@ -27,7 +27,7 @@ spec:
     kind: CViewIssuer             # The name of the specific CView issuer/cluster issuer for global names spaces  
     name: cviewissuer-template    # The name of the c-view issuer 
   revisionHistoryLimit: 4 		 	  # limit of certificate requests per certificate
-  renewBefore: 10d                # Renew certificate X days before certificate expires (default value is 10 days)
+  renewBefore: 240h               # Renew certificate X hours before certificate expires (default value is 240h equal to 10 days)
   secretName: cert-example       	# The name of the certificate secret (required and unique) 
   
   # --------------------------------------------------------------------------------------
