@@ -7,10 +7,9 @@ metadata:
     cert-manager.io/issuer-name: "cviewissuer-1-year"  # The name of specific cview-issuer or cluster issuer ( required)
     cert-manager.io/issuer-group: "secure-ly.com"      # required , do not modify
     cert-manager.io/issuer-kind: "CViewIssuer"         # required , do not modify
-        
-    cert-manager.io/renew-before: 10d                  # Renew certificate X days before certificate expires ( default value is 10 days) 
-    cert-manager.io/revision-history-limit: "5"        # number of certificate request history
-
+    cert-manager.io/revision-history-limit: "5"        # number of certificate request history        
+    cert-manager.io/renew-before : "240h"              # Renew certificate X hours before certificate expires (default value is 240h equal to 10 days)    
+    
     # --------------------------------------------------------------------------------------
     # Subject fileds annotation 
     # --------------------------------------------------------------------------------------
