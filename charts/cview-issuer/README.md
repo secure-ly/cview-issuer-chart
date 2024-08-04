@@ -1,13 +1,22 @@
 # cview-issuer
 
-![Version: 0.0.30](https://img.shields.io/badge/Version-0.0.30-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.30](https://img.shields.io/badge/AppVersion-0.0.30-informational?style=flat-square)
+![Version: 0.0.34](https://img.shields.io/badge/Version-0.0.34-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.34](https://img.shields.io/badge/AppVersion-0.0.34-informational?style=flat-square)
 
 C-View issuer plugin for cert-manager
+
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| https://charts.jetstack.io | cert-manager(cert-manager) | v1.15.1 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| cert-manager.enabled | bool | `false` |  |
+| cert-manager.namespace | string | `"cert-manager"` |  |
+| configmap.install | bool | `false` |  |
 | controllerManager.annotations.app | string | `"cview-issuer"` |  |
 | controllerManager.arguments.cluster-resource-namespace | string | `"cview-issuer"` |  |
 | controllerManager.arguments.enable-tracing | string | `"false"` |  |
@@ -25,8 +34,8 @@ C-View issuer plugin for cert-manager
 | controllerManager.environment.ENABLE_WEBHOOKS | string | `"false"` |  |
 | controllerManager.environment.KUBERNETES_CLUSTER_DOMAIN | string | `"cluster.local"` |  |
 | controllerManager.labels | object | `{"app":"cview-issuer"}` | labels for the controller deployment  |
-| controllerManager.manager.image.repository | string | `"secure-ly/cview-issuer"` |  |
-| controllerManager.manager.image.tag | string | `"0.0.30"` |  |
+| controllerManager.manager.image.repository | string | `"devsecurely/cview-issuer"` |  |
+| controllerManager.manager.image.tag | string | `"0.0.34"` |  |
 | controllerManager.manager.livenessProbe.httpGet.path | string | `"/healthz"` |  |
 | controllerManager.manager.livenessProbe.httpGet.port | int | `8081` |  |
 | controllerManager.manager.livenessProbe.httpGet.scheme | string | `"HTTP"` |  |

@@ -7,9 +7,10 @@ kubectl -n cview-issuer apply -f cview-issuer-all.yaml --dry-run=client
 kubectl -n cview-issuer apply -f cview-issuer-all.yaml --dry-run=server
 kubectl -n cview-issuer apply -f cview-issuer-all.yaml 
 
-
 kubectl -n cview-issuer delete -f cview-issuer-all.yaml
 
+
+helm-docs
 
 
 kubectl -n cview-issuer get pod 
@@ -19,7 +20,6 @@ kubectl -n cview-issuer logs deploy/cview-issuer-controller-manager
 kubectl -n cert-manager logs deploy/cert-manager
 
 
-kubectl -n adcs-issuer logs  deploy/adcs-sim-deployment
 
 kubectl apply -f example-install/certiticates/ -n cview-issuer
 kubectl apply -f example-install/issusers/  -n cview-issuer
@@ -28,12 +28,6 @@ kubectl apply -f example-install/secrets/  -n cview-issuer
 kubectl -n cview-issuer get certificate,certificaterequest,secret
 
 kubectl -n cview-issuer get cviewissuer,cviewclusterissuer
-
-# https://www.sslshopper.com/csr-decoder.html
-
-kubectl -n  cview-issuer get certificaterequest  cview-issuer-cert-test1-56s4s  -o jsonpath="{.spec.request}" | base64 -d > openssl.csr
-openssl req -in openssl.csr -noout -text
-rm openssl.csr
 
 
 kubectl -n  cview-issuer get certificaterequest -o yaml | grep request:
@@ -50,4 +44,31 @@ rm openssl.crt
 kubectl api-resources --api-group=cert-manager.io
 
 kubectl api-resources --api-group=secure-ly.com
+
+
+
+
+helm upgrade --install \
+  cview-issuer secure-ly/cview-issuer \
+  --namespace cview-issuer \
+  --create-namespace \
+  --version 0.0.34 \
+  --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
+  --set controllerManager.manager.image.tag=0.0.34 \
+  --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
+  --set controllerManager.arguments.enable-tracing=false \
+  --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
+  --set openshift.enabled=false \
+  --set crd.install=true \
+  --set configmap.install=false \
+  --set cert-manager.enabled=true \
+  --set cert-manager.namespace=cert-manager  \
+  --set cert-manager.crds.enabled=true \
+  --dry-run 
+
+
+helm uninstall cert-manager -n cert-manager
+
+
+release "cert-manager" uninstalled
 
