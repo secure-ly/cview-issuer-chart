@@ -29,7 +29,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.33          0.0.33          C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.34          0.0.34          C-View issuser plugin for cert-manager
 </pre>
 
 ### Get list of all issuer version
@@ -38,8 +38,7 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer   0.0.33          0.0.33      C-View issuser plugin for cert-manager
-secure-ly/cview-issuer   0.0.32          0.0.32      C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.34          0.0.34      C-View issuser plugin for cert-manager
 </pre>
 
 ```console
@@ -47,9 +46,8 @@ helm search repo cview-issuer --versions
 ```
 <pre>
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
-secure-ly/cview-issuer	0.0.31       	0.0.31     	 C-View issuer plugin for cert-manager 
-secure-ly/cview-issuer	0.0.32       	0.0.32     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.33       	0.0.33     	 C-View issuer plugin for cert-manager 
+secure-ly/cview-issuer	0.0.34       	0.0.34     	 C-View issuer plugin for cert-manager     
 </pre>
 
 ## 3. Target platform Installation commands
@@ -61,7 +59,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.33 \
+  --version 0.0.34 \
   --set crd.install=true
 ```
 ### Install on Openshift 
@@ -71,7 +69,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.33  \
+  --version 0.0.34  \
   --set crd.install=true \
   --set openshift.enabled=true
 ```
@@ -82,9 +80,9 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.33 \
+  --version 0.0.34 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.33 \
+  --set controllerManager.manager.image.tag=0.0.34 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
   --set controllerManager.arguments.enable-tracing=false \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
@@ -99,11 +97,11 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.33 \
+  --version 0.0.34 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.33 \
+  --set controllerManager.manager.image.tag=0.0.34 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
-  --set controllerManager.arguments.enable-tracing=fals" \
+  --set controllerManager.arguments.enable-tracing=false \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true \
@@ -132,7 +130,7 @@ helm list -n cview-issuer
 ```
 <pre>
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
-cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.33     0.0.33
+cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.34     0.0.34
 </pre>
 
 ## 4. C-View Issuer Configuration
