@@ -135,6 +135,8 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 ## 4. C-View Issuer Configuration
 
+
+
 ### C-View Secrets 
 
 #### C-View Issuer Credential 
@@ -162,6 +164,10 @@ Working in global scope requires a c-view cluster issuer object. Sample YAML fil
 
 #### Dedicated C-View Issuer 
 Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([CViewIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewIssuer.yaml))
+
+### C-View issuer ConfigMap 
+The default ConfigMAp name is **cview-issuer-configmap-override** it creaded automatically and all values are hard coded 
+for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
 
 ### C-View certificates objects
 
