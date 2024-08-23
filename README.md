@@ -1,7 +1,7 @@
 # cview-issuer for cert-manager 
 
-C-View issuer is an external certificate issuers for cert-manager engine <br />
-The cview-issuer works through the CVIEW certificate management platform to sign certificate request in the organization ADCS 
+The C-View issuer is an external certificate issuer for the cert-manager engine <br />
+The cview-issuer works through the CVIEW certificate management platform to sign certificate requests in the organization ADCS. 
     
 [1. Prerequisites](#1-prerequisites) <br />
 [2. C-View issuer installation helm cart](#2-cview-issuer-installation-helm-cart)<br />
@@ -9,12 +9,12 @@ The cview-issuer works through the CVIEW certificate management platform to sign
 [4. C-View issuer configuration](#4-c-view-issuer-configuration)<br />
         
 ## 1. Prerequisites 
-The following components are required befroe installaing C-View Issuer 
+The following components are required before installing the C-View Issuer 
 
 - Kubernetes cluster with version >=1.27.x      
 - Cert manager with version >=1.12.x 
 - Jaeger opentracing (optional)
-- C-View CLM >= 7.x.x (For more information contact [Securely LTD](https://www.secure-ly.com/contact-us-securely)) 
+- C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely)) 
 
 ## 2. CView Issuer installation helm cart 
 
@@ -29,7 +29,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.34          0.0.34          C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.34          0.0.34          C-View issuer plugin for cert-manager
 </pre>
 
 ### Get list of all issuer version
@@ -38,7 +38,7 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer   0.0.34          0.0.34      C-View issuser plugin for cert-manager
+secure-ly/cview-issuer   0.0.34          0.0.34      C-View issuer plugin for cert-manager
 </pre>
 
 ```console
@@ -52,7 +52,7 @@ secure-ly/cview-issuer	0.0.34       	0.0.34     	 C-View issuer plugin for cert-
 
 ## 3. Target platform Installation commands
 
-### Install on kubernetes 
+### Install on Kubernetes 
 
 ```console
 helm upgrade --install \
@@ -117,10 +117,10 @@ NOTE: <br/>
 - Set **controllerManager.arguments.enable-tracing="true"** to enable jaeger tracing 
 
 ### Adding support for Openshift routes by cert-manager 
-Using route objects on openshift requires the installation of additional package for extending cert-manager behavior.
+Using route objects on open shift requires the installation of the additional package for extending cert-manager behavior.
 
 ```console
-helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
+helm install open shift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
 ```
 
 ### Display helm chart status
@@ -141,43 +141,43 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 #### C-View Issuer Credential 
 
-The C-View issuer requirs an application user to operate toward cView Platform. <br />
-This user should be a domain user with access rights to C-View Platform as a Cert Owner.<br />
+The C-View issuer requires an application user to operate toward the cView Platform. <br />
+This user should be a domain user with access rights to the C-View Platform as a Cert Owner.<br />
 
-- Update the **user name** and **password** parameters in the follwoing YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
-- Deyploy the YAML file to kubernetes / openshift 
+- Update the **user name** and **password** parameters in the following YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
+- Deploy the YAML file to Kubernetes/Openshift 
   
 #### C-View Issuer activation key
 
 C-View issuer requires a license key from the C-View platform <br /> 
-Contact C-View Administrator to get the license key and encode it to base64 string. <br />
+Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
 
-- Update the **key** parameter in the follwoing YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
-- Deploy the YAML file to kubernetes / openshift
+- Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
+- Deploy the YAML file to Kubernetes/Openshift
 
 ### C-View Issuer objects
 The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
 There are two types of c-view issuers, and you can create multiple issuers for different purposes.  
         
 #### C-View Cluster Issuer 
-Working in global scope requires a c-view cluster issuer object. Sample YAML file: ([CViewClusterIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewClusterIssuer.yaml))
+Working in a global scope requires a c-view cluster issuer object. Sample YAML file: ([cview-cluster-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-cluster-issuer.yaml))
 
 #### Dedicated C-View Issuer 
-Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([CViewIssuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/CViewIssuer.yaml))
+Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/c-view-issuer.yaml))
 
 ### C-View issuer ConfigMap 
-The default ConfigMAp name is **cview-issuer-configmap-override** it creaded automatically and all values are hard coded 
+The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
 for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
 
 ### C-View certificates objects
 
-C-View Issuer support the follwoing certificates types: 
+C-View Issuer supports the following certificate types: 
 
 #### Standard certificate/secret 
 Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
 
 #### Openshift Route Secret 
-Use this YAML example to create a certificate for openshift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
+Use this YAML example to create a certificate for an open shift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
 
 #### Ingress Secret 
 Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) 
