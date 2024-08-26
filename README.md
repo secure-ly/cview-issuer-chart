@@ -18,7 +18,7 @@ The following components are required before installing the C-View Issuer
 - C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
 ## 2. cert-manager installation using helm chart 
-The preferred way is to use an official cert-manager helm chart.
+This is the preferred way to use an official cert-manager helm chart.
 
 ```console
 helm repo add jetstack https://charts.jetstack.io --force-update
