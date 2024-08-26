@@ -93,7 +93,11 @@ helm upgrade --install \
 ### Customize Installation on Openshift with cert-manager dependency
 
 if you want to install cert manager as dependency sub chart in onother name sapce then cview-issuer
-you have to create cert-manager name space 
+you have to create cert-manager name space
+
+```console
+kubectl create ns cert-manager
+```
 
 ```console
 helm upgrade --install \
