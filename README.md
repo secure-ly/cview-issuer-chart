@@ -21,14 +21,13 @@ The following components are required before installing the C-View Issuer
 The preferred way is to use an official cert-manager helm chart.
 
 ```console
-export CERT_MANAGER_VERSION=CERT_MANAGER_VERSION=v1.14.2 
 helm repo add jetstack https://charts.jetstack.io --force-update
 
 helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version $CERT_MANAGER_VERSION  \
+  --version v1.14.2  \
   --set installCRDs=true --set enableCertificateOwnerRef=true
 ```
 
