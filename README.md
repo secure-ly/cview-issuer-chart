@@ -123,7 +123,7 @@ NOTE: <br/>
 Using route objects on open shift requires the installation of the additional package for extending cert-manager behavior.
 
 ```console
-helm install open shift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
+helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
 ```
 
 ### Display helm chart status
