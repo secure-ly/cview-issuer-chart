@@ -4,9 +4,10 @@ The C-View issuer is an external certificate issuer for the cert-manager engine 
 The cview-issuer works through the CVIEW certificate management platform to sign certificate requests in the organization ADCS. 
     
 [1. Prerequisites](#1-prerequisites) <br />
-[2. C-View issuer installation helm cart](#2-cview-issuer-installation-helm-cart)<br />
-[3. C-View issuer installation platform](#3-target-platform-installation-commands)<br />
-[4. C-View issuer configuration](#4-c-view-issuer-configuration)<br />
+[2. Cert-manager installation using helm chart](#2-cert-manager-installation-using-helm-chart)<br />
+[3. C-View issuer installation helm cart](#3-cview-issuer-installation-helm-cart)<br />
+[4. C-View issuer installation platform](#4-target-platform-installation-commands)<br />
+[5. C-View issuer configuration](#5-c-view-issuer-configuration)<br />
         
 ## 1. Prerequisites 
 The following components are required before installing the C-View Issuer 
@@ -14,9 +15,36 @@ The following components are required before installing the C-View Issuer
 - Kubernetes cluster with version >=1.27.x      
 - Cert manager with version >=1.12.x 
 - Jaeger opentracing (optional)
-- C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely)) 
+- C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
-## 2. CView Issuer installation helm cart 
+## 2. cert-manager installation using helm chart 
+The preferred way is to use an official cert-manager helm chart.
+
+```console
+export CERT_MANAGER_VERSION=CERT_MANAGER_VERSION=v1.14.2 
+helm repo add jetstack https://charts.jetstack.io --force-update
+
+helm upgrade  --install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version $CERT_MANAGER_VERSION  \
+  --set installCRDs=true --set enableCertificateOwnerRef=true
+```
+
+Check cert-manager installation 
+<pre>
+kubectl get pod -n cert-manager
+</pre>
+
+<pre>
+NAME                                       READY   STATUS    RESTARTS       AGE
+cert-manager-cainjector-598d9958f6-fss8l   1/1     Running   0              1m
+cert-manager-webhook-7c8c5df7fc-xdjl5      1/1     Running   0              1m
+cert-manager-54f9895b8c-w2s2x              1/1     Running   0              1m
+</pre>
+
+## 3. CView Issuer installation helm cart 
 
 ### Add cview-issuer helm chart repository
 ```console
@@ -50,7 +78,7 @@ secure-ly/cview-issuer	0.0.33       	0.0.33     	 C-View issuer plugin for cert-
 secure-ly/cview-issuer	0.0.34       	0.0.34     	 C-View issuer plugin for cert-manager     
 </pre>
 
-## 3. Target platform Installation commands
+## 4. Target platform Installation commands
 
 ### Install on Kubernetes 
 
@@ -89,38 +117,7 @@ helm upgrade --install \
   --set openshift.enabled=true \
   --set crd.install=true
 ```
-
-### Customize Installation on Openshift with cert-manager dependency
-
-if you want to install cert manager as dependency sub chart in onother name sapce then cview-issuer
-you have to create cert-manager name space
-
-```console
-kubectl create ns cert-manager
-```
-
-```console
-helm upgrade --install \
-  cview-issuer secure-ly/cview-issuer \
-  --namespace cview-issuer \
-  --create-namespace \
-  --version 0.0.34 \
-  --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.34 \
-  --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
-  --set controllerManager.arguments.enable-tracing=false \
-  --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
-  --set openshift.enabled=true \
-  --set crd.install=true \
-  --set cert-manager.enabled=true \  
-  --set cert-manager.namespace=cert-manager  \
-  --set cert-manager.crds.enabled=true \
-  --set controllerManager.rbac.certManagerNamespace=cert-manager \
-  --set controllerManager.rbac.certManagerServiceAccountName=cview-issuer-cert-manager 
-```
-
 NOTE: <br/> 
-- Set **set cert-manager.enabled=true** if you plan to install cview-issuer and cert-manager via helm chart
 - Set **controllerManager.arguments.enable-tracing="true"** to enable jaeger tracing 
 
 ### Adding support for Openshift routes by cert-manager 
@@ -140,7 +137,7 @@ NAME            NAMESPACE       REVISION        UPDATED                         
 cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.34     0.0.34
 </pre>
 
-## 4. C-View Issuer Configuration
+## 5. C-View Issuer Configuration
 
 
 
