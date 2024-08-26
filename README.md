@@ -92,6 +92,9 @@ helm upgrade --install \
 
 ### Customize Installation on Openshift with cert-manager dependency
 
+if you want to install cert manager as dependency sub chart in onother name sapce then cview-issuer
+you have to create cert-manager name space 
+
 ```console
 helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
@@ -105,7 +108,7 @@ helm upgrade --install \
   --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
   --set openshift.enabled=true \
   --set crd.install=true \
-  --set cert-manager.enabled=true \
+  --set cert-manager.enabled=true \  
   --set cert-manager.namespace=cert-manager  \
   --set cert-manager.crds.enabled=true \
   --set controllerManager.rbac.certManagerNamespace=cert-manager \
