@@ -142,25 +142,23 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 ## 5. C-View Issuer Configuration
 
-
-
 ### C-View Secrets 
 
-  #### C-View Issuer Credential 
+#### C-View Issuer Credential 
 
-  The C-View issuer requires an application user to operate toward the cView Platform. <br />
-  This user should be a domain user with access rights to the C-View Platform as a Cert Owner.<br />
-  
-  - Update the **user name** and **password** parameters in the following YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
-  - Deploy the YAML file to Kubernetes/Openshift 
-  
-  #### C-View Issuer activation key
+The C-View issuer requires an application user to operate toward the cView Platform. <br />
+This user should be a domain user with access rights to the C-View Platform as a Cert Owner.<br />
 
-  C-View issuer requires a license key from the C-View platform <br /> 
-  Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
-  
-  - Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
-  - Deploy the YAML file to Kubernetes/Openshift
+- Update the **user name** and **password** parameters in the following YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
+- Deploy the YAML file to Kubernetes/Openshift 
+
+#### C-View Issuer activation key
+
+C-View issuer requires a license key from the C-View platform <br /> 
+Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
+
+- Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
+- Deploy the YAML file to Kubernetes/Openshift
 
 ### C-View Issuer objects
 The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
