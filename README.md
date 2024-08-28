@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo/1234-logo.jpg" alt="Securely logo" />
+ <a href="https://www.secure-ly.com"><img src="logo/1234-logo.jpg" alt="Securely logo" /></a>
 </p>
 
 # cview-issuer for cert-manager by Securely LTD
