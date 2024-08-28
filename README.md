@@ -166,7 +166,7 @@ There are two types of c-view issuers, and you can create multiple issuers for d
 Working in a global scope requires a c-view cluster issuer object. Sample YAML file: ([cview-cluster-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-cluster-issuer.yaml))
 
 #### Dedicated C-View Issuer 
-Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/c-view-issuer.yaml))
+Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-issuer.yaml))
 
 ### C-View issuer ConfigMap 
 The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
