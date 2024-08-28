@@ -1,6 +1,6 @@
-# cview-issuer for cert-manager 
+# cview-issuer for cert-manager by Securely ltd 
 <p align="center">
-  <img src="https://secure-ly.github.io/cview-issuer-chart/logo/1234-logo.png" height="140" width="300" alt="Securely logo" />
+  <img src="https://secure-ly.github.io/cview-issuer-chart/logo/1234-logo.png" alt="Securely logo" />
 </p>
 The C-View issuer is an external certificate issuer for the cert-manager engine <br />
 The cview-issuer works through the CVIEW certificate management platform to sign certificate requests in the organization ADCS. 
