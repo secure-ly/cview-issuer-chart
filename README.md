@@ -1,7 +1,6 @@
 <p align="center">
-  <img src="https://secure-ly.github.io/cview-issuer-chart/logo/1234-logo.jpg" alt="Securely logo" />
+  <img src="logo/1234-logo.jpg" alt="Securely logo" />
 </p>
-[<img alt="Securely logo" src="logo/1234-logo.jpg" />](https://www.secure-ly.com/)
 
 # cview-issuer for cert-manager by Securely LTD
 
