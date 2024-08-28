@@ -63,7 +63,7 @@ NAME                    CHART VERSION   APP VERSION     DESCRIPTION
 secure-ly/cview-issuer   0.0.34          0.0.34          C-View issuer plugin for cert-manager
 </pre>
 
-### Get list of all issuer version
+### Get a list of all issuer version
 ```console
 helm search repo cview-issuer
 ```
@@ -124,7 +124,7 @@ NOTE: <br/>
 - Set **controllerManager.arguments.enable-tracing="true"** to enable jaeger tracing 
 
 ### Adding support for Openshift routes by cert-manager 
-Using route objects on open shift requires the installation of the additional package for extending cert-manager behavior.
+Using route objects on open shift requires installing the additional package to extend cert-manager behavior.
 
 ```console
 helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
