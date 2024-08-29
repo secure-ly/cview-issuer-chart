@@ -21,12 +21,15 @@ The following components are required before installing the C-View Issuer
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
-## 2. cert-manager installation using helm chart 
-This is the preferred way to use an official cert-manager helm chart.
+## 2. Cert-manager installation using helm chart 
+This is the preferred way to install cert-manager via helm-chart
 
+###  Add jetstack to helm chart repository support 
 ```console
 helm repo add jetstack https://charts.jetstack.io --force-update
-
+```
+###  Intsall cert-manager 
+```console
 helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
@@ -34,7 +37,6 @@ helm upgrade  --install \
   --version v1.14.2  \
   --set installCRDs=true --set enableCertificateOwnerRef=true
 ```
-
 Check cert-manager installation 
 <pre>
 kubectl get pod -n cert-manager
@@ -46,6 +48,13 @@ cert-manager-cainjector-598d9958f6-fss8l   1/1     Running   0              1m
 cert-manager-webhook-7c8c5df7fc-xdjl5      1/1     Running   0              1m
 cert-manager-54f9895b8c-w2s2x              1/1     Running   0              1m
 </pre>
+
+### Adding support for Openshift routes by cert-manager 
+Using route objects on open shift requires installing the additional package to extend cert-manager behavior.
+
+```console
+helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
+```
 
 ## 3. CView Issuer installation helm cart 
 
@@ -123,13 +132,6 @@ helm upgrade --install \
 NOTE: <br/> 
 - Set **controllerManager.arguments.enable-tracing="true"** to enable jaeger tracing 
 
-### Adding support for Openshift routes by cert-manager 
-Using route objects on open shift requires installing the additional package to extend cert-manager behavior.
-
-```console
-helm install openshift-routes -n cert-manager oci://ghcr.io/cert-manager/charts/openshift-routes
-```
-
 ### Display helm chart status
 
 ```console
@@ -182,14 +184,16 @@ C-View Issuer supports the following certificate types:
 Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
 
 #### Openshift Route Secret 
-Use this YAML example to create a certificate for an open shift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml)) 
+Use this YAML example to create a certificate for an open shift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml))<br />
+<b>Unused annotations should be excluded or commented from the yaml file</b>
 
 #### Ingress Secret 
-Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) 
+Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) <br />
+<b>Unused annotations should be excluded or commented from the yaml file</b>
 
 #### Documentation
 
-![Version: 0.0.33](https://img.shields.io/badge/Version-0.0.33-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.33](https://img.shields.io/badge/AppVersion-0.0.33-informational?style=flat-square)
+![Version: 0.0.34](https://img.shields.io/badge/Version-0.0.34-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.34](https://img.shields.io/badge/AppVersion-0.0.34-informational?style=flat-square)
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
 
