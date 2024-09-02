@@ -123,9 +123,7 @@ helm upgrade --install \
   --version 0.0.34 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
   --set controllerManager.manager.image.tag=0.0.34 \
-  --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
-  --set controllerManager.arguments.enable-tracing=false \
-  --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
+  --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \ 
   --set openshift.enabled=true \
   --set crd.install=true
 ```
