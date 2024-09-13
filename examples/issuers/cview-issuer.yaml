@@ -1,0 +1,23 @@
+apiVersion: secure-ly.com/v1alpha1         
+kind: CViewIssuer
+metadata:
+  name: cviewissuer-1-year                       # Name of issuer ( usually represent a CA template name )  
+  namespace: cview-issuer                        # Name of the namespace to create the cview-issuer 
+  annotations:
+    "cview-issuer/pauseReconciliation": "false"  # Flage to enable/disable reconciliation loop ( default value is false ) 
+
+# The caBundle parameters is the issuer CA certificate encoded in base 64
+# echo -n '<base64 certificate without end of lines>' | base64
+spec:
+    caBundle: <base64 of CA certificate>
+
+  authSecretName: cview-issuer-credentials     # Name of the secret that hold the user and password for accessing C-View API 
+
+  statusCheckInterval: 7d                      # Check certificate status every X Days (support m for minutes, h for hours, d for days) 
+  retryInterval: 24h                           # Check if there is an error (support m for minutes, h for hours, d for days) 
+
+  url: https://<cview-server>/cviewAdmin  # url for C-View admin server 
+  templateName: CV-SSL-1-Year             # The name of the template to issue SSL certificates (Request the name from C-View Administrator)
+  caId: 1                                 # The issuer ID (Request issuer ID from C-View Administrator)
+  
+  #insecureSkipVerify: false              # skip SSL verification (do not use in a production environment)

@@ -1,0 +1,37 @@
+
+{{- if .Values.configmap.install  }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cview-issuer-configmap-override 
+  namespace: {{ .Release.Namespace }}  
+  
+  annotations:
+    cview-issuer/certificate-finalizer: cview-issuer/certificate-finalizer # A dedicated finalizer name  (DO NOT MODIFY) 
+    cview-issuer/pauseReconciliation: "false"                              # if true issuer stops working  
+
+data:
+
+  # pausing
+  pauseReconciliationAnnotation: cview-issuer/pauseReconciliation   
+
+  # autorevoking   
+  certAutoRevoke: "false"               
+  certRevokeStatuses: Expired           
+
+  # CView status checking 
+  certCheckRemoteStatus: "true"         
+  certCheckStatuses: Issued             
+
+  # garbage collector  
+  certRevokeDeletedRequests: "true"     
+
+  failedSignCodes: 401,500 
+  failedGetCodes: 401,500  
+  failedRevokeCodes: 401,500 
+  
+  # dedicated finalizer 
+  certFinalizerName: cview-issuer/certificate-finalizer  
+
+
+{{- end  }}      

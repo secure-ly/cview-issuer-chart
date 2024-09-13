@@ -1,3 +1,8 @@
+
+cert-manager: 
+  enabled: false # to install cert-manager as a subchart 
+  namespace: cert-manager
+
 crd:
   install: true
 
@@ -6,6 +11,9 @@ openshift:
   anyuid: true # add permission for anyuid scc
 
 # C-View Issuer by secure-ly ltd 
+
+configmap:
+  install: false
 
 controllerManager:
 
@@ -18,7 +26,7 @@ controllerManager:
   manager:
     image:
       repository: devsecurely/cview-issuer
-      tag: 0.0.30
+      tag: 0.0.34
 
     resources:
       limits:

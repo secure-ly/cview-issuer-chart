@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cview-issuer-configmap-override # Hardcoded configmap used by cview-issuer plugin (DO NOT MODIFY) 
+  namespace: cview-issuer               # The namespace where the cview-issuer installed 
+  
+  annotations:
+    cview-issuer/certificate-finalizer: cview-issuer/certificate-finalizer # A dedicated finalizer name  (DO NOT MODIFY) 
+    cview-issuer/pauseReconciliation: "false"                              # if true issuer stops working  
+
+data:
+
+  # pausing
+  pauseReconciliationAnnotation: cview-issuer/pauseReconciliation         # annotation key to stop reconciling 
+
+  # autorevoking   
+  certAutoRevoke: "false"               # Set to true to revoke certificates when it's already expired or if the certRevokeStatuses values is expired 
+  certRevokeStatuses: Expired           # 
+
+  # CView status checking 
+  certCheckRemoteStatus: "true"         # check certificate status on C-View server
+  certCheckStatuses: Issued             # indicate to run check status only from issued certificates 
+
+  # garbage collector  
+  certRevokeDeletedRequests: "true"     # Revoke certificate on the C-view server before deleting the CVviewRequest object 
+
+  failedSignCodes: 401,500 # HTTP status code which indicate a failure response from C-View server while signing certificates , set the certificate status to FAIL
+  failedGetCodes: 401,500  # HTTP status code which indicate a failure response from C-View server while getting information about certificate
+  failedRevokeCodes: 401,500 # HTTP status code which indicate a failure response from C-View server while revoking certificate
+  
+  # dedicated finalizer 
+  certFinalizerName: cview-issuer/certificate-finalizer  # finalizer name (DO NOT MODIFY) 

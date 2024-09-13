@@ -1,0 +1,52 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: it5-route                                      # The name of the open shift rout object   
+  namespace: cview-issuer                              # The name of the namespace where to create the open shift rout 
+  annotations:
+    cert-manager.io/issuer-name: "cviewissuer-1-year"  # The name of specific cview-issuer or cluster issuer ( required)
+    cert-manager.io/issuer-group: "secure-ly.com"      # required , do not modify
+    cert-manager.io/issuer-kind: "CViewIssuer"         # required , do not modify
+    cert-manager.io/revision-history-limit: "5"        # number of certificate request history        
+    cert-manager.io/renew-before : "240h"              # Renew certificate X hours before certificate expires (default value is 240h equal to 10 days)    
+    
+    # --------------------------------------------------------------------------------------
+    # Subject fileds annotation 
+    # --------------------------------------------------------------------------------------
+    cert-manager.io/common-name: ""                    # Common name should be added. (required)  
+    cert-manager.io/subject-organizations: ""          # Organization (optional)
+    cert-manager.io/subject-organizationalunits: ""    # Organization unit (optional)
+    cert-manager.io/subject-countries: ""              # county as two char  (optional)
+    cert-manager.io/subject-provinces: ""              # State (optional)
+    cert-manager.io/subject-localities: ""             # City (optional)
+
+    # --------------------------------------------------------------------------------------
+    # Subject alternative names
+    # --------------------------------------------------------------------------------------
+    cert-manager.io/alt-names: ""                      # DNS names (optional). Supports comma-separated values. 
+    cert-manager.io/email-sans: ""                     # RFC822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
+    cert-manager.io/ip-sans: ""                        # IP Address (optional). Supports comma-separated values e.g ( "10.20.30.40,192.168.192.168")
+    
+    # --------------------------------------------------------------------------------------
+    # Anotation of business logic information to be added to the certificate (used in CView) 
+    # --------------------------------------------------------------------------------------
+    cview-issuer/customField1: ""             # custome filed 1, based on C-View definition
+    cview-issuer/customField2: ""
+    cview-issuer/customField3: ""
+    cview-issuer/customField4: ""
+    cview-issuer/customField5: ""
+    cview-issuer/customField6: ""
+    cview-issuer/customField7: ""
+    cview-issuer/customField8: ""
+    cview-issuer/customField9: ""
+    cview-issuer/customField10: ""
+    cview-issuer/customEmailAddress: ""       # set the custom email address for a personal expiraiton alert 
+    cview-issuer/certOwner: ""                # set the certificate owner as domain\\user
+
+spec:
+  host: "it5.securely.com"         # Application hostname (required) This value is added as an additional DNS name 
+  port:
+    targetPort: 443
+  to:
+    kind: Service
+    name: hello2-openshift

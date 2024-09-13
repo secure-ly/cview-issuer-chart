@@ -1,0 +1,61 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert-example                  # A unique value within the namespace to identify the APP certificate   
+  namespace: cview-issuer             # The name of the namespace to create the certificate object 
+
+  # --------------------------------------------------------------------------------------
+  # Anotation of business logic information to be added to the certificate (used in CView) 
+  # --------------------------------------------------------------------------------------
+  annotations:
+    cview-issuer/customField1: ""     # custome filed 1, based on C-View definition
+    cview-issuer/customField2: ""     # custome filed 2, based on C-View definition
+    cview-issuer/customField3: ""
+    cview-issuer/customField4: ""
+    cview-issuer/customField5: ""
+    cview-issuer/customField6: ""
+    cview-issuer/customField7: ""
+    cview-issuer/customField8: ""
+    cview-issuer/customField9: ""
+    cview-issuer/customField10: ""
+    cview-issuer/customEmailAddress: ""  # set the custom email address for a personal expiration alert 
+    cview-issuer/certOwner: ""           # set the certificate owner as domain\\user 
+
+spec:
+  issuerRef:
+    group: secure-ly.com
+    kind: CViewIssuer             # The name of the specific CView issuer/cluster issuer for global names spaces  
+    name: cviewissuer-template    # The name of the c-view issuer 
+  revisionHistoryLimit: 4 		 	  # limit of certificate requests per certificate
+  renewBefore: 240h               # Renew certificate X hours before certificate expires (default value is 240h equal to 10 days)
+  secretName: cert-example       	# The name of the certificate secret (required and unique) 
+  
+  # --------------------------------------------------------------------------------------
+  # Subject fileds annotation 
+  # --------------------------------------------------------------------------------------
+  commonName: example.secure-ly.com # Common name should be added. (required) 
+  organizations:                    # Organization name (optional)
+  #    - Securely
+
+  # countries:                      # Country (optional) two char length 
+  #   - IL
+  
+ #localities:                       # City name(optional)
+ #   City name
+
+ #organizationalUnits:              # Organization unit (optional)
+ #  - Sales support 
+ 
+  #provinces:                       # State (optional)
+  #  - Stat name 
+  
+  # --------------------------------------------------------------------------------------
+  # Subject alternative names 
+  # --------------------------------------------------------------------------------------
+  dnsNames:
+  - example.secure-ly.com          # DNS names (Required). Supports comma-separated values.#    
+  emailAddresses:                  # RFC822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com" 
+  - example1@domain.com  
+  ipAddresses:                     # IP Address (optional). Supports comma-separated values e.g ( "10.20.30.40,192.168.192.168")
+  - 192.168.20.50
+  
