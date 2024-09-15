@@ -22,7 +22,7 @@ data:
   certCheckStatuses: Issued             # indicate to run check status only from issued certificates 
 
   # garbage collector  
-  certRevokeDeletedRequests: "true"     # Revoke certificate on the C-view server before deleting the CVviewRequest object 
+  certRevokeDeletedRequests: "true"     # Revoke certificate on the C-view server before deleting the CViewRequest object 
 
   failedSignCodes: 401,500 # HTTP status code which indicate a failure response from C-View server while signing certificates , set the certificate status to FAIL
   failedGetCodes: 401,500  # HTTP status code which indicate a failure response from C-View server while getting information about certificate
