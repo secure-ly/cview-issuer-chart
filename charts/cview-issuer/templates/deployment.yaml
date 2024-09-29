@@ -44,12 +44,8 @@ spec:
       containers:
         {{- if .Values.controllerManager.arguments }}
       - args:
-        {{- range $key, $value := .Values.controllerManager.arguments }}
-        {{- if $value }}
+        {{- range $key, $value := .Values.controllerManager.arguments | default false }}
         - --{{ $key }}={{ $value }}
-        {{- else }}
-        - --{{ $key  }}
-        {{- end }}
         {{- end }}
         {{- end }}
         
