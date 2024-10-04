@@ -5,7 +5,7 @@
 # cview-issuer for cert-manager by Securely LTD
 
 The C-View issuer is an external certificate issuer for the cert-manager engine <br />
-The cview-issuer works through the CVIEW certificate management platform to sign certificate requests in the organization ADCS. 
+The cview-issuer works through the C-VIEW certificate management platform to sign certificate requests in the organization ADCS. 
     
 [1. Prerequisites](#1-prerequisites) <br />
 [2. Cert-manager installation using helm chart](#2-cert-manager-installation-using-helm-chart)<br />
@@ -143,9 +143,9 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 ## 5. C-View Issuer Configuration
 
-### C-View Secrets 
+### 5.1 C-View Secrets 
 
-#### C-View Issuer Credential 
+#### 5.1.1 C-View Issuer Credential 
 
 The C-View issuer requires an application user to operate toward the cView Platform. <br />
 This user should be a domain user with access rights to the C-View Platform as a Cert Owner.<br />
@@ -153,7 +153,7 @@ This user should be a domain user with access rights to the C-View Platform as a
 - Update the **user name** and **password** parameters in the following YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deploy the YAML file to Kubernetes/Openshift 
 
-#### C-View Issuer activation key
+#### 5.1.2 C-View Issuer activation key
 
 C-View issuer requires a license key from the C-View platform <br /> 
 Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
@@ -161,33 +161,35 @@ Contact the C-View administrator to get the license key and encode it to the bas
 - Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
 - Deploy the YAML file to Kubernetes/Openshift
 
-### C-View Issuer objects
+### 5.2 C-View Issuer objects
 The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
 There are two types of c-view issuers, and you can create multiple issuers for different purposes.  
         
-#### C-View Cluster Issuer 
+#### 5.2.1 C-View Cluster Issuer 
 Working in a global scope requires a c-view cluster issuer object. Sample YAML file: ([cview-cluster-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-cluster-issuer.yaml))
 
-#### Dedicated C-View Issuer 
+#### 5.2.2 Dedicated C-View Issuer 
 Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-issuer.yaml))
 
-### C-View issuer ConfigMap 
+### 5.3 C-View issuer ConfigMap 
 The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
 for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
 
-### C-View certificates objects
+### 5.4 C-View certificates objects
 
 C-View Issuer supports the following certificate types: 
 
-#### Standard certificate/secret 
+#### 5.4.1 Standard certificate/secret 
 Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
 
-#### Openshift Route Secret 
+#### 5.4.2 Openshift Route Secret 
 Use this YAML example to create a certificate for an open shift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml))<br />
+>[!NOTE]
 <b>Unused annotations should be excluded or commented from the yaml file</b>
 
-#### Ingress Secret 
+#### 5.4.3 Ingress Secret 
 Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) <br />
+>[!NOTE]
 <b>Unused annotations should be excluded or commented from the yaml file</b>
 
 #### Documentation
