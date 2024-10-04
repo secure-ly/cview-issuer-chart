@@ -184,12 +184,10 @@ Use this YAML example to create a certificate object: ([Cert-example](https://gi
 
 #### 5.4.2 Openshift Route Secret 
 Use this YAML example to create a certificate for an open shift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml))<br />
->[!NOTE]
 <b>Unused annotations should be excluded or commented from the yaml file</b>
 
 #### 5.4.3 Ingress Secret 
 Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) <br />
->[!NOTE]
 <b>Unused annotations should be excluded or commented from the yaml file</b>
 
 #### Documentation
