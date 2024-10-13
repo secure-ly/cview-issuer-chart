@@ -12,6 +12,7 @@ metadata:
 
 data:
 
+
   # pausing
   pauseReconciliationAnnotation: cview-issuer/pauseReconciliation   
 
