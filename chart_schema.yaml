@@ -19,3 +19,6 @@ maintainer:
   name: str(required=False)
   email: str(required=False)
   url: str(required=False)
+
+dependencies: list(str(), required=False)
+
