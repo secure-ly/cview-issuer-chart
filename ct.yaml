@@ -2,7 +2,7 @@
 remote: origin
 target-branch: main
 chart-dirs:
-  - charts/cview-issuer
+  - charts/
 chart-repos:
   - cview-issuer=https://secure-ly.github.io/cview-issuer-chart/
 helm-extra-args: --timeout 600s
