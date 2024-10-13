@@ -104,4 +104,3 @@ webhookService:
 
 nodeSelector: 
   kubernetes.io/os: linux
-
