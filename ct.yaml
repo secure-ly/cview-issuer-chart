@@ -6,5 +6,6 @@ chart-dirs:
 chart-repos:
   - cview-issuer=https://secure-ly.github.io/cview-issuer-chart/
   - cert-manager=https://charts.jetstack.io
-helm-extra-args: --timeout 600s
+helm-extra-args: --timeout 200s  --create-namespace
+
 
