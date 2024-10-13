@@ -1,13 +1,13 @@
-cert-manager: 
-  enabled: false # to install cert-manager as a subchart 
+cert-manager:
+  enabled: false #to install cert-manager as a subchart 
   namespace: cert-manager
 
 crd:
   install: true
 
 openshift:
-  enabled: false # to use permission for Route objects
-  anyuid: true # add permission for anyuid scc
+  enabled: false #to use permission for Route objects
+  anyuid: true #add permission for anyuid scc
 
 # C-View Issuer by secure-ly ltd 
 
