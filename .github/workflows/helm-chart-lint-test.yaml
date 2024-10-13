@@ -42,4 +42,4 @@ jobs:
      #   if: steps.list-changed.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml  --upgrade --namespace cview-issuer
+        run: ct install --config ct.yaml  --upgrade 
