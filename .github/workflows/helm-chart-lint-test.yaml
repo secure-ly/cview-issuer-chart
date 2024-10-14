@@ -48,8 +48,9 @@ jobs:
           kubectl create ns cert-manager
           helm version 
           helm repo add jetstack https://charts.jetstack.io --force-update
-          helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2  --set installCRDs=true --set enableCertificateOwnerRef=true
+          helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2  --set installCRDs=true --set enableCertificateOwnerRef=true --wait 
           kubectl get ns
+          kubectl get pod -o wide -n cert-manager
           
       - name: Run chart-testing (install)
         run: ct install --config ct.yaml  --namespace cview-issuer 
