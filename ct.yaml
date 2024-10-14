@@ -3,7 +3,7 @@ remote: origin
 target-branch: main
 chart-dirs:
   - charts/
-chart-repos:
+#chart-repos:
 #  - cview-issuer=https://secure-ly.github.io/cview-issuer-chart/
 #  - cert-manager=https://charts.jetstack.io
 helm-extra-args: --timeout 300s 
