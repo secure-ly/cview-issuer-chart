@@ -53,4 +53,4 @@ jobs:
           kubectl get pod -o wide -n cert-manager
           
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml  --namespace cview-issuer 
+        run: ct install --config ct.yaml  --namespace cview-issuer  --debug 
