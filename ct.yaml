@@ -8,5 +8,5 @@ chart-repos:
   - cert-manager=https://charts.jetstack.io
 helm-extra-args: --timeout 300s 
 namespace: cview-issuer
-
+release-label: cview-issuer
 
