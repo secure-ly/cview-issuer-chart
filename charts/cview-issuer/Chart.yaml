@@ -20,7 +20,7 @@ version: 0.0.36
 # It is recommended to use it with quotes.
 appVersion: "0.0.36"
 
-maintainers: # (optional)
+maintainers: 
   - name: dror1966
     email: dror1966@secure-ly.com
     url: https://github.com/secure-ly/cview-issuer-chart
