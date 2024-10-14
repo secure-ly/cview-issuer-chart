@@ -50,4 +50,4 @@ jobs:
 
           
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml  --upgrade --namespace default 
+        run: ct install --config ct.yaml  --namespace default 
