@@ -25,21 +25,21 @@ maintainers:
     email: dror1966@secure-ly.com
     url: https://github.com/secure-ly/cview-issuer-chart
 
-#dependencies:
-#  - name: cert-manager
-#    alias: cert-manager
-#    version: ~v1.15.1
-#    repository: https://charts.jetstack.io
-#    condition: cert-manager.enabled
+dependencies:
+  - name: cert-manager
+    alias: cert-manager
+    version: ~v1.15.1
+    repository: https://charts.jetstack.io
+    condition: cert-manager.enabled
 
-#  - name: cert-manager
-#    alias: cert-manager-1-15
-#    version: ~v1.15.1
-#    repository: https://charts.jetstack.io
-#    condition: cert-manager-1-15.enabled
+  - name: cert-manager
+    alias: cert-manager-1-15
+    version: ~v1.15.1
+    repository: https://charts.jetstack.io
+    condition: cert-manager-1-15.enabled
 
-#  - name: cert-manager
-#    alias: cert-manager-1-14
-#    version: ~v1.14.1
-#    repository: https://charts.jetstack.io
-#    condition: cert-manager-1-14.enabled
+  - name: cert-manager
+    alias: cert-manager-1-14
+    version: ~v1.14.1
+    repository: https://charts.jetstack.io
+    condition: cert-manager-1-14.enabled
