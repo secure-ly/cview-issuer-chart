@@ -44,10 +44,12 @@ jobs:
       - run: |
           kubectl cluster-info 
           kubectl get nodes -v=6
+          kubectl create ns cview-issuer
+          kubectl create ns cert-manager
           helm version 
           helm repo add jetstack https://charts.jetstack.io --force-update
           helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2  --set installCRDs=true --set enableCertificateOwnerRef=true
-
+          kubectl get ns
           
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml  --namespace default 
+        run: ct install --config ct.yaml  --namespace cview-issuer 
