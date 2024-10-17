@@ -54,3 +54,6 @@ jobs:
           
       - name: Run chart-testing (install)
         run: ct install --config ct.yaml --charts charts/cview-issuer  --debug 
+
+
+# based on https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
