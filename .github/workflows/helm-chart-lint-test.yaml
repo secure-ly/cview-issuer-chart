@@ -34,7 +34,6 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-
       - name: Run chart-testing (lint)
         run: ct lint --config ct.yaml --lint-conf lintconf.yaml --chart-yaml-schema chart_schema.yaml
 
@@ -45,10 +44,16 @@ jobs:
       - run: |
           kubectl cluster-info 
           kubectl get nodes -v=6
+          kubectl create ns cview-issuer
+          kubectl create ns cert-manager
           helm version 
           helm repo add jetstack https://charts.jetstack.io --force-update
-          helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2  --set installCRDs=true --set enableCertificateOwnerRef=true
-
+          helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2  --set installCRDs=true --set enableCertificateOwnerRef=true --wait 
+          kubectl get ns
+          kubectl get pod -o wide -n cert-manager
           
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml  --upgrade 
+        run: ct install --config ct.yaml --charts charts/cview-issuer  --debug 
+
+
+# based on https://redhat-cop.github.io/ci/linting-testing-helm-charts.html

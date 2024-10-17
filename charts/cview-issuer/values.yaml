@@ -1,7 +1,8 @@
-
-cert-manager: 
-  enabled: false # to install cert-manager as a subchart 
+cert-manager:
+  enabled: false  # to install cert-manager as a subchart 
   namespace: cert-manager
+  crds:
+    enabled: true
 
 crd:
   install: true
@@ -59,11 +60,9 @@ controllerManager:
     certManagerNamespace: cert-manager
     certManagerServiceAccountName: cert-manager 
 
-
   replicaCount: 1
   strategy:
     type: Recreate
-
 
   environment:
     KUBERNETES_CLUSTER_DOMAIN: cluster.local
@@ -107,5 +106,3 @@ webhookService:
 
 nodeSelector: 
   kubernetes.io/os: linux
-
-
