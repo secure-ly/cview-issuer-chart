@@ -4,6 +4,19 @@ cert-manager:
   crds:
     enabled: true
 
+cert-manager-1-15:
+  enabled: false  # to install cert-manager 1.15 as a subchart 
+  namespace: cert-manager
+  crds:
+    enabled: true    
+
+cert-manager-1-14:
+  enabled: false  # to install cert-manager 1.14 as a subchart 
+  namespace: cert-manager
+  crds:
+    enabled: true    
+
+
 crd:
   install: true
 
@@ -106,3 +119,8 @@ webhookService:
 
 nodeSelector: 
   kubernetes.io/os: linux
+
+podPriorityClass:
+  enabled: false
+  name: cview-issuer
+  value: 10000 
