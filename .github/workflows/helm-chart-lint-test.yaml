@@ -26,6 +26,12 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Setup polaris
+        uses: fairwindsops/polaris/.github/actions/setup-polaris@master
+         
+        with:
+          version: 9.5.0
+
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.6.1
 
@@ -54,6 +60,14 @@ jobs:
           helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2  --set installCRDs=true --set enableCertificateOwnerRef=true --wait 
           kubectl get ns
           kubectl get pod -o wide -n cert-manager
+
+
+      - name: Use polaris for checking helm chart manifests
+        continue-on-error: true
+        run: |
+          pwd 
+          polaris audit --helm-chart /home/runner/work/cview-issuer/cview-issuer/charts/cview-issuer --helm-values /home/runner/work/cview-issuer/cview-issuer/charts/cview-issuer/values.yaml --format=pretty 
+        
           
       - name: Run chart-testing (install)
         run: ct install --config ct.yaml --charts charts/cview-issuer  --debug 
