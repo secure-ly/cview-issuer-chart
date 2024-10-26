@@ -65,6 +65,7 @@ jobs:
       - name: Use polaris for checking helm chart manifests
         continue-on-error: true
         run: |
+          echo $HOME
           pwd 
           polaris audit --helm-chart /home/runner/work/cview-issuer-chart/cview-issuer-chart/charts/cview-issuer --helm-values /home/runner/work/cview-issuer-chart/cview-issuer-chart/charts/cview-issuer/values.yaml --format=pretty 
         
