@@ -32,23 +32,29 @@ jobs:
         with:
           version: 9.5.0
 
+      - name: Setup Pluto
+        uses: FairwindsOps/pluto/github-action@master
+
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.6.1
 
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          changed=$(ct list-changed --config ct.yaml)
+          changed=$(ct list-changed --config ./.github/configs/ct.yaml)
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Run chart-testing (lint)
-        run: ct lint --config ct.yaml --lint-conf lintconf.yaml --chart-yaml-schema chart_schema.yaml
+        run: ct lint --config ./.github/configs/ct.yaml --lint-conf ./.github/configs/lintconf.yaml --chart-yaml-schema ./.github/configs/chart_schema.yaml
 
       - name: Create kind cluster
         uses: helm/kind-action@v1.10.0
         if: steps.list-changed.outputs.changed == 'true'
+        with:
+          config: .github/configs/kind-config.yaml
+          cluster_name: cview-cluster
 
       - run: |
           kubectl cluster-info 
@@ -60,6 +66,7 @@ jobs:
           helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2  --set installCRDs=true --set enableCertificateOwnerRef=true --wait 
           kubectl get ns
           kubectl get pod -o wide -n cert-manager
+          kubectl get nodes -o wide 
 
 
       - name: Use polaris for checking helm chart manifests
@@ -67,11 +74,26 @@ jobs:
         run: |
           echo $HOME
           pwd 
-          polaris audit --helm-chart /home/runner/work/cview-issuer-chart/cview-issuer-chart/charts/cview-issuer --helm-values /home/runner/work/cview-issuer-chart/cview-issuer-chart/charts/cview-issuer/values.yaml --format=pretty 
+          polaris audit --helm-chart ${GITHUB_WORKSPACE}/charts/cview-issuer --helm-values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml --format=pretty --quiet --only-show-failed-tests
         
-          
+        
+
+      - name: Use pluto for checking helm chart manifests
+    
+        continue-on-error: true
+        run: |
+          pwd 
+          helm template ${GITHUB_WORKSPACE}/charts/adcs-issuer --values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml | pluto detect --target-versions k8s=v1.27.0 -v 2 -o wide -
+          helm template ${GITHUB_WORKSPACE}/charts/adcs-issuer --values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml | pluto detect --target-versions k8s=v1.28.0 -v 2 -o wide -
+          helm template ${GITHUB_WORKSPACE}/charts/adcs-issuer --values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml | pluto detect --target-versions k8s=v1.29.0 -v 2 -o wide -
+          helm template ${GITHUB_WORKSPACE}/charts/adcs-issuer --values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml | pluto detect --target-versions k8s=v1.30.0 -v 2 -o wide -
+          helm template ${GITHUB_WORKSPACE}/charts/adcs-issuer --values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml | pluto detect --target-versions k8s=v1.31.0 -v 2 -o wide -
+
       - name: Run chart-testing (install)
-        run: ct install --config ct.yaml --charts charts/cview-issuer  --debug 
+        run: ct install --config ./.github/configs/ct.yaml --charts charts/cview-issuer  --debug 
 
 
-# based on https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
+
+# based on 
+# https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
+# https://github.com/argoproj/argo-helm/blob/main/.github/workflows/lint-and-test.yml
