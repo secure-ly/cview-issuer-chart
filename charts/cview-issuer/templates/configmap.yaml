@@ -33,7 +33,4 @@ data:
   # dedicated finalizer 
   certFinalizerName: cview-issuer/certificate-finalizer  
 
-
-
-
 {{- end  }}      

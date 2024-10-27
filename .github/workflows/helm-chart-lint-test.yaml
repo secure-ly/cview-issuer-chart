@@ -74,7 +74,7 @@ jobs:
         run: |
           echo $HOME
           pwd 
-          polaris audit --helm-chart ${GITHUB_WORKSPACE}/charts/cview-issuer --helm-values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml --format=pretty --quiet --only-show-failed-tests
+          polaris audit --helm-chart ${GITHUB_WORKSPACE}/charts/cview-issuer --helm-values ${GITHUB_WORKSPACE}/charts/cview-issuer/values.yaml --format=pretty --quiet --only-show-failed-tests --set-exit-code-below-score 80
         
         
 
