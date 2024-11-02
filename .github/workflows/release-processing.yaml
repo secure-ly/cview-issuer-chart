@@ -19,7 +19,7 @@ jobs:
         echo $GIT_STATUS
         git config user.name github-actions[bot]
         git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-        cp README-TEMPLATE.md README-RELEASE.md 
-        git add README-RELEASE.md 
+        cp ${GITHUB_WORKSPACE}/README-TEMPLATE.md ${GITHUB_WORKSPACE}/README-RELEASE.md 
+        git add ${GITHUB_WORKSPACE}/README-RELEASE.md 
         if [ "$GIT_STATUS" != "" ]; then git commit -m "Changing release"; fi
         if [ "$GIT_STATUS" != "" ]; then git push; fi
