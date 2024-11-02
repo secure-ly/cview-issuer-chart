@@ -16,8 +16,8 @@ The cview-issuer works through the C-VIEW certificate management platform to sig
 ## 1. Prerequisites 
 The following components are required before installing the C-View Issuer 
 
-- Kubernetes cluster with version >=1.27.x      
-- Cert manager with version >=1.12.x 
+- Kubernetes cluster with version >={{KUBERNETES_VERSION}}      
+- Cert manager with version >={{CERT_MANAGER_VERSION}} 
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
@@ -34,7 +34,7 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.14.2  \
+  --version {{CERT_MANAGER_VERSION}}  \
   --set installCRDs=true --set enableCertificateOwnerRef=true
 ```
 Check cert-manager installation 
@@ -123,7 +123,7 @@ helm upgrade --install \
   --create-namespace \
   --version  {{CHART_VERSION}} \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.35 \
+  --set controllerManager.manager.image.tag={{IMAGE_VERSION}}  \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \ 
   --set openshift.enabled=true \
   --set crd.install=true
