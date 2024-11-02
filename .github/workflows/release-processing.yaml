@@ -16,10 +16,13 @@ jobs:
     - name: Commit new release
       run: |
         GIT_STATUS=$(git status --porcelain)
-        echo $GIT_STATUS
+        echo "GIT_STATUS: $GIT_STATUS"
         git config user.name github-actions[bot]
         git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-        cp README-TEMPLATE.md README-RELEASE.md 
+        cp README-TEMPLATE.md README-RELEASE.md
+        git status
         git add README-RELEASE.md 
+        git status
+        echo "GIT_STATUS: $GIT_STATUS"
         if [ "$GIT_STATUS" != "" ]; then git commit -m "Changing release"; fi
         if [ "$GIT_STATUS" != "" ]; then git push; fi
