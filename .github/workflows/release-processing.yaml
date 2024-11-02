@@ -17,8 +17,8 @@ jobs:
       run: |
         GIT_STATUS=$(git status --porcelain)
         echo "GIT_STATUS: $GIT_STATUS"
-        git config user.name github-actions[bot]
-        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
         cp ${GITHUB_WORKSPACE}/README-TEMPLATE.md ${GITHUB_WORKSPACE}/README-RELEASE.md 
         git status -v
         GIT_STATUS=$(git status --porcelain)
