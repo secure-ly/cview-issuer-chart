@@ -21,8 +21,11 @@ jobs:
         git config user.email 41898282+github-actions[bot]@users.noreply.github.com
         cp ${GITHUB_WORKSPACE}/README-TEMPLATE.md ${GITHUB_WORKSPACE}/README-RELEASE.md 
         git status
-        git add ${GITHUB_WORKSPACE}/README-RELEASE.md 
+        GIT_STATUS=$(git status --porcelain)
+        git add ${GITHUB_WORKSPACE}/README-RELEASE.md
+        git add .
         git status
+        GIT_STATUS=$(git status --porcelain)
         echo "GIT_STATUS: $GIT_STATUS"
         if [ "$GIT_STATUS" != "" ]; then git commit -m "Changing release"; fi
         if [ "$GIT_STATUS" != "" ]; then git push; fi
