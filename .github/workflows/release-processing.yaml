@@ -2,7 +2,7 @@ name: Release processing
 
 on:
   schedule:
-    - cron: '0 0/2 * * *'
+    - cron: '0 20 * * *'
   workflow_dispatch:
 
 jobs:
@@ -30,14 +30,14 @@ jobs:
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
         cp ${GITHUB_WORKSPACE}/README-TEMPLATE.md ${GITHUB_WORKSPACE}/README-RELEASE.md 
         sh .github/scripts/prepare_release.sh 
-        git status -v
+        git status
         GIT_STATUS=$(git status --porcelain)
         git add ${GITHUB_WORKSPACE}/README-RELEASE.md
         git add .
-        git status -v
+        git status
         GIT_STATUS=$(git status --porcelain)
         echo "GIT_STATUS: $GIT_STATUS"
         if [ "$GIT_STATUS" != "" ]; then git commit -m "Changing release"; fi
-        git status -v
+        git status 
         if [ "$GIT_STATUS" != "" ]; then git push; fi
-        git status -v
+        git status
