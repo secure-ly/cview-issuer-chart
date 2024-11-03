@@ -16,8 +16,8 @@ The cview-issuer works through the C-VIEW certificate management platform to sig
 ## 1. Prerequisites 
 The following components are required before installing the C-View Issuer 
 
-- Kubernetes cluster with version >={{KUBERNETES_VERSION}}      
-- Cert manager with version >={{CERT_MANAGER_VERSION}} 
+- Kubernetes cluster with version >=1.27.x      
+- Cert manager with version >=v1.14.2 
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
@@ -34,7 +34,7 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version {{CERT_MANAGER_VERSION}}  \
+  --version v1.14.2  \
   --set installCRDs=true --set enableCertificateOwnerRef=true
 ```
 Check cert-manager installation 
@@ -69,7 +69,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   {{CHART_VERSION}}         {{APP_VERSION}}          C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.35         0.0.35          C-View issuer plugin for cert-manager
 </pre>
 
 ### Get a list of all issuer version
@@ -78,7 +78,7 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer    {{CHART_VERSION}}         {{APP_VERSION}}     C-View issuer plugin for cert-manager
+secure-ly/cview-issuer    0.0.35         0.0.35     C-View issuer plugin for cert-manager
 </pre>
 
 ```console
@@ -86,7 +86,7 @@ helm search repo cview-issuer --versions
 ```
 <pre>
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
-secure-ly/cview-issuer	{{CHART_VERSION}}         {{APP_VERSION}} C-View issuer plugin for cert-manager 
+secure-ly/cview-issuer	0.0.35       0.0.35 C-View issuer plugin for cert-manager 
 secure-ly/cview-issuer	0.0.34       	0.0.34     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.35       	0.0.35     	 C-View issuer plugin for cert-manager     
 </pre>
@@ -100,7 +100,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version  {{CHART_VERSION}} \
+  --version  0.0.35 \
   --set crd.install=true
 ```
 ### Install on Openshift 
@@ -110,7 +110,7 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version  {{CHART_VERSION}} \
+  --version  0.0.35 \
   --set crd.install=true \
   --set openshift.enabled=true
 ```
@@ -121,9 +121,9 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version  {{CHART_VERSION}} \
+  --version  0.0.35 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag={{IMAGE_VERSION}}  \
+  --set controllerManager.manager.image.tag=0.0.34  \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \ 
   --set openshift.enabled=true \
   --set crd.install=true
@@ -138,7 +138,7 @@ helm list -n cview-issuer
 ```
 <pre>
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
-cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-{{CHART_VERSION}}  {{APP_VERSION}}
+cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.35  0.0.35
 </pre>
 
 ## 5. C-View Issuer Configuration
@@ -192,7 +192,7 @@ Use this YAML example to create a certificate for ingress: ([Ingress-example](ht
 
 #### Documentation
 
-![Version: {{CHART_VERSION}}](https://img.shields.io/badge/Version-{{CHART_VERSION}}-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: {{APPT_VERSION}}](https://img.shields.io/badge/AppVersion-{{APP_VERSION}}-informational?style=flat-square)
+![Version: 0.0.35](https://img.shields.io/badge/Version-0.0.35-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: {{APPT_VERSION}}](https://img.shields.io/badge/AppVersion-0.0.35-informational?style=flat-square)
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
 
