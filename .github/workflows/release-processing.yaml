@@ -22,9 +22,9 @@ jobs:
         echo "GIT_STATUS: $GIT_STATUS"
         git config user.name "$GITHUB_ACTOR"
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+        git checkout gh-pages
         cp ${GITHUB_WORKSPACE}/README-TEMPLATE.md ${GITHUB_WORKSPACE}/README-RELEASE.md 
         git status -v
-        git checkout gh-pages
         GIT_STATUS=$(git status --porcelain)
         git add ${GITHUB_WORKSPACE}/README-RELEASE.md
         git add .
