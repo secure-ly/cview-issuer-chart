@@ -14,7 +14,9 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+       ref: gh-pages
 
     - name: Commit new release
       run: |
@@ -22,7 +24,6 @@ jobs:
         echo "GIT_STATUS: $GIT_STATUS"
         git config user.name "$GITHUB_ACTOR"
         git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-        git checkout gh-pages
         cp ${GITHUB_WORKSPACE}/README-TEMPLATE.md ${GITHUB_WORKSPACE}/README-RELEASE.md 
         git status -v
         GIT_STATUS=$(git status --porcelain)
