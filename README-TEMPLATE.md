@@ -86,7 +86,7 @@ helm search repo cview-issuer --versions
 ```
 <pre>
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
-secure-ly/cview-issuer	{{CHART_VERSION}}         {{APP_VERSION}} C-View issuer plugin for cert-manager 
+secure-ly/cview-issuer	{{CHART_VERSION}}       {{APP_VERSION}} C-View issuer plugin for cert-manager 
 secure-ly/cview-issuer	0.0.34       	0.0.34     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.35       	0.0.35     	 C-View issuer plugin for cert-manager     
 </pre>
