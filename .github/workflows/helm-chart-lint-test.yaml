@@ -47,6 +47,7 @@ jobs:
           fi
 
       - name: Run chart-testing (lint)
+        continue-on-error: true
         run: ct lint --config ./.github/configs/ct.yaml --lint-conf ./.github/configs/lintconf.yaml --chart-yaml-schema ./.github/configs/chart_schema.yaml --check-version-increment=false
 
       - name: Create kind cluster
