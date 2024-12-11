@@ -5,10 +5,10 @@ metadata:
   annotations:
     "cview-issuer/pauseReconciliation": "false"  # Flage to enable/disable reconciliation loop ( default value is false ) 
 
-# The caBundle parameters is the issuer CA certificate encoded in base 64
-# echo -n '<base64 certificate without end of lines>' | base64
+# The caBundle parameters is the ROOT CA certificate encoded in base 64
+# cat root.crt | base64 -w 0 
 spec:
-  caBundle: <base64 of CA certificate>
+  caBundle: <base64 of CA certificate string>
 
   authSecretName: cview-issuer-credentials     # Name of the secret that holds the user and password for accessing C-View API 
 
