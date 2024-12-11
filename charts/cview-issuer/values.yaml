@@ -21,6 +21,11 @@ openshift:
 configmap:
   install: false
 
+podPriorityClass: 
+  enabled: false 
+  name: ""
+  value: 20000100000
+
 controllerManager:
 
   # --labels for the controller deployment 
@@ -65,11 +70,9 @@ controllerManager:
     certManagerNamespace: cert-manager
     certManagerServiceAccountName: cert-manager 
 
-
   replicaCount: 1
   strategy:
     type: Recreate
-
 
   environment:
     KUBERNETES_CLUSTER_DOMAIN: cluster.local
