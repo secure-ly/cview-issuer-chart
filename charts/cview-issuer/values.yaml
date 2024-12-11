@@ -1,21 +1,13 @@
-cert-manager:
-  enabled: false  # to install cert-manager as a subchart 
+
+cert-manager: 
+  enabled: false # to install cert-manager as a subchart 
   namespace: cert-manager
-  crds:
-    enabled: true
 
 cert-manager-1-15:
-  enabled: false  # to install cert-manager 1.15 as a subchart 
-  namespace: cert-manager
-  crds:
-    enabled: true    
+  enabled: false
 
 cert-manager-1-14:
-  enabled: false  # to install cert-manager 1.14 as a subchart 
-  namespace: cert-manager
-  crds:
-    enabled: true    
-
+  enabled: false
 
 crd:
   install: true
@@ -73,9 +65,11 @@ controllerManager:
     certManagerNamespace: cert-manager
     certManagerServiceAccountName: cert-manager 
 
+
   replicaCount: 1
   strategy:
     type: Recreate
+
 
   environment:
     KUBERNETES_CLUSTER_DOMAIN: cluster.local
@@ -120,7 +114,4 @@ webhookService:
 nodeSelector: 
   kubernetes.io/os: linux
 
-podPriorityClass:
-  enabled: false
-  name: cview-issuer
-  value: 10000 
+

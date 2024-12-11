@@ -18,12 +18,7 @@ version: 0.0.36
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.0.36"
-
-maintainers: 
-  - name: dror1966
-    email: dror1966@secure-ly.com
-    url: https://github.com/secure-ly/cview-issuer-chart
+appVersion: "0.0.35"
 
 dependencies:
   - name: cert-manager

@@ -1,0 +1,43 @@
+name: Release processing
+
+on:
+  schedule:
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-documentation:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+
+    - name: install helm
+      uses: azure/setup-helm@v4
+
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+       ref: gh-pages
+
+    - name: Commit new release
+      run: |
+        GIT_STATUS=$(git status --porcelain)
+        echo "GIT_STATUS: $GIT_STATUS"
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+        cp ${GITHUB_WORKSPACE}/README-TEMPLATE.md ${GITHUB_WORKSPACE}/README-RELEASE.md 
+        sh .github/scripts/prepare_release.sh 
+        git status
+        GIT_STATUS=$(git status --porcelain)
+        git add ${GITHUB_WORKSPACE}/README-RELEASE.md
+        git add .
+        git status
+        GIT_STATUS=$(git status --porcelain)
+        echo "GIT_STATUS: $GIT_STATUS"
+        if [ "$GIT_STATUS" != "" ]; then git commit -m "Changing release"; fi
+        git status 
+        if [ "$GIT_STATUS" != "" ]; then git push; fi
+        git status
