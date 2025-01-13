@@ -69,7 +69,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.36          0.0.36          C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.36          0.0.35          C-View issuer plugin for cert-manager
 </pre>
 
 ### Get a list of all issuer version
@@ -78,7 +78,7 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer   0.0.36          0.0.36      C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.36          0.0.35      C-View issuer plugin for cert-manager
 </pre>
 
 ```console
@@ -88,7 +88,7 @@ helm search repo cview-issuer --versions
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
 secure-ly/cview-issuer	0.0.34       	0.0.34     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.35       	0.0.35     	 C-View issuer plugin for cert-manager     
-secure-ly/cview-issuer	0.0.36       	0.0.36     	 C-View issuer plugin for cert-manager     
+secure-ly/cview-issuer	0.0.36       	0.0.35     	 C-View issuer plugin for cert-manager     
 </pre>
 
 ## 4. Target platform Installation commands
