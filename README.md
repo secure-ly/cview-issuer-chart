@@ -101,6 +101,7 @@ helm upgrade --install \
   --namespace cview-issuer \
   --create-namespace \
   --version 0.0.36 \
+  --set controllerManager.manager.image.tag=0.0.36 \
   --set crd.install=true
 ```
 ### Install on Openshift 
@@ -111,6 +112,7 @@ helm upgrade --install \
   --namespace cview-issuer \
   --create-namespace \
   --version 0.0.36  \
+  --set controllerManager.manager.image.tag=0.0.36 \
   --set crd.install=true \
   --set openshift.enabled=true
 ```
