@@ -114,7 +114,8 @@ helm upgrade --install \
   --version 0.0.36  \
   --set controllerManager.manager.image.tag=0.0.36 \
   --set crd.install=true \
-  --set openshift.enabled=true
+  --set openshift.enabled=true \
+  --set openshift.anyuid=true
 ```
 ### Customize Installation on Openshift 
 
@@ -128,6 +129,7 @@ helm upgrade --install \
   --set controllerManager.manager.image.tag=0.0.36 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \ 
   --set openshift.enabled=true \
+  --set openshift.anyuid=true \
   --set crd.install=true
 ```
 NOTE: <br/> 
