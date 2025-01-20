@@ -154,8 +154,8 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 The C-View issuer supports both basic and token-based authentication to operate toward the cView Platform <br />
 Starting C-View issuer version 0.0.37 basic authentication will be supported anymore. <br /> 
 
-- authMethod property - set to basic for basic authentication and update the **user name** and **password** parameters
-- authMethod property - set to token for token-based authentication and update the **token** value ( get it form C-View administrator)
+- authMethod property - set to **basic** for basic authentication and update the **user name** and **password** parameters
+- authMethod property - set to **token** for token-based authentication and update the **token** value ( get it form C-View administrator)
 
 - Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deploy the YAML file to Kubernetes/Openshift 
