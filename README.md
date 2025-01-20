@@ -19,7 +19,7 @@ The following components are required before installing the C-View Issuer
 - Kubernetes cluster with version >=1.27.x      
 - Cert manager with version >=1.12.x 
 - Jaeger opentracing (optional)
-- C-View CLM >= 7.x.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
+- C-View CLM >= 7.1.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
 ## 2. Cert-manager installation using helm chart 
 This is the preferred way to install cert-manager via helm-chart
@@ -151,10 +151,13 @@ cview-issuer    cview-issuer    1               2024-07-02 17:31:20.172857068 +0
 
 #### 5.1.1 C-View Issuer Credential 
 
-The C-View issuer requires an application user to operate toward the cView Platform. <br />
-This user should be a domain user with access rights to the C-View Platform as a Cert Owner.<br />
+The C-View issuer supports both basic and token-based authentication to operate toward the cView Platform <br />
+Starting C-View issuer version 0.0.37 basic authentication will be supported anymore. <br /> 
 
-- Update the **user name** and **password** parameters in the following YAML file: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
+- authMethod property - set to basic for basic authentication and update the **user name** and **password** parameters
+- authMethod property - set to token for token-based authentication and update the **token** value ( get it form C-View administrator)
+
+- Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deploy the YAML file to Kubernetes/Openshift 
 
 #### 5.1.2 C-View Issuer activation key
