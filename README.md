@@ -38,7 +38,11 @@ helm upgrade  --install \
   --set installCRDs=true \
   --set enableCertificateOwnerRef=true
 ```
-###  Install cert-manager with GatewayAPI Enabled (opional) 
+### Adding support for Gateway API in kubernetes
+``` consol
+kubectl apply -f "https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml"
+```
+###  Install cert-manager with GatewayAPI Enabled (optional) 
 ```console
 helm upgrade  --install \
   cert-manager jetstack/cert-manager \
