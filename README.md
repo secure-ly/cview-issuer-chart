@@ -16,8 +16,8 @@ The cview-issuer works through the C-VIEW certificate management platform to sig
 ## 1. Prerequisites 
 The following components are required before installing the C-View Issuer 
 
-- Kubernetes cluster with version >=1.27.x      
-- Cert manager with version >=1.12.x 
+- Kubernetes cluster with version >=1.29.x      
+- Cert manager with version >=1.15.x 
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.1.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
