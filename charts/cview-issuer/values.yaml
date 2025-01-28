@@ -32,7 +32,7 @@ controllerManager:
   manager:
     image:
       repository: devsecurely/cview-issuer
-      tag: 0.0.35
+      tag: 0.0.37
 
     resources:
       limits:
