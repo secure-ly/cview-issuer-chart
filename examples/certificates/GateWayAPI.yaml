@@ -1,0 +1,56 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: gateway-template                             # The name of the getway api 
+  annotations:
+
+    cert-manager.io/issuer: "cviewissuer-1-year"     # The name of specific cview-issuer or cluster issuer 
+    cert-manager.io/issuer-kind: "CViewIssuer"       # required, do not modify 
+    cert-manager.io/issuer-group: "secure-ly.com"    # required, do not modify 
+    
+    # --------------------------------------------------------------------------------------
+    # Subject fileds annotation 
+    # --------------------------------------------------------------------------------------
+    cert-manager.io/common-name: ""                  # Common name should be added. (required)  
+    cert-manager.io/subject-organizations: ""        # Organization (optional)
+    cert-manager.io/subject-organizationalunits: ""  # Organization unit (optional)
+    cert-manager.io/subject-countries: ""            # county as two char  (optional)
+    cert-manager.io/subject-provinces: ""            # State (optional)
+    cert-manager.io/subject-localities: ""           # City (optional)
+    
+    # --------------------------------------------------------------------------------------
+    # Subject alternative names 
+    # --------------------------------------------------------------------------------------
+    cert-manager.io/alt-names: ""                    # SAN, rfc822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
+    cert-manager.io/email-sans: ""                   # RFC822 email Addresses. (optional). Supports comma-separated values e.g. "me@example.com,you@example.com"
+    cert-manager.io/ip-sans: ""                      # IP Address (optional). Supports comma-separated values e.g ( "10.20.30.40,192.168.192.168")
+
+  # --------------------------------------------------------------------------------------
+    # Anotation a business logic information to be added to the certificate (used in CView) 
+    # --------------------------------------------------------------------------------------
+    cview-issuer/customField1: ""                   # custome filed 1, based on C-View definition
+    cview-issuer/customField2: ""
+    cview-issuer/customField3: ""
+    cview-issuer/customField4: ""
+    cview-issuer/customField5: ""
+    cview-issuer/customField6: ""
+    cview-issuer/customField7: ""
+    cview-issuer/customField8: ""
+    cview-issuer/customField9: ""
+    cview-issuer/customField10: ""
+    cview-issuer/customEmailAddress: ""            # set the custom email address for a personal expiration alert 
+    cview-issuer/certOwner: ""                     # set the certificate owner as domain\\user
+spec:
+  gatewayClassName: ""
+  listeners:
+    - name: http
+      hostname: ""
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: gateway-com-tls            # The name of the secret (certificate)
