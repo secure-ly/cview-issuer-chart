@@ -19,11 +19,11 @@ spec:
     drop:
     - ALL
   runAsUser:
-    type: MustRunAsRange
+    type: MustRunAsRange # Valid value for runAsUser.type
     uidRangeMin: 1000
     uidRangeMax: 1000
   seLinuxContext:
-    type: MustRunAs
+    type: RunAsAny # Valid value for seLinuxContext.type
   fsGroup:
     type: MustRunAs
     ranges:
