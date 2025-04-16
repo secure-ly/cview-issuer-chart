@@ -18,12 +18,12 @@ version: 0.0.37
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.0.37"
+appVersion: "0.0.38-rc.1"
 
 dependencies:
   - name: cert-manager
     alias: cert-manager
-    version: ~v1.15.1
+    version: ~v1.16.4
     repository: https://charts.jetstack.io
     condition: cert-manager.enabled
 

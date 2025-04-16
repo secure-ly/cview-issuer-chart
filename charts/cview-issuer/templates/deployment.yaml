@@ -49,8 +49,8 @@ spec:
         {{- end }}
         {{- end }}
         
-        command:
-        - /manager
+      #  command:
+      #  - /manager
         env:
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ .Values.controllerManager.environment.KUBERNETES_CLUSTER_DOMAIN |quote}}
@@ -88,7 +88,7 @@ spec:
         {{- toYaml  .Values.controllerManager.containerSecurityContext | nindent 10 }}
 
         volumeMounts:
-         {{- if .Values.controllerManager.enabledWebHooks  }}
+        {{- if .Values.controllerManager.enabledWebHooks  }}
         - mountPath: /tmp/k8s-webhook-server/serving-certs
           name: cert
           readOnly: true

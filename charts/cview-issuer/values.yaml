@@ -14,7 +14,7 @@ crd:
 
 openshift:
   enabled: false # to use permission for Route objects
-  anyuid: true # add permission for anyuid scc
+  anyuid: false # add permission for anyuid scc
 
 # C-View Issuer by secure-ly ltd 
 
