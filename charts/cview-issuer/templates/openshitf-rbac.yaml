@@ -1,3 +1,62 @@
+
+{{- if and .Values.openshift.enabled  }}
+apiVersion: security.openshift.io/v1
+kind: SecurityContextConstraints
+metadata:
+  name: cview-issuer-scc
+  annotations:
+    scc.kubernetes.io/allow-capabilities: "false"
+    scc.kubernetes.io/allow-host-network: "false"
+    scc.kubernetes.io/allow-host-pid: "false"
+    scc.kubernetes.io/allow-host-ipc: "false"
+    scc.kubernetes.io/allow-host-ports: "false"
+    scc.kubernetes.io/priority-class: "1"
+spec:
+  allowHostDirVolumePlugin: false
+  allowPrivilegeEscalation: false
+  capabilities:
+    add: []
+    drop:
+    - ALL
+  runAsUser:
+    type: MustRunAsRange
+    uidRangeMin: 1000
+    uidRangeMax: 1000
+  seLinuxContext:
+    type: MustRunAs
+  fsGroup:
+    type: MustRunAs
+    ranges:
+      - min: 1000
+        max: 1000
+  supplementalGroups:
+    type: MustRunAs
+    ranges:
+      - min: 1000
+        max: 1000
+  readOnlyRootFilesystem: true
+  volumes:
+    - configMap
+    - emptyDir
+    - projected
+    - secret
+    - downwardAPI
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cview-issuer-scc-binding
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:openshift:scc:cview-issuer-scc
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.controllerManager.rbac.serviceAccountName }}
+    namespace: {{ .Release.Namespace }}
+{{- end  }} 
+---
 {{- if and .Values.openshift.enabled .Values.openshift.anyuid }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -14,3 +73,4 @@ subjects:
     namespace: {{ .Release.Namespace }}
 
 {{- end  }} 
+
