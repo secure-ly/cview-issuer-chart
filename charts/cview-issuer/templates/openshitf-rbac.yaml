@@ -11,36 +11,50 @@ metadata:
     scc.kubernetes.io/allow-host-ipc: "false"
     scc.kubernetes.io/allow-host-ports: "false"
     scc.kubernetes.io/priority-class: "1"
-spec:
-  allowHostDirVolumePlugin: false
-  allowPrivilegeEscalation: false
-  capabilities:
-    add: []
-    drop:
-    - ALL
-  runAsUser:
-    type: MustRunAsRange # Valid value for runAsUser.type
-    uidRangeMin: 1000
-    uidRangeMax: 1000
-  seLinuxContext:
-    type: RunAsAny # Valid value for seLinuxContext.type
-  fsGroup:
-    type: MustRunAs
-    ranges:
-      - min: 1000
-        max: 1000
-  supplementalGroups:
-    type: MustRunAs
-    ranges:
-      - min: 1000
-        max: 1000
-  readOnlyRootFilesystem: true
-  volumes:
-    - configMap
-    - emptyDir
-    - projected
-    - secret
-    - downwardAPI
+
+allowHostDirVolumePlugin: false
+allowPrivilegeEscalation: false
+capabilities:
+  add: []
+  drop:
+  - ALL
+runAsUser:
+  type: MustRunAsRange # Valid value for runAsUser.type
+  uidRangeMin: 1000
+  uidRangeMax: 1000
+seLinuxContext:
+  type: RunAsAny # Valid value for seLinuxContext.type
+fsGroup:
+  type: MustRunAs
+  ranges:
+    - min: 1000
+      max: 1000
+supplementalGroups:
+  type: MustRunAs
+  ranges:
+    - min: 1000
+      max: 1000
+readOnlyRootFilesystem: true
+volumes:
+  - configMap
+  - emptyDir
+  - projected
+  - secret
+  - downwardAPI
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: system:openshift:scc:cview-issuer-scc
+rules:
+- apiGroups:
+  - security.openshift.io 
+  resourceNames:
+  - cview-issuer-scc 
+  resources:
+  - securitycontextconstraints 
+  verbs: 
+  - use
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
