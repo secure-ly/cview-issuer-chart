@@ -91,7 +91,9 @@ controllerManager:
       - ALL
 
   podSecurityContext:
-    runAsUser: 1000
+    runAsUser: 1000 
+    fsGroup: 1000
+
 
   enabledWebHooks: false
   enabledCaCerts: false

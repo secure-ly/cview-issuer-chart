@@ -1,5 +1,5 @@
 
-{{- if and .Values.openshift.enabled  }}
+{{- if and .Values.openshift.enabled (not .Values.openshift.anyuid) }}
 apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
@@ -20,20 +20,20 @@ capabilities:
   - ALL
 runAsUser:
   type: MustRunAsRange # Valid value for runAsUser.type
-  uidRangeMin: 1000
-  uidRangeMax: 1000
+  uidRangeMin: {{ .Values.controllerManager.podSecurityContext.runAsUser }}
+  uidRangeMax: {{ .Values.controllerManager.podSecurityContext.runAsUser }}
 seLinuxContext:
   type: RunAsAny # Valid value for seLinuxContext.type
 fsGroup:
   type: MustRunAs
   ranges:
-    - min: 1000
-      max: 1000
+    - min: {{ .Values.controllerManager.podSecurityContext.fsGroup }}
+      max: {{ .Values.controllerManager.podSecurityContext.fsGroup }}
 supplementalGroups:
   type: MustRunAs
   ranges:
-    - min: 1000
-      max: 1000
+    - min: {{ .Values.controllerManager.podSecurityContext.fsGroup }}
+      max: {{ .Values.controllerManager.podSecurityContext.fsGroup }}
 readOnlyRootFilesystem: true
 volumes:
   - configMap
@@ -45,7 +45,7 @@ volumes:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: system:openshift:scc:cview-issuer-scc
+  name: cview-issuer-scc
 rules:
 - apiGroups:
   - security.openshift.io 
@@ -64,7 +64,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: system:openshift:scc:cview-issuer-scc
+  name: cview-issuer-scc
 subjects:
   - kind: ServiceAccount
     name: {{ .Values.controllerManager.rbac.serviceAccountName }}
