@@ -151,7 +151,8 @@ helm upgrade --install \
   --set crd.install=true
 ```
 NOTE: <br/> 
-- Set **controllerManager.arguments.enable-tracing="true"** to enable jaeger tracing 
+- Set **controllerManager.arguments.enable-tracing="true"** to enable jaeger tracing
+- Setting openshift.anyuid parameter to **false** will create a security context constraint ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/security/))  
 
 ### Display helm chart status
 
