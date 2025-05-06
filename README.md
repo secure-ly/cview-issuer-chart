@@ -152,7 +152,7 @@ helm upgrade --install \
 ```
 NOTE: <br/> 
 - Set **controllerManager.arguments.enable-tracing="true"** to enable jaeger tracing
-- Setting **openshift.anyuid** parameter to **false** will create a security context constraint. See example ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/security/openshitf-rbac.yaml))  
+- Setting **openshift.anyuid** parameter to **false** will create a security context constraint. See example ([security-context-constraint](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/security/openshitf-rbac.yaml))  
 
 ### Display helm chart status
 
