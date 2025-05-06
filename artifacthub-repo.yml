@@ -9,7 +9,7 @@
 # when the hash of the last commit in the branch you set up changes. This does
 # NOT apply to ownership claim operations, which are processed immediately.
 #
-repositoryID: REDACTED
+repositoryID: 0e4c9107-5bc0-4f54-b0bb-28603b0002f4
 owners: # (optional, used to claim repository ownership)
   - name: dror
     email: drorb@secure-ly.com
