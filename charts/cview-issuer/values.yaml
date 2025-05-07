@@ -3,10 +3,10 @@ cert-manager:
   enabled: false # to install cert-manager as a subchart 
   namespace: cert-manager
 
-cert-manager-1-15:
+cert-manager-1-16:
   enabled: false
 
-cert-manager-1-14:
+cert-manager-1-15:
   enabled: false
 
 crd:
