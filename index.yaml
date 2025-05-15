@@ -2,6 +2,32 @@ apiVersion: v1
 entries:
   cview-issuer:
   - apiVersion: v2
+    appVersion: 0.0.38
+    created: "2025-05-15T14:16:21.231206679Z"
+    dependencies:
+    - alias: cert-manager
+      condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: ~v1.17.2
+    - alias: cert-manager-1-16
+      condition: cert-manager-1-16.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: ~v1.16.4
+    - alias: cert-manager-1-15
+      condition: cert-manager-1-15.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: ~v1.15.1
+    description: C-View issuer plugin for cert-manager
+    digest: 5f19a6527fedcff5f51d9ca66120dd36081ae8aabab10d3ac6ad77b8e4c94375
+    name: cview-issuer
+    type: application
+    urls:
+    - https://github.com/secure-ly/cview-issuer-chart/releases/download/cview-issuer-0.0.38/cview-issuer-0.0.38.tgz
+    version: 0.0.38
+  - apiVersion: v2
     appVersion: 0.0.37
     created: "2025-04-17T12:48:22.659919371Z"
     dependencies:
@@ -193,4 +219,4 @@ entries:
     urls:
     - https://github.com/secure-ly/cview-issuer-chart/releases/download/cview-issuer-0.0.30/cview-issuer-0.0.30.tgz
     version: 0.0.30
-generated: "2025-04-17T12:48:22.6599718Z"
+generated: "2025-05-15T14:16:21.231270262Z"
