@@ -140,3 +140,14 @@ helm template cview-issuer charts/cview-issuer -n cview-issuer  --create-namespa
   --set cert-manager-1-14.enabled=true \
   --set cert-manager-1-14.namespace=cert-manager  \
   --set cert-manager-1-14.crds.enabled=false > cview-issuer-all.yaml
+
+
+    helm template cview-issuer charts/cview-issuer -n cview-issuer  --create-namespace --values charts/cview-issuer/values.yaml --set crd.install=false  \
+  --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
+  --set controllerManager.manager.image.tag=0.0.38 \
+  --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
+  --set controllerManager.arguments.enable-tracing="false" \
+  --set controllerManager.arguments.tracing-endpoint="jaeger-collector.jaeger-operator.svc.cluster.local:4318" \
+  --set openshift.enabled=true \
+  --set openshift.anyuid=false 
+
