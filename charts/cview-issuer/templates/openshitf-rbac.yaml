@@ -4,26 +4,24 @@ apiVersion: security.openshift.io/v1
 kind: SecurityContextConstraints
 metadata:
   name: cview-issuer-scc
-  annotations:
-    scc.kubernetes.io/allow-capabilities: "false"
-    scc.kubernetes.io/allow-host-network: "false"
-    scc.kubernetes.io/allow-host-pid: "false"
-    scc.kubernetes.io/allow-host-ipc: "false"
-    scc.kubernetes.io/allow-host-ports: "false"
-    scc.kubernetes.io/priority-class: "1"
 
+allowHostIPC: false
+allowHostNetwork: false
+allowHostPID: false
+allowHostPorts: false
 allowHostDirVolumePlugin: false
 allowPrivilegeEscalation: false
-capabilities:
-  add: []
-  drop:
-  - ALL
+requiredDropCapabilities:
+- ALL
 runAsUser:
   type: MustRunAsRange # Valid value for runAsUser.type
   uidRangeMin: {{ .Values.controllerManager.podSecurityContext.runAsUser }}
   uidRangeMax: {{ .Values.controllerManager.podSecurityContext.runAsUser }}
 seLinuxContext:
-  type: RunAsAny # Valid value for seLinuxContext.type
+  type: MustRunAs # Valid value for seLinuxContext.type
+    seccompProfiles:
+      - runtime/default
+
 fsGroup:
   type: MustRunAs
   ranges:
