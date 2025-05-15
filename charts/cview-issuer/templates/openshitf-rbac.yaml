@@ -19,8 +19,8 @@ runAsUser:
   uidRangeMax: {{ .Values.controllerManager.podSecurityContext.runAsUser }}
 seLinuxContext:
   type: MustRunAs # Valid value for seLinuxContext.type
-    seccompProfiles:
-      - runtime/default
+seccompProfiles:
+  - runtime/default
 
 fsGroup:
   type: MustRunAs
