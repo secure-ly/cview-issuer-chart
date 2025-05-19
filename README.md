@@ -171,7 +171,7 @@ cview-issuer    cview-issuer    1               2025-05-15 10:31:20.172857068 +0
 #### 5.1.1 C-View Issuer Credential 
 
 The C-View issuer supports both basic and token-based authentication to operate toward the C-View Platform <br />
-** When your C-View platform is 7.2.0 it's required to wotk with authMethod = token **. <br /> 
+**When your C-View platform is 7.2.0 it's required to wotk with authMethod = token**. <br /> 
 
 - authMethod property
   - set to **basic** for basic authentication and update the **user name** and **password** parameters
