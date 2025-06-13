@@ -4,9 +4,9 @@
 
 # cview-issuer for cert-manager by Securely LTD
 
-The C-View issuer is an external certificate issuer for the cert-manager engine <br />
-The cview-issuer works through the C-VIEW certificate management platform to sign certificate requests in the organization ADCS
-and to suppoerted public CA like Global Sign and DigiCert. 
+The C-View issuer is known cert-manager issuer [Issuers](https://cert-manager.io/docs/configuration/issuers). <br /> 
+It operates through the C-VIEW certificate management platform to process certificate requests within  <br />
+the organization's ADCS and supports public certificate authorities like GlobalSign and DigiCert.
     
 [1. Prerequisites](#1-prerequisites) <br />
 [2. Cert-manager installation using helm chart](#2-cert-manager-installation-using-helm-chart)<br />
