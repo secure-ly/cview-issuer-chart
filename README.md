@@ -18,7 +18,7 @@ the organization's ADCS and supports public certificate authorities like GlobalS
 The following components are required before installing the C-View Issuer 
 
 - Kubernetes cluster with version >=1.29.x      
-- Cert manager with version >=1.15.x 
+- Cert manager with version >=1.17.1.x 
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.1.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
@@ -35,8 +35,8 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.15.4  \  
-  --set installCRDs=true \
+  --version v1.17.1  \    
+  --set crds.enabled=true
   --set enableCertificateOwnerRef=true
 ```
 ### Adding support for Gateway API in kubernetes
@@ -49,11 +49,11 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.15.4  \
+  --version v1.17.1  \
   --set config.enableGatewayAPI=true \
   --set config.apiVersion="controller.config.cert-manager.io/v1alpha1" \
   --set config.kind="ControllerConfiguration" \
-  --set installCRDs=true \
+  --set crds.enabled=true \
   --set enableCertificateOwnerRef=true
 ```
 Check cert-manager installation 
