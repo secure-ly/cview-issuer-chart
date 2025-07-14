@@ -211,7 +211,8 @@ C-View Issuer supports the following certificate types:
 Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
 
 #### 5.4.1.1 Standard certificate/secret as JKS or PFX 
-Use this YAML example to create a certificate object include JKS: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
+Use this YAML to create the secrte of the JKS /PFX : ([cert-store-secret](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cert-store-secret.yaml))
+Use this YAML example to create a certificate object with JKS or PFX : ([cert-store-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-store-example.yaml)) 
 
 #### 5.4.2 Openshift Route Secret 
 Use this YAML example to create a certificate for an open shift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml))<br />
