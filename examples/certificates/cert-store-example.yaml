@@ -29,11 +29,19 @@ spec:
   revisionHistoryLimit: 4 		 	  # limit of certificate requests per certificate
   renewBefore: 240h               # Renew certificate X hours before certificate expires (default value is 240h equal to 10 days)
   secretName: cert-example       	# The name of the certificate secret (required and unique) 
+
+  keystores:
+    jks:                          # This property can be jks or pfx  
+      create: true
+      alias : crm12               # This is the alias name inside the pkcs12 store ( use the comman name ) 
+      passwordSecretRef:
+        name: cert-store-password # the name of the secret that contains the password for the JKS/PFX store
+        key: password             # The name of property holds the password value  
   
   # --------------------------------------------------------------------------------------
   # Subject fileds annotation 
   # --------------------------------------------------------------------------------------
-  commonName: example.secure-ly.com # Common name should be added. (required) 
+  commonName: crm12                 # Common name should be added. (required) 
   organizations:                    # Organization name (optional)
   #    - Securely
 
