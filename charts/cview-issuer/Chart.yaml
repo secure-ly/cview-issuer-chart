@@ -19,6 +19,7 @@ version: 0.0.39
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "0.0.39"
+icon: https://secure-ly.github.io/cview-issuer-chart/logo/1234-logo.png
 
 dependencies:
 
@@ -39,7 +40,3 @@ dependencies:
     version: ~v1.16.4
     repository: https://charts.jetstack.io
     condition: cert-manager-1-16.enabled
-
-
-
-
