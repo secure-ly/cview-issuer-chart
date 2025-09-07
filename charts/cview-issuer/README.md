@@ -1,6 +1,6 @@
 # cview-issuer
 
-![Version: 0.0.38](https://img.shields.io/badge/Version-0.0.38-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.38](https://img.shields.io/badge/AppVersion-0.0.38-informational?style=flat-square)
+![Version: 0.0.39](https://img.shields.io/badge/Version-0.0.39-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.39](https://img.shields.io/badge/AppVersion-0.0.39-informational?style=flat-square)
 
 C-View issuer plugin for cert-manager
 
@@ -8,16 +8,16 @@ C-View issuer plugin for cert-manager
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.jetstack.io | cert-manager(cert-manager) | ~v1.17.2 |
+| https://charts.jetstack.io | cert-manager(cert-manager) | ~v1.18.2 |
+| https://charts.jetstack.io | cert-manager-1-17(cert-manager) | ~v1.17.2 |
 | https://charts.jetstack.io | cert-manager-1-16(cert-manager) | ~v1.16.4 |
-| https://charts.jetstack.io | cert-manager-1-15(cert-manager) | ~v1.15.1 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| cert-manager-1-15.enabled | bool | `false` |  |
 | cert-manager-1-16.enabled | bool | `false` |  |
+| cert-manager-1-17.enabled | bool | `false` |  |
 | cert-manager.enabled | bool | `false` |  |
 | cert-manager.namespace | string | `"cert-manager"` |  |
 | configmap.install | bool | `false` |  |
@@ -39,7 +39,7 @@ C-View issuer plugin for cert-manager
 | controllerManager.environment.KUBERNETES_CLUSTER_DOMAIN | string | `"cluster.local"` |  |
 | controllerManager.labels | object | `{"app":"cview-issuer"}` | labels for the controller deployment  |
 | controllerManager.manager.image.repository | string | `"devsecurely/cview-issuer"` |  |
-| controllerManager.manager.image.tag | string | `"0.0.38"` |  |
+| controllerManager.manager.image.tag | string | `"0.0.39"` |  |
 | controllerManager.manager.livenessProbe.httpGet.path | string | `"/healthz"` |  |
 | controllerManager.manager.livenessProbe.httpGet.port | int | `8081` |  |
 | controllerManager.manager.livenessProbe.httpGet.scheme | string | `"HTTP"` |  |
@@ -72,6 +72,8 @@ C-View issuer plugin for cert-manager
 | nodeSelector."kubernetes.io/os" | string | `"linux"` |  |
 | openshift.anyuid | bool | `false` |  |
 | openshift.enabled | bool | `false` |  |
+| podDisruptionBudget.install | bool | `true` |  |
+| podDisruptionBudget.minAvailable | int | `1` |  |
 | webhookService.ports[0].port | int | `443` |  |
 | webhookService.ports[0].targetPort | int | `9443` |  |
 | webhookService.type | string | `"ClusterIP"` |  |

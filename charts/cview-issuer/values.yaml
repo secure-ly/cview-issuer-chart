@@ -3,10 +3,10 @@ cert-manager:
   enabled: false # to install cert-manager as a subchart 
   namespace: cert-manager
 
-cert-manager-1-16:
+cert-manager-1-17:
   enabled: false
 
-cert-manager-1-15:
+cert-manager-1-16:
   enabled: false
 
 crd:
@@ -15,6 +15,11 @@ crd:
 openshift:
   enabled: false # to use permission for Route objects
   anyuid: false # add permission for anyuid scc
+
+podDisruptionBudget:
+  install: true # true to use pod distruption budget object
+  minAvailable: 1 # minimal version of running pods
+
 
 # C-View Issuer by secure-ly ltd 
 
@@ -32,7 +37,7 @@ controllerManager:
   manager:
     image:
       repository: devsecurely/cview-issuer
-      tag: 0.0.38
+      tag: 0.0.39
 
     resources:
       limits:

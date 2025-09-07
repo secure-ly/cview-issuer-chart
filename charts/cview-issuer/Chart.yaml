@@ -13,20 +13,26 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.38
+version: 0.0.39
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.0.38"
+appVersion: "0.0.39"
 
 dependencies:
 
   - name: cert-manager
     alias: cert-manager
-    version: ~v1.17.2
+    version: ~v1.18.2
     repository: https://charts.jetstack.io
     condition: cert-manager.enabled
+    
+  - name: cert-manager
+    alias: cert-manager-1-17
+    version: ~v1.17.2
+    repository: https://charts.jetstack.io
+    condition: cert-manager-1-17.enabled
 
   - name: cert-manager
     alias: cert-manager-1-16
@@ -35,9 +41,5 @@ dependencies:
     condition: cert-manager-1-16.enabled
 
 
-  - name: cert-manager
-    alias: cert-manager-1-15
-    version: ~v1.15.1
-    repository: https://charts.jetstack.io
-    condition: cert-manager-1-15.enabled
+
 
