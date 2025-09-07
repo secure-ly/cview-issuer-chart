@@ -36,7 +36,7 @@ jobs:
         uses: FairwindsOps/pluto/github-action@master
 
       - name: Set up chart-testing
-        uses: helm/chart-testing-action@v2.6.1
+        uses: helm/chart-testing-action@v2.7.0
 
       - name: Run chart-testing (list-changed)
         id: list-changed
@@ -64,7 +64,7 @@ jobs:
           kubectl create ns cert-manager
           helm version 
           helm repo add jetstack https://charts.jetstack.io --force-update
-          helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.18.2  --set installCRDs=true --set enableCertificateOwnerRef=true --wait 
+          helm upgrade --install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.18.2  --set crds.enabled=true --set enableCertificateOwnerRef=true --wait 
           kubectl get ns
           kubectl get pod -o wide -n cert-manager
           kubectl get nodes -o wide 
