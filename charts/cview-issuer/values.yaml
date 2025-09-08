@@ -16,7 +16,7 @@ openshift:
   anyuid: false # add permission for anyuid scc
 
 podDisruptionBudget:
-  install: false # true to use pod distruption budget object
+  install: false # true to use podDistruptionBudget object
   minAvailable: 1 # minimal version of running pods
 
 
