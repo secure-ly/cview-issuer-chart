@@ -1,10 +1,12 @@
+{{- if and .Values.podDisruptionBudget .Values.podDisruptionBudget.install }}
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: {{ include "chart.fullname" . }}-controller-manager
-  namespace: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
 spec:
-  minAvailable: 1
+  minAvailable: {{ .Values.podDisruptionBudget.minAvailable | default "1" }}
   selector:
     matchLabels:
       {{- include "chart.selectorLabels" . | nindent 8 }}
+{{- end }}
