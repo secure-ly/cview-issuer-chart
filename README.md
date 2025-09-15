@@ -18,7 +18,7 @@ the organization's ADCS and supports public certificate authorities like GlobalS
 The following components are required before installing the C-View Issuer 
 
 - Kubernetes cluster with version >=1.29.x      
-- Cert manager with version >=1.17.1.x 
+- Cert manager with version >=1.17.1.x   (For list of supported versions: [Supported versions](https://cert-manager.io/docs/releases/))  
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.1.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
@@ -88,7 +88,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.38          0.0.38          C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.39          0.0.39          C-View issuer plugin for cert-manager
 </pre>
 
 ### Get a list of all issuer version
@@ -97,7 +97,7 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer   0.0.38          0.0.38      C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.39          0.0.39      C-View issuer plugin for cert-manager
 </pre>
 
 ```console
@@ -105,9 +105,9 @@ helm search repo cview-issuer --versions
 ```
 <pre>
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
-secure-ly/cview-issuer	0.0.36       	0.0.36     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.37       	0.0.37     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.38       	0.0.38     	 C-View issuer plugin for cert-manager     
+secure-ly/cview-issuer	0.0.39       	0.0.39     	 C-View issuer plugin for cert-manager     
 </pre>
 
 ## 4. Target platform Installation commands
@@ -119,8 +119,8 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.38 \
-  --set controllerManager.manager.image.tag=0.0.38 \
+  --version 0.0.39 \
+  --set controllerManager.manager.image.tag=0.0.39 \
   --set crd.install=true
 ```
 ### Install on Openshift 
@@ -130,8 +130,8 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.38  \
-  --set controllerManager.manager.image.tag=0.0.38 \
+  --version 0.0.39  \
+  --set controllerManager.manager.image.tag=0.0.39 \
   --set crd.install=true \
   --set openshift.enabled=true \
   --set openshift.anyuid=true
@@ -143,9 +143,9 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.38 \
+  --version 0.0.39 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.38 \
+  --set controllerManager.manager.image.tag=0.0.39 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \ 
   --set openshift.enabled=true \
   --set openshift.anyuid=false \
@@ -162,7 +162,7 @@ helm list -n cview-issuer
 ```
 <pre>
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
-cview-issuer    cview-issuer    1               2025-05-15 10:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.38     0.0.38
+cview-issuer    cview-issuer    1               2025-05-15 10:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.39     0.0.39
 </pre>
 
 ## 5. C-View Issuer Configuration
@@ -172,11 +172,11 @@ cview-issuer    cview-issuer    1               2025-05-15 10:31:20.172857068 +0
 #### 5.1.1 C-View Issuer Credential 
 
 The C-View issuer supports both basic and token-based authentication to operate toward the C-View Platform <br />
-**When your C-View platform is 7.2.0 it's required to wotk with authMethod = token**. <br /> 
+**Starting C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
 
 - authMethod property
-  - set to **basic** for basic authentication and update the **user name** and **password** parameters
-  - set to **token** for token-based authentication and update the **token** value ( get it form C-View administrator)
+  - set to **basic** for basic authentication and update the **user name** and **password** parameters (**From C-View 7.3.0 it's not supported**) 
+  - set to **token** for token-based authentication and update the **token** value (get the token form C-View administrator)
 
 - Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deploy the YAML file to Kubernetes/Openshift 
@@ -231,4 +231,5 @@ Use this YAML example to create a certificate for cert manager get way API : ([g
 ![Version: 0.0.37](https://img.shields.io/badge/Version-0.0.37-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.37](https://img.shields.io/badge/AppVersion-0.0.37-informational?style=flat-square)
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
+
 
