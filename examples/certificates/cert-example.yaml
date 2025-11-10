@@ -34,7 +34,7 @@ spec:
   # Subject fileds annotation 
   # --------------------------------------------------------------------------------------
   commonName: example.secure-ly.com # Common name should be added. (required) 
-  organizations:                    # Organization name (optional)
+  #organizations:                    # Organization name (optional)
   #    - Securely
 
   # countries:                      # Country (optional) two char length 
