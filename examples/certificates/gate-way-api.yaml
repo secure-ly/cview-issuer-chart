@@ -40,6 +40,8 @@ metadata:
     cview-issuer/customField10: ""
     cview-issuer/customEmailAddress: ""            # set the custom email address for a personal expiration alert 
     cview-issuer/certOwner: ""                     # set the certificate owner as domain\\user
+    cview-issuer/DelegateADGroup: ""     # set the certificate delegate AD group as domain\\group
+    
 spec:
   gatewayClassName: ""
   listeners:
