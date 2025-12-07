@@ -1,6 +1,6 @@
 # cview-issuer
 
-![Version: 0.0.39](https://img.shields.io/badge/Version-0.0.39-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.39](https://img.shields.io/badge/AppVersion-0.0.39-informational?style=flat-square)
+![Version: 0.0.40](https://img.shields.io/badge/Version-0.0.40-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.40](https://img.shields.io/badge/AppVersion-0.0.40-informational?style=flat-square)
 
 C-View issuer plugin for cert-manager
 
@@ -8,9 +8,9 @@ C-View issuer plugin for cert-manager
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.jetstack.io | cert-manager(cert-manager) | ~v1.18.2 |
-| https://charts.jetstack.io | cert-manager-1-17(cert-manager) | ~v1.17.2 |
-| https://charts.jetstack.io | cert-manager-1-16(cert-manager) | ~v1.16.4 |
+| https://charts.jetstack.io | cert-manager(cert-manager) | ~v1.19.1 |
+| https://charts.jetstack.io | cert-manager-1-18(cert-manager) | ~v1.18.3 |
+| https://charts.jetstack.io | cert-manager-1-17(cert-manager) | ~v1.17.3 |
 
 ## Values
 
@@ -72,7 +72,7 @@ C-View issuer plugin for cert-manager
 | nodeSelector."kubernetes.io/os" | string | `"linux"` |  |
 | openshift.anyuid | bool | `false` |  |
 | openshift.enabled | bool | `false` |  |
-| podDisruptionBudget.install | bool | `true` |  |
+| podDisruptionBudget.install | bool | `false` |  |
 | podDisruptionBudget.minAvailable | int | `1` |  |
 | webhookService.ports[0].port | int | `443` |  |
 | webhookService.ports[0].targetPort | int | `9443` |  |
