@@ -49,7 +49,7 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.17.1  \
+  --version v1.18.3  \
   --set config.enableGatewayAPI=true \
   --set config.apiVersion="controller.config.cert-manager.io/v1alpha1" \
   --set config.kind="ControllerConfiguration" \
@@ -88,7 +88,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.39          0.0.39          C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.40          0.0.40          C-View issuer plugin for cert-manager
 </pre>
 
 ### Get a list of all issuer version
@@ -97,7 +97,7 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer   0.0.39          0.0.39      C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.40          0.0.40      C-View issuer plugin for cert-manager
 </pre>
 
 ```console
@@ -105,9 +105,9 @@ helm search repo cview-issuer --versions
 ```
 <pre>
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
-secure-ly/cview-issuer	0.0.37       	0.0.37     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.38       	0.0.38     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.39       	0.0.39     	 C-View issuer plugin for cert-manager     
+secure-ly/cview-issuer	0.0.40       	0.0.40     	 C-View issuer plugin for cert-manager     
 </pre>
 
 ## 4. Target platform Installation commands
@@ -119,8 +119,8 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.39 \
-  --set controllerManager.manager.image.tag=0.0.39 \
+  --version 0.0.40 \
+  --set controllerManager.manager.image.tag=0.0.40 \
   --set crd.install=true
 ```
 ### Install on Openshift 
@@ -130,8 +130,8 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.39  \
-  --set controllerManager.manager.image.tag=0.0.39 \
+  --version 0.0.40  \
+  --set controllerManager.manager.image.tag=0.0.40 \
   --set crd.install=true \
   --set openshift.enabled=true \
   --set openshift.anyuid=true
@@ -143,9 +143,9 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.39 \
+  --version 0.0.40 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.39 \
+  --set controllerManager.manager.image.tag=0.0.40 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \ 
   --set openshift.enabled=true \
   --set openshift.anyuid=false \
@@ -162,7 +162,7 @@ helm list -n cview-issuer
 ```
 <pre>
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
-cview-issuer    cview-issuer    1               2025-05-15 10:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.39     0.0.39
+cview-issuer    cview-issuer    1               2025-12-05 10:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.40     0.0.40
 </pre>
 
 ## 5. C-View Issuer Configuration
@@ -228,8 +228,8 @@ Use this YAML example to create a certificate for cert manager get way API : ([g
 
 #### Documentation
 
-![Version: 0.0.37](https://img.shields.io/badge/Version-0.0.37-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.37](https://img.shields.io/badge/AppVersion-0.0.37-informational?style=flat-square)
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
+
 
 
