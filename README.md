@@ -35,8 +35,8 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.18.3  \    
-  --set crds.enabled=true
+  --version v1.18.3  \
+  --set crds.enabled=true \
   --set enableCertificateOwnerRef=true
 ```
 ### Adding support for Gateway API in kubernetes
@@ -230,6 +230,7 @@ Use this YAML example to create a certificate for cert manager get way API : ([g
 
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
+
 
 
 
