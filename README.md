@@ -131,7 +131,7 @@ helm upgrade --install \
   --namespace cview-issuer \
   --create-namespace \
   --version 0.0.40  \
-  --set controllerManager.manager.image.tag=0.0.40 \
+  --set controllerManager.manager.image.tag=0.0.41 \
   --set crd.install=true \
   --set openshift.enabled=true \
   --set openshift.anyuid=true
@@ -145,7 +145,7 @@ helm upgrade --install \
   --create-namespace \
   --version 0.0.40 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.40 \
+  --set controllerManager.manager.image.tag=0.0.41 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
   --set openshift.enabled=true \
   --set openshift.anyuid=false \
@@ -230,6 +230,7 @@ Use this YAML example to create a certificate for cert manager get way API : ([g
 
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
+
 
 
 
