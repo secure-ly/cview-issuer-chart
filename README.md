@@ -120,7 +120,7 @@ helm upgrade --install \
   --namespace cview-issuer \
   --create-namespace \
   --version 0.0.40 \
-  --set controllerManager.manager.image.tag=0.0.40 \
+  --set controllerManager.manager.image.tag=0.0.41 \
   --set crd.install=true
 ```
 ### Install on Openshift 
@@ -230,6 +230,7 @@ Use this YAML example to create a certificate for cert manager get way API : ([g
 
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
+
 
 
 
