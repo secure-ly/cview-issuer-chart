@@ -18,6 +18,11 @@ spec:
 
   url: https://<cview-server>/cviewAdmin  # url for C-View admin server 
   templateName: CV-SSL-1-Year             # The name of the template to issue SSL certificates (Request the name from C-View Administrator)
-  caId: 1                                 # The issuer ID (Request issuer ID from C-View Administrator)
+                                          # from Globalsign GCC set template name to the product code for example SSL oV set it t "PV_SHA2"
   
+  caId: 1                                 # The issuer ID (Request issuer ID from C-View Administrator)
+                                          # for GlobalSIgn GCC set it to 1001
+                                          # for GlobalSIgn Atlas set it to 1004
+                                          # for DigiCert set it to 1000
+                                          
   #insecureSkipVerify: false              # skip SSL verification (do not use in a production environment)
