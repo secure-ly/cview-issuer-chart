@@ -12,7 +12,8 @@ data:
 
   # pausing
   pauseReconciliationAnnotation: cview-issuer/pauseReconciliation         # annotation key to stop reconciling 
-
+  numberofFailedRetries: '1'                                              # when fail how many retries 
+  
   # autorevoking   
   certAutoRevoke: "false"               # Set to true to revoke certificates when it's already expired or if the certRevokeStatuses values is expired 
   certRevokeStatuses: Expired           # 
