@@ -1,6 +1,6 @@
 # cview-issuer
 
-![Version: 0.0.41](https://img.shields.io/badge/Version-0.0.41-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.41](https://img.shields.io/badge/AppVersion-0.0.41-informational?style=flat-square)
+![Version: 0.0.42](https://img.shields.io/badge/Version-0.0.42-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.0.42](https://img.shields.io/badge/AppVersion-0.0.42-informational?style=flat-square)
 
 C-View issuer plugin for cert-manager
 
@@ -8,9 +8,9 @@ C-View issuer plugin for cert-manager
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.jetstack.io | cert-manager(cert-manager) | ~v1.19.1 |
+| https://charts.jetstack.io | cert-manager(cert-manager) | ~v1.20.1 |
+| https://charts.jetstack.io | cert-manager-1-19(cert-manager) | ~v1.19.5 |
 | https://charts.jetstack.io | cert-manager-1-18(cert-manager) | ~v1.18.3 |
-| https://charts.jetstack.io | cert-manager-1-17(cert-manager) | ~v1.17.3 |
 
 ## Values
 
@@ -39,7 +39,7 @@ C-View issuer plugin for cert-manager
 | controllerManager.environment.KUBERNETES_CLUSTER_DOMAIN | string | `"cluster.local"` |  |
 | controllerManager.labels | object | `{"app":"cview-issuer"}` | labels for the controller deployment  |
 | controllerManager.manager.image.repository | string | `"devsecurely/cview-issuer"` |  |
-| controllerManager.manager.image.tag | string | `"0.0.41"` |  |
+| controllerManager.manager.image.tag | string | `"0.0.42"` |  |
 | controllerManager.manager.livenessProbe.httpGet.path | string | `"/healthz"` |  |
 | controllerManager.manager.livenessProbe.httpGet.port | int | `8081` |  |
 | controllerManager.manager.livenessProbe.httpGet.scheme | string | `"HTTP"` |  |
