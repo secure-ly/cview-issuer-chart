@@ -18,7 +18,7 @@ the organization's ADCS and supports public certificate authorities like GlobalS
 The following components are required before installing the C-View Issuer 
 
 - Kubernetes cluster with version >=1.29.x      
-- Cert manager with version >=1.18.x   (For list of supported versions: [Supported versions](https://cert-manager.io/docs/releases/))  
+- Cert manager with version >=1.19.x   (For list of supported versions: [Supported versions](https://cert-manager.io/docs/releases/))  
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.1.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
