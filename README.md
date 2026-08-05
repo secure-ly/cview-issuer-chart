@@ -165,9 +165,9 @@ NAME            NAMESPACE       REVISION        UPDATED                         
 cview-issuer    cview-issuer    1               2025-12-05 10:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.42     0.0.42
 </pre>
 
-## 5. C-View Issuer Configuration
+## ⚙️ 5. C-View Issuer Configuration
 
-### 5.1 C-View Secrets 
+### 🔐 5.1 C-View Secrets 
 
 #### 5.1.1 C-View Issuer activation key
 
@@ -179,16 +179,15 @@ Contact the C-View administrator to get the license key and encode it to the bas
 
 #### 5.1.2 C-View Issuer Credential 
 
-The C-View issuer supports both basic and token-based authentication to operate toward the C-View Platform <br />
-**Starting C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
+The C-View Issuer uses token-based authentication when communicating with the C-View Platform <br />
+**Starting with C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
 
 - authMethod property
-  - set to **basic** for basic authentication and update the **user name** and **password** parameters (**From C-View 7.3.0 it's not supported**) 
+  - set to **basic** for basic authentication (**Deprecated**) 
   - set to **token** for token-based authentication and update the **token** value (get the token form C-View administrator)
 
 - Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deploy the YAML file to Kubernetes/Openshift 
-
 
 
 ### 5.2 C-View Issuer objects
@@ -205,7 +204,7 @@ Working in a dedicated namespace requires a c-view issuer object. Sample YAML fi
 The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
 for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
 
-### 5.4 C-View certificates objects
+### 🏢 5.4 C-View certificates objects
 
 C-View Issuer supports the following certificate types: 
 
