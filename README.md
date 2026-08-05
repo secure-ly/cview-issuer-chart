@@ -169,23 +169,24 @@ cview-issuer    cview-issuer    1               2025-12-05 10:31:20.172857068 +0
 
 ### 🔐 5.1 Required secret objects
 
-#### 5.1.1 C-View Issuer activation key
-C-View issuer requires a license key from the C-View platform <br /> 
-Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
+> #### 5.1.1 C-View Issuer activation key
+> The C-View Issuer requires a valid license key obtained from the C-View platform before it can process certificate requests <br /> 
+> Contact your C-View CLM administrator to obtain a license key. Before deploying it to the cluster, <br />
+> the license key must be Base64-encoded and stored in the appropriate Kubernetes secret
 
 - Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
-- Deploy the YAML file to Kubernetes/Openshift
 
-#### 5.1.2 Issuer Credential 
-This credential is used to identify cview-issuer requests toword the CLM platform.<br />
-**Starting with C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
-- Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
-- Deploy the YAML file to Kubernetes/Openshift 
+> #### 5.1.2 Issuer Credential 
+> This credential is used to identify cview-issuer requests toword the CLM platform.<br />
+> **Starting with C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
+> - Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
+> - Deploy the YAML file to Kubernetes/Openshift 
 
 
 ### 🏢 5.2 C-View Issuer objects
-The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
-There are two types of c-view issuers, and you can create multiple issuers for different purposes.  
+The C-View Issuer configuration defines all parameters required to integrate and operate with the C-View platform.
+it supports two issuer types, and multiple issuer configurations can be created to address different business or operational requirements.
+Each issuer configuration is managed independently, allowing you to tailor settings based on the specific use case.
         
 > #### 5.2.1 C-View Cluster Issuer 
 > Working in a global scope requires a c-view cluster issuer object. Sample YAML file: ([cview-cluster-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-cluster-issuer.yaml))
