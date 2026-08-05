@@ -167,19 +167,17 @@ cview-issuer    cview-issuer    1               2025-12-05 10:31:20.172857068 +0
 
 ## ⚙️ 5. C-View Issuer Configuration
 
-### 🔐 5.1 C-View Secrets 
+### 🔐 5.1 Required secret objects
 
 #### 5.1.1 C-View Issuer activation key
-
 C-View issuer requires a license key from the C-View platform <br /> 
 Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
 
 - Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
 - Deploy the YAML file to Kubernetes/Openshift
 
-#### 5.1.2 C-View Issuer Credential 
-
-The C-View Issuer uses token-based authentication when communicating with the C-View Platform <br />
+#### 5.1.2 Issuer Credential 
+This credential is used to identify cview-issuer requests toword the CLM platform.<br />
 **Starting with C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
 
 - authMethod property
