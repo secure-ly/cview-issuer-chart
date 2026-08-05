@@ -25,18 +25,21 @@
 C-View Issuer extends **cert-manager** and enables Kubernetes and OpenShift clusters to issue, renew, and manage certificates through the **C-View Certificate Lifecycle Management platform**.
 
 ### Key Features
+## Features
 
-✅ Integrates with cert-manager
-
-✅ Supports Issuer and ClusterIssuer resources
-
-✅ Automated certificate issuance and renewal
-
-✅ Kubernetes & OpenShift support
-
-✅ Enterprise certificate lifecycle management
-
-✅ PKI governance and compliance
+| Feature | Supported |
+|----------|-----------|
+| Certificate Issuer | ✅ |
+| Cluster Issuer | ✅ |
+| Microsoft ADCS | ✅ |
+| DigiCert | ✅ |
+| GlobalSign | ✅ |
+| OpenShift Routes | ✅ |
+| Gateway API | ✅ |
+| JKS Certificates | ✅ |
+| PKCS12 (.p12/.pfx) | ✅ |
+| Jaeger Tracing | ✅ |
+`
 
 ---
 
