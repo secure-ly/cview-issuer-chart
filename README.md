@@ -200,33 +200,33 @@ There are two types of c-view issuers, and you can create multiple issuers for d
 > #### 5.2.2 Dedicated C-View Issuer 
 > Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-issuer.yaml))
  
-### 🏢 5.3 C-View issuer ConfigMap 
- The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
- for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
-
-### 🏢 5.4 C-View certificates objects
+### 🏢 5.3 C-View certificates objects
 
 C-View Issuer supports the following certificate types: 
 
-> #### 5.4.1 Standard certificate/secret 
+> #### 5.3.1 Standard certificate/secret 
 > Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
 
-> #### 5.4.1.1 Standard certificate/secret as JKS or PKCS12 (.p12) 
+> #### 5.3.1.1 Standard certificate/secret as JKS or PKCS12 (.p12) 
 > Use this YAML to create the secrte for the JKS/PKCS12 (.p12) : ([cert-store-secret](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cert-store-secret.yaml)) <br /> 
 > Use this YAML example to create a certificate object as JKS or PKCS12 (.p12) : ([cert-store-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-store-example.yaml)) 
 
-> #### 5.4.2 Openshift Route Secret 
+> #### 5.3.2 Openshift Route Secret 
 > Use this YAML example to create a certificate for an open shift route: ([OpenShift-rout-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/openShift-routs-example.yaml))<br />
 > <b>Unused annotations should be excluded or commented from the yaml file</b>
 
-> #### 5.4.3 Ingress Secret 
+> #### 5.3.3 Ingress Secret 
 > Use this YAML example to create a certificate for ingress: ([Ingress-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/ingress-example.yaml)) <br />
 > <b>Unused annotations should be excluded or commented from the yaml file</b>
 
-> #### 5.4.4 GetWay API Secret 
+> #### 5.3.4 GetWay API Secret 
 > Use this YAML example to create a certificate for cert manager get way API : ([getway-api-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/gate-way-api.yaml)) <br />
 > <b>Unused annotations should be excluded or commented from the yaml file</b>
 
+### 🏢 5.4 C-View issuer ConfigMap 
+ The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
+ for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
+ 
 #### 📖 Documentation
 
 [C-View Issuer Github repository](https://github.com/secure-ly/cview-issuer-chart/)
