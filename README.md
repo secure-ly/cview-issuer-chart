@@ -200,9 +200,7 @@ There are two types of c-view issuers, and you can create multiple issuers for d
 > #### 5.2.2 Dedicated C-View Issuer 
 > Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-issuer.yaml))
  
-### 🏢 5.3 C-View certificates objects
-
-C-View Issuer supports the following certificate types: 
+### 🏢 5.3 Supported certificates objects
 
 > #### 5.3.1 Standard certificate/secret 
 > Use this YAML example to create a certificate object: ([Cert-example](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/certificates/cert-example.yaml)) 
