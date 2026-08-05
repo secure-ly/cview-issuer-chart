@@ -190,19 +190,19 @@ The C-View Issuer uses token-based authentication when communicating with the C-
 - Deploy the YAML file to Kubernetes/Openshift 
 
 
-### 5.2 C-View Issuer objects
+### 🏢 5.2 C-View Issuer objects
 The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
 There are two types of c-view issuers, and you can create multiple issuers for different purposes.  
         
-#### 5.2.1 C-View Cluster Issuer 
-Working in a global scope requires a c-view cluster issuer object. Sample YAML file: ([cview-cluster-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-cluster-issuer.yaml))
-
-#### 5.2.2 Dedicated C-View Issuer 
-Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-issuer.yaml))
-
-### 5.3 C-View issuer ConfigMap 
-The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
-for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
+   #### 5.2.1 C-View Cluster Issuer 
+   Working in a global scope requires a c-view cluster issuer object. Sample YAML file: ([cview-cluster-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-cluster-issuer.yaml))
+   
+   #### 5.2.2 Dedicated C-View Issuer 
+   Working in a dedicated namespace requires a c-view issuer object. Sample YAML file: ([cview-issuer](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/issuers/cview-issuer.yaml))
+   
+   ### 5.3 C-View issuer ConfigMap 
+   The default ConfigMAp name is **cview-issuer-configmap-override**. It is created automatically, and all values are hard-coded 
+   for flexible control over issuer actions you may deploy the following config map YAML file: ([ConfigMap](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/configMap/configmap.yaml))
 
 ### 🏢 5.4 C-View certificates objects
 
