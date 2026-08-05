@@ -169,7 +169,15 @@ cview-issuer    cview-issuer    1               2025-12-05 10:31:20.172857068 +0
 
 ### 5.1 C-View Secrets 
 
-#### 5.1.1 C-View Issuer Credential 
+#### 5.1.1 C-View Issuer activation key
+
+C-View issuer requires a license key from the C-View platform <br /> 
+Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
+
+- Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
+- Deploy the YAML file to Kubernetes/Openshift
+
+#### 5.1.2 C-View Issuer Credential 
 
 The C-View issuer supports both basic and token-based authentication to operate toward the C-View Platform <br />
 **Starting C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
@@ -181,13 +189,7 @@ The C-View issuer supports both basic and token-based authentication to operate 
 - Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deploy the YAML file to Kubernetes/Openshift 
 
-#### 5.1.2 C-View Issuer activation key
 
-C-View issuer requires a license key from the C-View platform <br /> 
-Contact the C-View administrator to get the license key and encode it to the base64 string. <br />
-
-- Update the **key** parameter in the following YAML file: ([cview-issuer-license-key](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-license-key.yaml))
-- Deploy the YAML file to Kubernetes/Openshift
 
 ### 5.2 C-View Issuer objects
 The configuration of the C-View issuer object allows the set of all relevant parameters for working with the C-View platform.<br /> 
