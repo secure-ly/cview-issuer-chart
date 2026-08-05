@@ -33,11 +33,11 @@ spec:
   secretName: cert-example       	# The name of the certificate secret (required and unique) 
 
   keystores:
-    jks:                          # This property can be jks or pfx  
+    jks:                          # This property can have the values jks or pkcs12 
       create: true
-      alias : crm12               # This is the alias name inside the pkcs12 store ( use the comman name ) 
+      alias : crm12               # This is the alias name inside the jks/pkcs12 store ( use the comman name ) 
       passwordSecretRef:
-        name: cert-store-password # the name of the secret that contains the password for the JKS/PFX store
+        name: cert-store-password # the name of the secret that contains the password for the JKS/pkcs12 store
         key: password             # The name of property holds the password value  
   
   # --------------------------------------------------------------------------------------
