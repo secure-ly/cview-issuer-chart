@@ -179,11 +179,6 @@ Contact the C-View administrator to get the license key and encode it to the bas
 #### 5.1.2 Issuer Credential 
 This credential is used to identify cview-issuer requests toword the CLM platform.<br />
 **Starting with C-View platform version 7.3.0 it's required to set the authMethod to 'token' **. <br /> 
-
-- authMethod property
-  - set to **basic** for basic authentication (**Deprecated**) 
-  - set to **token** for token-based authentication and update the **token** value (get the token form C-View administrator)
-
 - Credintial YAML file example: ([cview-issuer-credentials](https://github.com/secure-ly/cview-issuer-chart/tree/main/examples/secrets/cview-issuer-credentials.yaml))
 - Deploy the YAML file to Kubernetes/Openshift 
 
