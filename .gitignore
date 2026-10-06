@@ -1,4 +1,6 @@
 Chart.lock
 *all.yaml
 cview-issuer*.tgz
+charts/*.tgz
+charts/
 
