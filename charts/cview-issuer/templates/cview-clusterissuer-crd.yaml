@@ -1,12 +1,11 @@
 
 {{- if .Values.crd.install  }}
 ---
----
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.14.0
+    controller-gen.kubebuilder.io/version: v0.22.0
   name: cviewclusterissuers.secure-ly.com
 spec:
   group: secure-ly.com
@@ -173,6 +172,5 @@ spec:
     storage: true
     subresources:
       status: {}
-
 
 {{- end  }}    

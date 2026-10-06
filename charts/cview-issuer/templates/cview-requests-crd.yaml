@@ -4,7 +4,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.14.0
+    controller-gen.kubebuilder.io/version: v0.22.0
   name: cviewrequests.secure-ly.com
 spec:
   group: secure-ly.com
@@ -88,13 +88,17 @@ spec:
                   cviewRequest will be marked as failed.
                 properties:
                   group:
-                    description: Group of the resource being referred to.
+                    description: |-
+                      Group of the issuer being referred to.
+                      Defaults to 'cert-manager.io'.
                     type: string
                   kind:
-                    description: Kind of the resource being referred to.
+                    description: |-
+                      Kind of the issuer being referred to.
+                      Defaults to 'Issuer'.
                     type: string
                   name:
-                    description: Name of the resource being referred to.
+                    description: Name of the issuer being referred to.
                     type: string
                 required:
                 - name
@@ -111,6 +115,10 @@ spec:
                 x-kubernetes-validations:
                 - message: ValidTo is immutable
                   rule: self == oldSelf
+            required:
+            - certId
+            - validFrom
+            - validTo
             type: object
           status:
             description: cviewRequestStatus defines the observed state of cviewRequest
@@ -152,6 +160,5 @@ spec:
     storage: true
     subresources:
       status: {}
-
 
 {{- end  }}    
