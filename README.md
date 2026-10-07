@@ -18,7 +18,7 @@ the organization's ADCS and supports public certificate authorities like GlobalS
 The following components are required before installing the C-View Issuer 
 
 - Kubernetes cluster with version >=1.32.x      
-- Cert manager with version >=1.19.x   (For list of supported versions: [Supported versions](https://cert-manager.io/docs/releases/))  
+- Cert manager with version >=1.20.x   (For list of supported versions: [Supported versions](https://cert-manager.io/docs/releases/))  
 - Jaeger opentracing (optional)
 - C-View CLM >= 7.3.x (For more information, contact [Securely LTD](https://www.secure-ly.com/contact-us-securely))
 
@@ -35,9 +35,9 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.18.3  \
+  --version v1.20.1  \
   --set crds.enabled=true \
-  --set enableCertificateOwnerRef=true
+  --set enableCertificateOwnerRef=false
 ```
 ### Adding support for Gateway API in kubernetes
 ``` consol
@@ -49,12 +49,12 @@ helm upgrade  --install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.18.3  \
+  --version v1.20.1  \
   --set config.enableGatewayAPI=true \
   --set config.apiVersion="controller.config.cert-manager.io/v1alpha1" \
   --set config.kind="ControllerConfiguration" \
   --set crds.enabled=true \
-  --set enableCertificateOwnerRef=true
+  --set enableCertificateOwnerRef=false
 ```
 Check cert-manager installation 
 <pre>
@@ -88,7 +88,7 @@ helm repo update secure-ly
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-secure-ly/cview-issuer   0.0.42          0.0.42          C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.43          0.0.43          C-View issuer plugin for cert-manager
 </pre>
 
 ### Get a list of all issuer version
@@ -97,7 +97,7 @@ helm search repo cview-issuer
 ```
 <pre>
 NAME                    CHART VERSION   APP VERSION  DESCRIPTION
-secure-ly/cview-issuer   0.0.42          0.0.42      C-View issuer plugin for cert-manager
+secure-ly/cview-issuer   0.0.43          0.0.43      C-View issuer plugin for cert-manager
 </pre>
 
 ```console
@@ -105,9 +105,9 @@ helm search repo cview-issuer --versions
 ```
 <pre>
 NAME                  	CHART VERSION	APP VERSION	 DESCRIPTION                           
-secure-ly/cview-issuer	0.0.39       	0.0.39     	 C-View issuer plugin for cert-manager     
-secure-ly/cview-issuer	0.0.40       	0.0.40     	 C-View issuer plugin for cert-manager     
+secure-ly/cview-issuer	0.0.41       	0.0.31     	 C-View issuer plugin for cert-manager     
 secure-ly/cview-issuer	0.0.42       	0.0.42     	 C-View issuer plugin for cert-manager     
+secure-ly/cview-issuer	0.0.43       	0.0.43     	 C-View issuer plugin for cert-manager     
 </pre>
 
 ## 4. Target platform Installation commands
@@ -119,8 +119,8 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.42 \
-  --set controllerManager.manager.image.tag=0.0.42 \
+  --version 0.0.43 \
+  --set controllerManager.manager.image.tag=0.0.43 \
   --set crd.install=true
 ```
 ### Install on Openshift 
@@ -130,8 +130,8 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.42  \
-  --set controllerManager.manager.image.tag=0.0.42 \
+  --version 0.0.43  \
+  --set controllerManager.manager.image.tag=0.0.43 \
   --set crd.install=true \
   --set openshift.enabled=true \
   --set openshift.anyuid=true
@@ -143,9 +143,9 @@ helm upgrade --install \
   cview-issuer secure-ly/cview-issuer \
   --namespace cview-issuer \
   --create-namespace \
-  --version 0.0.42 \
+  --version 0.0.43 \
   --set controllerManager.manager.image.repository=devsecurely/cview-issuer \
-  --set controllerManager.manager.image.tag=0.0.42 \
+  --set controllerManager.manager.image.tag=0.0.43 \
   --set controllerManager.arguments.cluster-resource-namespace=cview-issuer \
   --set openshift.enabled=true \
   --set openshift.anyuid=false \
@@ -162,7 +162,7 @@ helm list -n cview-issuer
 ```
 <pre>
 NAME            NAMESPACE       REVISION        UPDATED                                         STATUS          CHART                   APP VERSION
-cview-issuer    cview-issuer    1               2025-12-05 10:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.42     0.0.42
+cview-issuer    cview-issuer    1               2025-12-05 10:31:20.172857068 +0200 CEST        deployed        cview-issuer-0.0.43     0.0.43
 </pre>
 
 ## ⚙️ 5. C-View Issuer Configuration
